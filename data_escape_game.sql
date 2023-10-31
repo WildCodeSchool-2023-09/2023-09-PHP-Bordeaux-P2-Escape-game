@@ -25,6 +25,7 @@ CREATE TABLE user (
     id INT NOT NULL AUTO_INCREMENT,
     pseudo VARCHAR(50),
     password VARCHAR(255),
+    email VARCHAR(255) NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -39,17 +40,17 @@ CREATE TABLE progress (
 CREATE TABLE inventory (
     id INT NOT NULL AUTO_INCREMENT,
     object_id INT,
+    session_id INT,
     FOREIGN KEY (object_id) REFERENCES object(id),
+    FOREIGN KEY (session_id) REFERENCES session(id),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE session (
 id INT NOT NULL AUTO_INCREMENT,
 user_id INT,
-inventory_id INT,
 name VARCHAR(255),
 FOREIGN KEY (user_id) REFERENCES user(id),
-FOREIGN KEY (inventory_id) REFERENCES inventory(id),
 PRIMARY KEY (id)
 );
 
