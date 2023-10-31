@@ -66,3 +66,4 @@ PRIMARY KEY (id),
 FOREIGN KEY (session_id) REFERENCES session(id),
 FOREIGN KEY (enigma_id) REFERENCES enigma(id),
 FOREIGN KEY (progress_id) REFERENCES progress(id)
+);
