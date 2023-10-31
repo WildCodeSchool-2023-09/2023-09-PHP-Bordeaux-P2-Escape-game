@@ -37,21 +37,23 @@ CREATE TABLE progress (
 );
 
 
-CREATE TABLE inventory (
-    id INT NOT NULL AUTO_INCREMENT,
-    object_id INT,
-    session_id INT,
-    FOREIGN KEY (object_id) REFERENCES object(id),
-    FOREIGN KEY (session_id) REFERENCES session(id),
-    PRIMARY KEY (id)
-);
+
 
 CREATE TABLE session (
 id INT NOT NULL AUTO_INCREMENT,
 user_id INT,
 name VARCHAR(255),
-FOREIGN KEY (user_id) REFERENCES user(id),
-PRIMARY KEY (id)
+PRIMARY KEY (id),
+FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE inventory (
+    id INT NOT NULL AUTO_INCREMENT,
+    object_id INT,
+    session_id INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (object_id) REFERENCES object(id),
+    FOREIGN KEY (session_id) REFERENCES session(id)
 );
 
 CREATE TABLE scenario (
@@ -60,8 +62,7 @@ name VARCHAR(255),
 enigma_id INT,
 session_id INT,
 progress_id INT,
+PRIMARY KEY (id),
 FOREIGN KEY (session_id) REFERENCES session(id),
 FOREIGN KEY (enigma_id) REFERENCES enigma(id),
-FOREIGN KEY (progress_id) REFERENCES progress(id),
-PRIMARY KEY (id)
-);
+FOREIGN KEY (progress_id) REFERENCES progress(id)
