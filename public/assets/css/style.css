@@ -1,3 +1,11 @@
-body {
-    color: #f76c6c;
+:root{
+    --primary-color : white;
+    --secondary-color : red;
+    --background-color : black;
+    background-color: #D9DCDD;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    margin: 0px;
 }
