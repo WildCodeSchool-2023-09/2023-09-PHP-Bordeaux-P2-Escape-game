@@ -1,0 +1,32 @@
+.navbar{
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  text-align: center;
+  border-radius: 0% 0% 15px 15px;
+  width: 100%;
+}
+
+.navbar>h1{
+  margin-top: 0px;
+  padding-top: 1rem;
+  margin-bottom: 8px;
+}
+
+.navbar>ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    margin: 0px;
+  }
+
+  .navbar>ul>li>a{
+    color: var(--primary-color);
+    text-decoration:none;
+    text-shadow: var(--secondary-color) 1px 0 5px;
+  }
+
+  .navbar>ul>li>a:hover{
+    color: var(--secondary-color);
+  }
+
