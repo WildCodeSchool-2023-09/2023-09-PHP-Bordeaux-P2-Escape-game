@@ -3,4 +3,23 @@
 {% block content %}
     <h1>Hello Wilder !</h1>
     <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+
+
+    <div class="logIn">
+        <h1>Connecte toi</h1>
+        <p>Entre ton Email et ton mot de passe</p>
+        <form method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" >
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" >
+            </div>
+            <button type="submit" class="btn btn-success">Me connecter</button>
+        </form>
+    </div>
+
+    Bonjour <strong>{{ user.pseudo }}</strong>!
 {% endblock %}
