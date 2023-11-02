@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Controller;
+
 use App\Model\UserManager;
 
 class UserController extends AbstractController
 {
-
-
     public function login()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') 
-        {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
             $userManager = new UserManager();
             $user = $userManager->selectOneByEmail($credentials['email']);

@@ -1,14 +1,12 @@
-<?php 
+<?php
 
 namespace App\Model;
 
-
-Class UserManager extends AbstractManager
+class UserManager extends AbstractManager
 {
-    public const TABLE = 'user'; 
-
-
-    public function selectOneByEmail(string $email): array{
+    public const TABLE = 'user';
+    public function selectOneByEmail(string $email): array
+    {
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE email=:email");
         $statement->bindValue(':email', $email, \PDO::PARAM_STR);
         $statement->execute();
