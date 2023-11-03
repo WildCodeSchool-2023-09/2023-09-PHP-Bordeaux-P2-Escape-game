@@ -10,13 +10,31 @@ class UserController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
-            $userManager = new UserManager();
-            $user = $userManager->selectOneByEmail($credentials['email']);
-            if ($user && password_verify($credentials['password'], $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                header('Location: /');
-                exit();
+            $errors = [];
+
+            if (empty($credentials['email'])) {
+                $errors[] = 'L\'e-mail est requis';
             }
+
+            if (empty($credentials['password'])) {
+                $errors[] = 'Le mot de passe est requis';
+            }
+
+            if (empty($errors)) {
+                $userManager = new UserManager();
+                $user = $userManager->selectOneByEmail($credentials['email']);
+
+                if ($user && password_verify($credentials['password'], $user['password'])) {
+                    // Connecter l'utilisateur
+                    $_SESSION['user_id'] = $user['id'];
+                    header('Location: /');
+                    exit();
+                } else {
+                    $errors[] = 'E-mail ou mot de passe incorrect';
+                }
+            }
+        } else {
+            $errors = [];
         }
 
         return $this->twig->render('Home/index.html.twig');
