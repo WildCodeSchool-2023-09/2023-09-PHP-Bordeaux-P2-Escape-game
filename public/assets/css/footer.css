@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border-radius:15px 15px 0% 0% ;
+    width: 100%;
+  }
+
+.footer > p {
+    padding: 0 1rem;
+}
+
+.footer > img {
+    padding: 0 1rem;
+}
+
