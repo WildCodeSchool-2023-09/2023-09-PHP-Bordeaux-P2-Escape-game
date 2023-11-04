@@ -13,5 +13,7 @@
 
 .footer > img {
     padding: 0 1rem;
+    width: auto;
+    height: auto;
 }
 
