@@ -1,0 +1,99 @@
+
+{% extends 'layout.html.twig' %} 
+
+{% block title %}Escape Game - Scene 1 "Echappez-vous de la Wild!"{% endblock %}
+
+{% block content %}
+
+
+<body>
+    <div class="NavBar">
+        WILD ESCAPE
+    </div>
+    <div class="scene1">
+        <div class="ImgDialogues">
+            <div class="ImageLightOff">
+                
+                <map name="Eleccompteur">
+                    <area 
+                    shape="circle" 
+                    coords="346,90,9" 
+                    alt="Tableau électrique"
+                    href="../../../2023-09-PHP-Bordeaux-P2-Escape-game/src/View/Enigme1_elec.html"/>
+                </map>
+                <img usemap="#Eleccompteur" src="../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
+            </div>
+
+            <div class="Dialogues">
+                <div id="typedtext"></div>
+                {% block javascripts %}
+                <script src="{{ asset('PathDuFichier/tonFichier.js') }}"></script>
+                <script src="Ton_URL"></script>
+                <script type="text/javascript">
+                
+                    var iIndex = 0;
+                    var iTextPos = 0;
+                    var aText = [
+                        "Il n’y a plus de lumière, je ne vois plus rien! Comment faire ?",
+                        "Il doit bien y avoir une solution pour rallumer la lumière."
+                    ];
+                    var iArrLength = aText[0].length;
+                    var iScrollAt = 20;
+                    var iRow = 0;
+                    var sContents = "";
+                    var iSpeed = 50;
+            
+                    function typewriter() {
+                        sContents = ' ';
+                        iRow = Math.max(0, iIndex - iScrollAt);
+                        var destination = document.getElementById("typedtext");
+            
+                        while (iRow <script iIndex) {
+                            sContents += aText[iRow++] + '<br />';
+                        }
+                        destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+                        if (iTextPos++ == iArrLength) {
+                            iTextPos = 0;
+                            iIndex++;
+                            if (iIndex != aText.length) {
+                                iArrLength = aText[iIndex].length;
+                                setTimeout(typewriter, 500);
+                            }
+                        } else {
+                            setTimeout(typewriter, iSpeed);
+                        }
+                    }
+            
+                    typewriter();
+                    </script>
+                {% endblock %}
+            </div>
+        </div>
+
+    <div class="tools">
+        <div class="pseudo">
+        JojoPok
+        <!-- fonction qui récupère le pseudo du joueur lorsque celui-ci est connecté à sa session-->
+        </div>
+    
+        <div class="timer">
+        60:00
+        <!-- fonction timer -->
+        </div>
+
+        <div class="inventory">
+        </div>
+
+        <div class="indice">
+            <img  src="..\..\..\2023-09-PHP-Bordeaux-P2-Escape-game\public\assets\images\ampoule_b&w.png" onmouseover="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/ampoule_color.png'" onmouseout="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/ampoule_b&w.png'" />
+        </div>
+
+    </div>
+</div>
+
+<div class="footer">
+</div>
+
+</body>
+
+{% endblock %}
