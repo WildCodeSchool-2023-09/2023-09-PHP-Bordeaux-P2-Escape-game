@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Game - Scene 1 "Echappez-vous de la Wild!" </title>
 
-    <link rel="stylesheet" href="\GIT\projet-2_Escape_Game\2023-09-PHP-Bordeaux-P2-Escape-game\public\assets\css\Scene1.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% extends 'layout.html.twig' %} 
 
-</head>
+{% block title %}Escape Game - Scene 1 "Echappez-vous de la Wild!"{% endblock %}
+
+{% block content %}
 
 
 <body>
@@ -27,12 +21,16 @@
                     alt="Tableau électrique"
                     href="../../../2023-09-PHP-Bordeaux-P2-Escape-game/src/View/Enigme1_elec.html"/>
                 </map>
-                <img usemap="#Eleccompteur" src="/GIT/projet-2_Escape_Game/2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='/GIT/projet-2_Escape_Game/2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='/GIT/projet-2_Escape_Game/2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
+                <img usemap="#Eleccompteur" src="../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
             </div>
 
             <div class="Dialogues">
                 <div id="typedtext"></div>
-                <script>
+                {% block javascripts %}
+                <script src="{{ asset('PathDuFichier/tonFichier.js') }}"></script>
+                <script src="Ton_URL"></script>
+                <script type="text/javascript">
+                
                     var iIndex = 0;
                     var iTextPos = 0;
                     var aText = [
@@ -50,7 +48,7 @@
                         iRow = Math.max(0, iIndex - iScrollAt);
                         var destination = document.getElementById("typedtext");
             
-                        while (iRow < iIndex) {
+                        while (iRow <script iIndex) {
                             sContents += aText[iRow++] + '<br />';
                         }
                         destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
@@ -67,14 +65,15 @@
                     }
             
                     typewriter();
-                </script>
+                    </script>
+                {% endblock %}
             </div>
         </div>
 
     <div class="tools">
         <div class="pseudo">
         JojoPok
-        <!-- fonction qui récupère le pseudo du joueur lorsque celui-ci est connecté -->
+        <!-- fonction qui récupère le pseudo du joueur lorsque celui-ci est connecté à sa session-->
         </div>
     
         <div class="timer">
@@ -86,8 +85,7 @@
         </div>
 
         <div class="indice">
-            <img  src="\GIT\projet-2_Escape_Game\2023-09-PHP-Bordeaux-P2-Escape-game\public\assets\images\ampoule_b&w.png" onmouseover="this.src='/GIT/projet-2_Escape_Game/2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/ampoule_color.png'" onmouseout="this.src='/GIT/projet-2_Escape_Game/2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/ampoule_b&w.png'" />
-
+            <img  src="..\..\..\2023-09-PHP-Bordeaux-P2-Escape-game\public\assets\images\ampoule_b&w.png" onmouseover="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/ampoule_color.png'" onmouseout="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/ampoule_b&w.png'" />
         </div>
 
     </div>
@@ -97,4 +95,5 @@
 </div>
 
 </body>
-</html>
+
+{% endblock %}
