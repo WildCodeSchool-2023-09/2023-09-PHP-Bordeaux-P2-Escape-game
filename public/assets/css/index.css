@@ -1,0 +1,41 @@
+.logIn {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    height: 25rem;
+    align-items: center;
+    background-image: url('../images/connexion.jpg');
+    background-size: 150% 150%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3rem;
+    box-shadow: 0.5rem 0.5rem 1rem grey;
+}
+
+
+label {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+input {
+    background-color: #D9DCDD;
+    border-radius: 1rem;
+    height: 2rem;
+}
+
+button {
+   color: var(--background-color);
+   font-weight: bold;
+   margin-top: 2rem;
+   background-color: #D9DCDD;
+   border: none;
+   border-radius: 0.5rem;
+   height: 2rem;
+   width: 10rem;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
