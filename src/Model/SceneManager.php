@@ -6,12 +6,12 @@ use PDO;
 
 class SceneManager extends AbstractManager
 {
-    public const TABLE = 'item';
+    public const TABLE = 'scene';
 
     /**
      * Insert new item in database
      */
-    public function insert(array $item): int
+    public function insert(array $scene): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`title`) VALUES (:title)");
         $statement->bindValue('title', $item['title'], PDO::PARAM_STR);

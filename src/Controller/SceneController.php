@@ -2,15 +2,28 @@
 
 namespace App\Controller;
 
-use App\Model\ItemManager;
+use App\Model\SceneManager;
 
 class SceneController extends AbstractController
 {
     /**
      * Display home page
      */
-    public function index(): string
+    public function sceneEnigme(?int $id=null): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        $sceneManager = new SceneManager();
+        $scene = $sceneManager->selectOneById($id);
+
+        return $this->twig->render('Scene/scene.html.twig', ['scene' => $scene]);
     }
+
+    public function planEnigme(?int $id=null): string
+    {
+        $planManager = new SceneManager();
+        $plan = $planManager->selectOneById($id);
+
+        return $this->twig->render('Plan/plan.html.twig', ['plan' => $plan]);
+    }
+
+    
 }
