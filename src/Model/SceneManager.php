@@ -9,5 +9,4 @@ use PDO;
 
 //     private function getDialogs()
 
-
 // };
