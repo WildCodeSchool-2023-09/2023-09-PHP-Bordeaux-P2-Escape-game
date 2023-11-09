@@ -1,10 +1,22 @@
 {% extends 'layout.html.twig' %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/index.css">{% endblock %}
 
 
 {% block content %}
+    
+    <div class="logIn">
+        <form method="post">
+            <div class="connect">
+                <label for="email" class="form-label">Email</label> </br>
+                <input type="email" class="form-control" id="email" name="email" >
+            </div>
+            <div class="connect">
+                <label for="password" class="form-label">Mot de passe</label> </br>
+                <input type="password" class="form-control" id="password" name="password" >
+            </div>
+            <button type="submit" class="meConnecter">Connexion</button> <br>
+            <button type="" class="creatAccount">Créer un compte</button>
+        </form>
+    </div>
 
-
-
-    {# <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p> #}
 {% endblock %}
