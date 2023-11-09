@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+<head>
+
+    </head>
+{% block content %}
+
+    <div class="quizz">
+    
+    <div class="question">
+    <h3> 🎃 Quel film se passe dans un hôtel ?    </h3>
+    
+    </div>
+    
+         <body>
+     
+        <form class= "answer">
+
+                <div class="answer" id="rep1">
+                 2001, l'odyssée de l'espace
+                </div>
+
+                <ul>
+                    <li><label>2001, l'odyssée de l'espace</label> <input name="question1" type="radio" id="2001"/><br/></li>
+                </ul>
+               
+            
+                <ul>            
+                    <li><label>Shining</label><input name="shining" type="radio" id="shining" /><br/></li>
+                </ul>
+              
+            
+                <ul> 
+                    <li><label>Pulp Fiction</label><input name="question1" type="radio" id="pulpFiction" /><br/></li>
+                </ul>
+                
+                <ul>
+                <input type="submit" value=" ✔️ "/>
+                </ul>
+        </form>
+         </body>
+
+        </div>
+             <script src="assets/Javascript/enigma.js" defer></script>
+         {% endblock %}

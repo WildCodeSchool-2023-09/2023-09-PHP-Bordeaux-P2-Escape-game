@@ -1,0 +1,44 @@
+
+.quizz{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 15%;
+    width: 70%;
+    margin: 0 auto;
+    top: 70%;
+    left: 15%
+    
+    
+}
+
+.question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(41, 21, 3, 0.5);
+    margin: auto;
+    width: 80%;
+    border-radius: 25px;
+}
+.answer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+      
+      .answer ul li {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        margin-bottom: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color:rgba(41, 21, 3, 0.5);
+        border-radius: 20px;
+      }
+
+      
