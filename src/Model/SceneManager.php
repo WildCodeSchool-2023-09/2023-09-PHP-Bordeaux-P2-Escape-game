@@ -14,7 +14,7 @@ class SceneManager extends AbstractManager
     public function insert(array $scene): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`title`) VALUES (:title)");
-        $statement->bindValue('title', $item['title'], PDO::PARAM_STR);
+        $statement->bindValue('title', $scene['title'], PDO::PARAM_STR);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
