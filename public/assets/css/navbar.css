@@ -1,0 +1,118 @@
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    z-index: 2;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border-radius: 0% 0% 15px 15px;
+    width: 100%;
+  }
+
+  .navbar>h1{
+    margin: 8px;
+    align-self: center;
+    font-size: 2rem;
+  }
+
+  div.burger {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+  }
+
+  /* menu Navbar */
+.sidenav {
+  height: 30%;
+  width: 150px;
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  left: -250px;
+  background-color: var(--background-color);
+  padding-top: 60px;
+  transition: left 0.5s ease;
+}
+
+/* liens Navbar */
+.sidenav .accueil>a, .score>a, .connect>a, .close {
+  padding: 8px ;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  text-decoration:none;
+  text-shadow: var(--secondary-color) 1px 0 5px;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav .accueil>a:hover, .score>a:hover, .connect>a:hover, .close:hover {
+  color: var(--secondary-color);
+}
+
+.sidenav .txtMenuBurger {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Active class */
+.sidenav.active {
+  left: 0;
+}
+
+/* bouton X */
+.sidenav .close {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+/* Icône burger */
+.burger-icon span {
+  display: block;
+  width: 40px;
+  height: 8px;
+  background-color: var(--primary-color);
+  margin: 6px 0;
+}
+
+@media all and (min-width: 700px){
+
+  .navbar{
+    display: block;
+  }
+
+  .navbar>h1{
+    text-align: center;
+    margin-bottom: 0px;
+  }
+
+  .sidenav{
+    position: sticky;
+    padding-top: 0px;
+    width: 100%;
+}
+
+.txtMenuBurger{
+  display: flex;
+  justify-content: space-between
+}
+
+.burger-icon {
+  display: none;
+} 
+
+a.close {
+  display: none;
+}
+
+.score{
+  display: none;
+}
+
+}
