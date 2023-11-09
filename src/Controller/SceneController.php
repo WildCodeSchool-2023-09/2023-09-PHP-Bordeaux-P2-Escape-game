@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Model\ItemManager;
 
 class SceneController extends AbstractController
