@@ -19,11 +19,13 @@
 </head>
 
 <body>
-  {#  {% include 'Home/navbar.html.twig' %} #}
+
+    {% block navbar %}
+        {% include 'Home/navbar.html.twig' %}
+    {% endblock %}
+
+
     {% block content %}{% endblock %}
-    
     {% block javascript %}{% endblock %}
 </body>
 </html>
-
-
