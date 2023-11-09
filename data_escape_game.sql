@@ -13,6 +13,15 @@ CREATE TABLE enigma (
     answer VARCHAR (255),
     PRIMARY KEY (id)
 );
+
+INSERT INTO enigma (title, description, hint, answer)
+VALUES ('Tableau électrique', 'Quel fil faut-il reconnecter pour allumer la lumière de sécurité ?', 'Regarde sur le volet du tableau électrique', 'Les fils rouges'),
+('Post-it du tableau en liège', 'Tiens, qu\'y a-t-il sur ce post-it ?', 'Clique sur le post-it du tableau en liège.', ''),
+('Armoire de droite', 'Cette armoire est fermée avec un cadenas !', 'Il y en a plein à la Wild', 'Ordinateur'),
+('Ordinateur', 'Il est verrouillé par un mot de passe', 'Le mot de passe est la réponse de l\'armoire de droite', 'Ordinateur'),
+('Armoire de gauche', 'Elle est verrouillée par un cadenas !', 'Le code est sur l\'ordinateur', '5426'),
+('La porte de sortie', 'Elle est fermée à clé !', 'Trouve la clé qui se trouve dans une armoire', '');
+
 CREATE TABLE object (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR (50) NOT NULL,
@@ -35,9 +44,6 @@ CREATE TABLE progress (
     score INT,
     PRIMARY KEY (id)
 );
-
-
-
 
 CREATE TABLE session (
 id INT NOT NULL AUTO_INCREMENT,

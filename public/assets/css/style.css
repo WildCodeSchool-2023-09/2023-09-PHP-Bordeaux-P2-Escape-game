@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Jockey One";
+    src: url("/font/JockeyOne-Regular.ttf");
+
+    font-family: "Digital Numbers";
+    src: url("/font/DigitalNumbers-Regular.ttf");
+}
+
 :root{
     --primary-color : white;
     --secondary-color : red;
