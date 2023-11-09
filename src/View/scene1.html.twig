@@ -21,16 +21,13 @@
                     alt="Tableau électrique"
                     href="../../../2023-09-PHP-Bordeaux-P2-Escape-game/src/View/Enigme1_elec.html"/>
                 </map>
-                <img usemap="#Eleccompteur" src="../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
+                <img usemap="#Eleccompteur" src="/assets/images/Scene1_LumiereEteinte_416x224_pastille.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
             </div>
 
             <div class="Dialogues">
                 <div id="typedtext"></div>
                 {% block javascripts %}
-                <script src="{{ asset('PathDuFichier/tonFichier.js') }}"></script>
-                <script src="Ton_URL"></script>
-                <script type="text/javascript">
-                
+            <script>
                     var iIndex = 0;
                     var iTextPos = 0;
                     var aText = [
@@ -85,7 +82,7 @@
         </div>
 
         <div class="indice">
-            <img  src="..\..\..\2023-09-PHP-Bordeaux-P2-Escape-game\public\assets\images\ampoule_b&w.png" onmouseover="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/ampoule_color.png'" onmouseout="this.src='../../../2023-09-PHP-Bordeaux-P2-Escape-game/public/assets/images/ampoule_b&w.png'" />
+            <img  src="/assets/images/ampoule_bw.png" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" />
         </div>
 
     </div>
