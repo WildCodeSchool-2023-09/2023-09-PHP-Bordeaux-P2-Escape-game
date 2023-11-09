@@ -32,9 +32,3 @@ class SceneManager extends AbstractManager
         return $statement->execute();
     }
 }
-// class SceneManager extends AbstractManager
-// {
-
-//     private function getDialogs()
-
-// };
