@@ -1,3 +1,7 @@
+:root{
+    --error : rgb(255, 157, 0);
+}
+
 .inscription{
     display: grid;
     margin: 8px;
@@ -9,32 +13,60 @@
     align-items: end;
     justify-items: center;
     width: 90vw;
-    height: 100vw;
     color: var(--primary-color);
 }
 
 @media screen and (min-width:600px){
     .inscription{
         width: 100vw;
+        height: auto; 
         margin: 0px;
         background-position: center;
     }
 }
 
-h2{
+.inscription>h2{
     margin: 3rem;
     text-shadow: var(--secondary-color) 1px 0 5px;
 }
 
 @media screen and (min-width:600px){
-    h2{
+    .inscription>h2{
         font-size: 3rem;
-        margin-bottom: 7rem;
+        margin-left: 140px;
     }
+}
+.error-messages{
+    margin-bottom: 3rem;
+    font-size: x-large;
+    color: var(--error);
+    list-style-type: none;
+    text-align: center;
+}
+
+.error, .errorPseudo{
+    font-size: large;
+    color: var(--error);
+    list-style-type: none;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.error {
+    margin-left: 50px;
+}
+
+.errorPseudo{
+    margin-left: 0px;
+}
+
+.error-messages>ul>li{
+    padding: 8px;
 }
 
 form{
-    width: 90%; 
+    margin-right: 20px;
 }
 
 @media screen and (min-width:600px){
@@ -46,15 +78,17 @@ form{
 .formInscription{
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 10PX;
-    margin-right: 35px;
+    margin: 5px;
+    /* margin-right: 35px; */
     text-shadow: var(--secondary-color) 1px 0 5px;
+    margin-left: 5px;
 }
 
 @media screen and (min-width:600px){
     .formInscription{
         margin-bottom: 22PX;
-        margin-right: 110px;
+        font-size: larger;
+        margin-right: 35px;
     }
 }
 
@@ -66,6 +100,7 @@ input{
 @media screen and (min-width:600px){
     input{
     width: 70% ; 
+    height: 1.5rem;
     }
 }
 
@@ -78,7 +113,7 @@ input{
 
 @media screen and (min-width:600px){
     .buttonInscription{
-        margin: 7rem;
+        margin: 6rem;
     }
 }
 
@@ -86,6 +121,8 @@ input{
     background-color: var(--secondary-background-color);
     border-radius: 10px;
     padding: 8px;
+    font-size: larger;
+    font-weight: bold;
     box-shadow: var(--secondary-color) 0px 0 5px;
 }
 
@@ -99,4 +136,30 @@ input{
 .buttonStyle:hover{
     color: var(--secondary-color);
   }
+
+.textPattern{
+    display: none;
+    color: var(--error);
+    text-shadow: var(--secondary-color) 1px 0 5px;
+    border: solid black;
+    width: 80%;
+    float :right;
+    font-size: small;
+  }
+
+  @media screen and (min-width:600px){
+    .textPattern {
+        font-size: medium;
+        padding: 3px;
+        text-align: center;
+        position: relative;
+        top: -15px;
+    }
+  }
+
+.formStyle{
+    display: flex;
+    justify-content: flex-end;
+}
+
 
