@@ -1,3 +1,24 @@
-body {
-    color: #f76c6c;
+@font-face {
+    font-family: "Jockey One";
+    src: url("/font/JockeyOne-Regular.ttf");
+
+    font-family: "Digital Numbers";
+    src: url("/font/DigitalNumbers-Regular.ttf");
+}
+
+:root{
+    --primary-color : white;
+    --secondary-color : red;
+    --background-color : black;
+    --secondary-background-color: #D9DCDD;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    margin: 0px;
+    background-color: var(--secondary-background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }

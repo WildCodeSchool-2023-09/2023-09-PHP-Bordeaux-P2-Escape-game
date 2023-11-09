@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/inscription.css">{% endblock %}
+
+{% block content %}
+
+<div class="inscription">
+    <h2>Créer un compte</h2> 
+
+    {% if errors2 is not empty %}
+        <div class="error-messages">
+            <div>⚠ L'email ou le pseudo existe déjà. Veuillez choisir d'autres informations !</div>               
+        </div>
+    {% endif %}
+
+    {% if success is not null %}
+        {% if success %}
+        <div>Votre demande de contact a bien été envoyé !</div>
+        {% else %}
+            <div>☠ Erreur(s) lors de l'inscription !</div>
+        {% endif %}
+    {% endif %}
+
+    <div class= "formStyle">
+    <form action="" method="POST">
+        {% if errors.email %}
+            <span class=error> {{errors.email}}</span>
+        {% endif %}
+        <div class="formInscription">
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email"> 
+        </div>
+        {% if errors.pseudo %}
+            <span class=errorPseudo> {{errors.pseudo}}</span>
+        {% endif %}
+        <div class="formInscription">
+        <label for="pseudo">Pseudo :</label>
+        <input type="text" name="pseudo" id="pseudo" minlength="2">
+        </div>
+        {% if errors.password %}
+            <span class=error> {{errors.password}}</span>
+        {% endif %}
+        <div class="formInscription">
+        <label for="password">Mot de passe :</label>
+        <input type="password" name="password" id="password" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}">
+        </div>
+        <span class="textPattern" id="afficher" > Minimum 8 caractères, une lettre en Maj, une lettre en min, un chiffre et un caractère spécial.</span>
+        <div class="buttonInscription">
+        <button class="buttonStyle" type="submit">Inscription</button>
+        </div>
+    </form>
+</div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}<script src="assets/Javascript/inscription.js" defer></script>{% endblock %}
