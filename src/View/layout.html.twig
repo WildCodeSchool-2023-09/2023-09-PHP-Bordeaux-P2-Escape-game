@@ -11,17 +11,17 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
-    
-    {% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/navbar.css">
     <link rel="stylesheet" href="/assets/css/enigme.css">
     <link rel="stylesheet" href="/assets/css/scene.css">
-    {% endblock %}
+{% endblock %}
 </head>
-
 <body>
+    {% block navbar %}
+        {% include 'Home/navbar.html.twig' %}
+    {% endblock %}
+    
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
 </body>
 </html>
-
-
