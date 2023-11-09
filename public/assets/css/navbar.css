@@ -1,6 +1,5 @@
 
   .navbar {
-    position: fixed;
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
@@ -115,6 +114,5 @@ a.close {
 .score{
   display: none;
 }
-
 
 }
