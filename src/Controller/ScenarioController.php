@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\ItemManager;
+use App\Model\ScenarioManager;
 
 class ScenarioController extends AbstractController
 {
@@ -11,6 +11,6 @@ class ScenarioController extends AbstractController
      */
     public function scenario(): string
     {
-        return $this->twig->render('scenario/index.html.twig');
+        return $this->twig->render('scenario.html.twig');
     }
 }
