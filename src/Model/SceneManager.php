@@ -13,13 +13,15 @@ class SceneManager extends AbstractManager
 
         'scene1' => [
             // Porte d'entrée de la WCS (lancement du jeu)
-            'dialogues' => "Il n’y a plus de lumière, je ne vois plus rien! Comment faire ? Il doit bien y avoir une solution pour rallumer la lumière.",
+            'dialogues' => "Il n’y a plus de lumière, je ne vois plus rien! 
+            Comment faire ? Il doit bien y avoir une solution pour rallumer la lumière.",
 
             'image' => '', // Porte d'entrée de la Wild
 
             //Enigme 1 le tableau électrique (quand on clique sur la pastille)
             'plan1' => [
-                'dialogues' => "Oh un tableau électrique ! Je vais pouvoir rallumer la lumière ! Des instructions ont été laissé pour me guider.",
+                'dialogues' => "Oh un tableau électrique ! Je vais pouvoir rallumer la lumière ! 
+                Des instructions ont été laissé pour me guider.",
 
                 'image' => '', // Tableau électrique
                 'link' => [
@@ -32,7 +34,7 @@ class SceneManager extends AbstractManager
                 'dialogues' => "La porte est verouillée.. je ne peux pas sortir."
             ],
 
-            // porte + clé récupérée : sortie autorisée 
+            // porte + clé récupérée : sortie autorisée
             'plan3' => [
                 'dialogues' => "Je peux utiliser la clé pour sortir ! Ca y est je peux m'en aller d'ici ! ",
 
@@ -41,44 +43,45 @@ class SceneManager extends AbstractManager
         ],
 
         'scene2' => [
-            // Bureau de Clothilde
-            'dialogues' => "Voyons voir ce que je peux trouver par ici. Clothilde ne m'en voudra pas trop si je fouille un peu autour de son bureau",
+        // Bureau de Clothilde
+            'dialogues' => "Voyons voir ce que je peux trouver par ici. 
+            Clothilde ne m'en voudra pas trop si je fouille un peu autour de son bureau",
 
             'image' => '', // Bureau de Clothilde
 
             // Post-it instructions
-                'plan1' => [
-                    'dialogues' => "On dirait des instructions à suivre ...",
+            'plan1' => [
+                'dialogues' => "On dirait des instructions à suivre ...",
 
-                    'image' => ' ', // Post-it
-                ],
+                'image' => ' ', // Post-it
+            ],
 
             // Enigme 2 armoire de droite / pour récupérer mdp de l'ordi / Enigme non résolue
-                'plan2' => [
+            'plan2' => [
 
-                    'dialogues' => " ", //L'enigme est affichée pas de dialogue à ajouter
+                'dialogues' => " ", //L'enigme est affichée pas de dialogue à ajouter
 
-                    'image' => " ",
-                ],
+                'image' => " ",
+            ],
 
             // Enigme 2 armoire de droite / pour récupérer mdp de l'ordi / enigme résolue
-                'plan3' => [
+            'plan3' => [
 
-                    'dialogues' => "Bravo ! Ce mot va peut être m'être utile pour la suite ...",
+                'dialogues' => "Bravo ! Ce mot va peut être m'être utile pour la suite ...",
 
-                    'image' => "", // L'énigme est affichée
-                 ],
+                'image' => "", // L'énigme est affichée
+            ],
 
             //ordinateur (code non entré)
-                'plan4' => [
+            'plan4' => [
 
-                    'dialogues' => "On dirait que je peux indiquer un mot de passe ...",
+                'dialogues' => "On dirait que je peux indiquer un mot de passe ...",
 
-                    'image' => "", // Ordinateur demandant le code (formulaire)
-                ],
+                'image' => "", // Ordinateur demandant le code (formulaire)
+            ],
 
             // ordinateur - code entré, des chiffres apparaissent sur l'écran de l'ordi
-            'plan4' => [
+            'plan5' => [
 
                 'dialogues' => "Ca y est bien joué ! Que vais-je pouvoir faire des ces chiffres ?",
 
@@ -86,23 +89,23 @@ class SceneManager extends AbstractManager
             ],
 
             // armoire de gauche, code non entré
-            'plan5' => [
+            'plan6' => [
 
-                 'dialogues' => "On dirait que je peux entrer un code...",
+                'dialogues' => "On dirait que je peux entrer un code...",
 
-                 'image' => " ",
+                'image' => " ",
             ],
 
             // armoire de gauche, code entré, clé non cliquée
-            'plan6' => [
+            'plan7' => [
 
                 'dialogues' => "Super ! Maintenant l'amoire est ouverte et..oh on dirait une clé !",
 
                 'image' => " ", // Armoire de gauche ouverte avec la clé à cliquer
             ],
 
-             // armoire de gauche, code entré, clé non cliquée
-             'plan7' => [
+            // armoire de gauche, code entré, clé non cliquée
+            'plan8' => [
 
                 'dialogues' => "Cette clé devrait m'être grandement utile !",
 

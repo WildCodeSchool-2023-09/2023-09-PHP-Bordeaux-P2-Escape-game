@@ -13,26 +13,26 @@ class SceneController extends AbstractController
     {
         $sceneManager = new SceneManager();
         $scene = $sceneManager->getScene($scene, $plan);
-       
-        //TODO AVOIR LE PLAN ,il est où ? SQL ? Tableau? 
+
+        //TODO AVOIR LE PLAN ,il est où ? SQL ? Tableau?
         return $this->twig->render('scene/scene.html.twig', [
             'scene' => $scene,
         ]);
     }
 
-          // public function sceneEnigme(): string
-        // {
-        // //     $sceneManager = new SceneManager();
-        // //     $scene = $sceneManager->selectOneById($id);
+    // public function sceneEnigme(): string
+    // {
+    // //     $sceneManager = new SceneManager();
+    // //     $scene = $sceneManager->selectOneById($id);
 
-        //     return $this->twig->render('scene/scene.html.twig', ['sceneEnigme' => $scene]);
-        // }
+    //     return $this->twig->render('scene/scene.html.twig', ['sceneEnigme' => $scene]);
+    // }
 
-        // public function planEnigme(?int $id = null): string
-        // {
-        //     $planManager = new SceneManager();
-        //     $plan = $planManager->selectOneById($id);
+    // public function planEnigme(?int $id = null): string
+    // {
+    //     $planManager = new SceneManager();
+    //     $plan = $planManager->selectOneById($id);
 
-        //     return $this->twig->render('Plan/plan.html.twig', ['plan' => $plan]);
-        // }
+    //     return $this->twig->render('Plan/plan.html.twig', ['plan' => $plan]);
+    // }
 }

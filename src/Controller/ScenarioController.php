@@ -9,7 +9,7 @@ class ScenarioController extends AbstractController
     /**
      * Display home page
      */
-    public function scenario(?int $id = null)
+    public function scenario()
     {
         return $this->twig->render('scenario/index.html.twig');
     }
