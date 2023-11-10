@@ -14,7 +14,7 @@ class SceneController extends AbstractController
         $sceneManager = new SceneManager();
         $scene = $sceneManager->selectOneById($id);
 
-        return $this->twig->render('Scene/scene.html.twig', ['scene' => $scene]);
+        return $this->twig->render('scene/scene.html.twig', ['scene' => $scene]);
     }
 
     public function planEnigme(?int $id = null): string
