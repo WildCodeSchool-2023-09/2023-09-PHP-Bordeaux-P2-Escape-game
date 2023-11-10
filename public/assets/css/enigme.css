@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Jockey One";
+    src: url("../../../2023-09-PHP-Bordeaux-P2-Escape-game/font/JockeyOne-Regular.ttf");
+
+    font-family: "Digital Numbers";
+    src: url("../../../2023-09-PHP-Bordeaux-P2-Escape-game/font/DigitalNumbers-Regular.ttf");
+}
+
+
+* {
+    background-color: lightgrey;
+}
+
