@@ -37,7 +37,7 @@ class UserController extends AbstractController
             $errors = [];
         }
 
-        return $this->twig->render('Home/index.html.twig');
+        return $this->twig->render('Home/login.html.twig');
     }
 
     public function logout()
