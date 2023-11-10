@@ -18,15 +18,11 @@
 
                 <map name="Eleccompteur">
                     <area 
-                        shape="circle" 
-                        coords="346,90,9" 
-                        alt="Tableau électrique"
-                        {# href="/enigme?id={{ plan.enigme.id }}" #}
-                        href="/scene?string={{ scene.plan1.dialogues }}"
-                    />
+                    shape="circle" 
+                    coords="346,90,9" 
+                    alt="Tableau électrique"
+                    href="/enigme?id=1"/>
                 </map>
-{#                <img usemap="#Eleccompteur" src="assets/images/{{ scene.imageURL }}.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
-#}
                 <img usemap="#Eleccompteur" src="assets/images/Scene1_LumiereEteinte_416x224_pastille.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
             </div>
 
@@ -68,7 +64,7 @@
     var iIndex = 0; 
     var iTextPos = 0;
     var aText = [
-                    href="{{ scene.plan1.dialogues }}"
+                    "Il n’y a plus de lumière, je ne vois plus rien! Comment faire ? Il doit bien y avoir une solution pour rallumer la lumière."
                 ]; 
     var iArrLength = aText[0].length; 
     var iScrollAt = 20;

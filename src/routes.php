@@ -10,6 +10,6 @@ return [
     '' => ['HomeController', 'index',],
     'login' => ['UserController', 'login',],
     'inscription' => ['InscriptionController', 'validateInscription',],
-    'scenario' => ['ScenarioController','scenario',['id']],
-    'scene' => ['SceneController', 'scene', ['id'], 'planEnigme', ['id']],
+    'scenario' => ['ScenarioController','scenario',['scenario']],
+    'scene' => ['SceneController', 'sceneEnigme', ['scene', 'plan']],
 ];
