@@ -4,17 +4,17 @@ namespace App\Model;
 
 use PDO;
 
-class SceneManager extends AbstractManager
+class ScenarioManager extends AbstractManager
 {
-    public const TABLE = 'scene';
+    public const TABLE = 'scenario';
 
     /**
      * Insert new item in database
      */
-    public function insert(array $scene): int
+    public function insert(array $item): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`title`) VALUES (:title)");
-        $statement->bindValue('title', $scene['title'], PDO::PARAM_STR);
+        $statement->bindValue('title', $item['title'], PDO::PARAM_STR);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
