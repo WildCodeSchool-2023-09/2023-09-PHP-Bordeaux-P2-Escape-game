@@ -6,14 +6,15 @@
     z-index: 2;
     background-color: var(--background-color);
     color: var(--primary-color);
-    border-radius: 0% 0% 15px 15px;
+    /* border-radius: 0% 0% 15px 15px; */
     width: 100%;
   }
 
   .navbar>h1{
-    margin: 8px;
     align-self: center;
     font-size: 2rem;
+    margin-top: 20px;
+    margin-right: 20px;
   }
 
   div.burger {
@@ -90,6 +91,7 @@
   .navbar>h1{
     text-align: center;
     margin-bottom: 0px;
+    margin-right: 0px;
   }
 
   .sidenav{
@@ -113,6 +115,13 @@ a.close {
 
 .score{
   display: none;
+}
+
+.accueil{
+  margin-left: 15px;
+}
+.connect{
+  margin-right: 15px;
 }
 
 }
