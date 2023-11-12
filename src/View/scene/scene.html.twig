@@ -3,13 +3,10 @@
 {% block title %}Scene{% endblock %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="/assets/css/navbar.css">
-    <link rel="stylesheet" href="/assets/css/scene.css">
-    <link rel="stylesheet" href="/assets/css/footer.css">
+<link rel="stylesheet" href="/assets/css/scene.css">
 {% endblock %}
 
 {% block content %}
-
 
     <div class="layout">
 
@@ -22,14 +19,13 @@
                         coords="346,90,9" 
                         alt="Tableau électrique"
                         {# href="/enigme?id={{ plan.enigme.id }}" #}
-                        href="/scene?string={{ scene.plan1.dialogues }}"
+                        href="/scene?string={{ dialogueScene1 }}"
                     />
                 </map>
 {#                <img usemap="#Eleccompteur" src="assets/images/{{ scene.imageURL }}.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
 #}
-                <img usemap="#Eleccompteur" src="assets/images/Scene1_LumiereEteinte_416x224_pastille.png" alt="Image en mode horreur d'une porte dans l'obscurité, la lumière est éteinte" onmouseover="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
+                <img usemap="#Eleccompteur" src="assets/images/Scene1_LumiereEteinte_416x224_pastille.png" alt="pastille sur un compteur électrique" onmouseover="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastille.png'" onmouseout="this.src='assets/images/Scene1_LumiereEteinte_416x224_pastilleHover.png'" />
             </div>
-
             <div class="Dialogues">
                 <div id="typedtext">
                 </div>
@@ -51,7 +47,7 @@
             </div>
 
            <div class="indice">
-                <img src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'"/>    
+                <img src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc puis devient jaune" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'"/>    
             </div>
         </div>
     </div>
@@ -59,7 +55,7 @@
 
 {% endblock %}
 
-{% block javascript %}
+{# {% block javascript %}
     <script>
             // Animation en JS pour que les dialogues s'écrivent comme uen "machine à écrire" : le code simule la frappe du texte lettre par lettre.
     // à voir si on utilise plutôt la librairie Sheperdjs pour faire cette animation
@@ -106,6 +102,6 @@
                 
     typewriter();
                     
-    </script> 
+    </script>  #}
 {#    <script type="text/javascript" src="/assets/js/dialogs.js"> #}
 {% endblock %}
