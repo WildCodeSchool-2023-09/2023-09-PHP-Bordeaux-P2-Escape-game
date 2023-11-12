@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // list of accessible routes of your application, add every new route here
 // key : route to match
 // values : 1. controller name
@@ -9,6 +9,7 @@
 return [
     '' => ['HomeController', 'index',],
     'login' => ['UserController', 'login',],
+    'logout' => ['UserController', 'logout'],
     'inscription' => ['InscriptionController', 'validateInscription',],
     'scenario' => ['ScenarioController','scenario',],
     'scene' => ['SceneController', 'scene', ['id'], 'planEnigme', ['id']],

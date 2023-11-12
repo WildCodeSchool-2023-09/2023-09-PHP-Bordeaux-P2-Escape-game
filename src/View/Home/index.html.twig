@@ -9,12 +9,14 @@
 			</p> 
 		</div>
 	<div class="buttons">
+	{% if not user.pseudo is defined %}
 			<button type="button" class="meConnecter">
 				<a href="login">Me connecter</a>
 			</button>
 			<button type="button" class="creatAccount">
 				<a href="inscription">Créer un compte</a>
 			</button>
+{% endif %}
 		<button type="button" class="play">
 			<a href="scenario">Jouer</a>
 		</button>
@@ -22,7 +24,7 @@
 			<a href="">Classement</a>
 		</button>
 		<button type="button" class="ranking">
-			<a href="">Me déconnecter</a>
+			<a href="/logout">Me déconnecter</a>
 		</button>
 	</div>
 {% endblock %}
