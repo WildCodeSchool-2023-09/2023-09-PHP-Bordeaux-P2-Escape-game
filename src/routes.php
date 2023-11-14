@@ -13,5 +13,5 @@ return [
     'logout' => ['UserController', 'logout'],
     'inscription' => ['InscriptionController', 'validateInscription'],
     'scenario' => ['ScenarioController', 'scenario'],
-    'scene' => ['SceneController', 'scene', ['id'], 'planEnigme', ['id']],
+    'scene' => ['SceneController', 'sceneEnigme', ['scene']],
 ];

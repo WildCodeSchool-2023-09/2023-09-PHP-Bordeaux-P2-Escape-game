@@ -3,28 +3,33 @@
 {% endblock %}
 
 {% block content %}
-		<div class="bienvenue">
-			<p>
-				Bienvenue {{ user.pseudo }}
-			</p> 
-		</div>
+	<div class="bienvenue">
+		<p>
+			
+			{{"Bienvenue " ~ user.pseudo }}
+		</p>
+	</div>
 	<div class="buttons">
-	{% if not user.pseudo is defined %}
+		{% if not user.pseudo is defined %}
 			<button type="button" class="meConnecter">
-				<a href="login">Me connecter</a>
+				<a href="login">Se connecter</a>
 			</button>
 			<button type="button" class="creatAccount">
 				<a href="inscription">Créer un compte</a>
 			</button>
-{% endif %}
+		{% endif %}
+		{% if user.pseudo is defined %}
 		<button type="button" class="play">
 			<a href="scenario">Jouer</a>
 		</button>
+		{% endif %}
 		<button type="button" class="ranking">
 			<a href="">Classement</a>
 		</button>
+		{% if user.pseudo is defined %}
 		<button type="button" class="ranking">
-			<a href="/logout">Me déconnecter</a>
+			<a href="/logout">Se déconnecter</a>
 		</button>
+		{% endif %}
 	</div>
 {% endblock %}
