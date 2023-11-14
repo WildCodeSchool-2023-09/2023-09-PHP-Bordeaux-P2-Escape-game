@@ -100,4 +100,12 @@ align-items: center;
     margin-top: 0.2rem;
 }
 
+.pastille {
+    transition: filter 0.3s ease-in-out;
+}
+
+.pastille:hover {
+    filter: brightness(1.5); /* ou tout autre effet de couleur que vous souhaitez appliquer */
+}
+
 
