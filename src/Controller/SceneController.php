@@ -24,4 +24,10 @@ class SceneController extends AbstractController
 
         return $this->twig->render('Plan/plan.html.twig', ['plan' => $plan]);
     }
+
+//     public function show(int $id)
+//     {
+//         $statement = $this->connection->prepare("SELECT hint FROM enigma");
+//         $statement->execute();
+//     }
 }

@@ -44,11 +44,4 @@ class SceneManager extends AbstractManager
 
         return $hint;
     }
-
-    public function show(int $id)
-    {
-       $statement = $this->pdo->prepare("SELECT hint FROM enigma");
-       $statement->execute();
-    }
-
 }
