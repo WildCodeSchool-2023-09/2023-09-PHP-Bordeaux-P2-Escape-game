@@ -12,11 +12,13 @@
 			{% block title %}{% endblock %}
 		</title>
 
-
 		<link rel="stylesheet" href="/assets/css/style.css">
 		<link rel="stylesheet" href="/assets/css/navbar.css">
-		<link rel="stylesheet" href="/assets/css/footer.css"> {% block stylesheet %}{% endblock %}
+		<link rel="stylesheet" href="/assets/css/footer.css"> 
+    
+    {% block stylesheet %}{% endblock %}
 		</head>
+
 		<body>
 
 			{% block navbar %}
@@ -29,5 +31,6 @@
 				{% include 'footer.html.twig' %}
 			{% endblock %}
 			{% block javascript %}{% endblock %}
-		</body>
+		
+    </body>
 	</html>
