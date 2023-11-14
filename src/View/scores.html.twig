@@ -1,0 +1,23 @@
+ {% extends 'layout.html.twig' %}
+ {% block title %}Scores
+{% endblock %}
+{% block content %}
+ <h1>Scores</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for score in scores %}
+                <tr>
+                    <td>{{ score.pseudo }}</td>
+                    <td>{{ score.score }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
