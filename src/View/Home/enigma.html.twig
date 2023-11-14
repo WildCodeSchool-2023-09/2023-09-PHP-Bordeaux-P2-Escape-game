@@ -1,45 +1,80 @@
 {% extends 'layout.html.twig' %}
 
-<head>
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/enigma.css">{% endblock %}
 
-    </head>
+
 {% block content %}
 
     <div class="quizz">
     
     <div class="question">
-    <h3> 🎃 Quel film se passe dans un hôtel ?    </h3>
-    
+        <h3> 🎃 Quel film se passe dans un hôtel ?   </h3>
     </div>
     
-         <body>
-     
-        <form class= "answer">
+        <div>
+            {% if result is not null %}
+                {% if result %}
+                <br/>
+                    Bravo ! 🎉
+                {% else %}
+                <br/>
+                    Raté ! 👿
+                {% endif %}
+            {% endif %}
+        </div>
 
-                <div class="answer" id="rep1">
-                 2001, l'odyssée de l'espace
-                </div>
+        {% if result is null %}
+            <form method="post" class= "answer">
+        {% else %}
+            <div class= "answer">
+        {% endif %}
 
-                <ul>
-                    <li><label>2001, l'odyssée de l'espace</label> <input name="question1" type="radio" id="2001"/><br/></li>
+                <ul id="rep1">
+                    {% if result is not null %}
+                        <li style="background-color:rgba(87, 5, 5, 0.5)">
+                    {% else %}
+                        <li>
+                    {% endif %}
+                        <label>2001, l'odyssée de l'espace </label> 
+                        <input name="espace" type="submit" value="✔️" id="espace" />
+                        <br/>
+                    </li>
                 </ul>
                
             
-                <ul>            
-                    <li><label>Shining</label><input name="shining" type="radio" id="shining" /><br/></li>
+                <ul id="rep2">            
+                    {% if result is not null %}
+                        <li style="background-color:rgba(12, 114, 26, 0.5);">
+                    {% else %}
+                        <li>
+                    {% endif %}
+
+                        <label>Shining </label>
+                        <input name="shining" type="submit" value="✔️" id="shining" />
+                        <br/>
+                    </li>
                 </ul>
               
             
-                <ul> 
-                    <li><label>Pulp Fiction</label><input name="question1" type="radio" id="pulpFiction" /><br/></li>
+                <ul id="rep3"> 
+                    {% if result is not null %}
+                        <li style="background-color:rgba(87, 5, 5, 0.5)">
+                    {% else %}
+                        <li>
+                    {% endif %}
+
+                        <label>Pulp Fiction </label>
+                        <input name="pulp" type="submit" value="✔️" id="pulp" />
+                        <br/>
+                    </li>
                 </ul>
-                
-                <ul>
-                <input type="submit" value=" ✔️ "/>
-                </ul>
-        </form>
-         </body>
+    
+        {% if result is null %}    
+            </form>
+        {% else %}
+            </div>
+        {% endif %}
 
         </div>
-             <script src="assets/Javascript/enigma.js" defer></script>
+            <script src="assets/Javascript/enigma.js" defer></script>
          {% endblock %}
