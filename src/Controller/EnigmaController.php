@@ -14,7 +14,7 @@ class EnigmaController extends AbstractController
             //echo 'Bravo';
             $result = true;
         } elseif (isset($_POST["espace"]) || isset($_POST["pulp"])) {
-            $compteur = $compteur -1;
+            $compteur = $compteur - 1;
             //echo 'Raté !';
             $result = false;
         }
