@@ -31,4 +31,24 @@ class SceneManager extends AbstractManager
 
         return $statement->execute();
     }
+
+
+    public function getById(int $id): array|bool
+    {
+        $query = 'SELECT hint, id FROM enigma WHERE id=:id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        $hint = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        return $hint;
+    }
+
+    public function show(int $id)
+    {
+       $statement = $this->pdo->prepare("SELECT hint FROM enigma");
+       $statement->execute();
+    }
+
 }
