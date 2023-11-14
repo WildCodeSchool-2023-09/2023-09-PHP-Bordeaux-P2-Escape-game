@@ -6,18 +6,13 @@ use App\Model\SceneManager;
 
 class SceneController extends AbstractController
 {
-    public function sceneEnigme(?string $scene = 'scene1', ?string $plan = null): string
+    public function sceneEnigme(?string $scene = 'scene1'): string
     {
         $sceneManager = new SceneManager();
         // echo "coucou1";
 
         // Chargez d'abord la scène
         $sceneData = $sceneManager->getScene($scene);
-
-        // Si un plan est spécifié, chargez les détails du plan
-        if (!empty($plan) && isset($sceneData['linkedPlans'][$plan])) {
-            $sceneData = $sceneData['linkedPlans'][$plan];
-        }
 
         if (empty($sceneData)) {
             return $this->twig->render('error/500.html.twig');
@@ -28,13 +23,10 @@ class SceneController extends AbstractController
             $linkedSceneData = $sceneManager->getScene($sceneData['linkedScene']);
         }
 
-
         // var_dump( $sceneData);
         return $this->twig->render('scene/scene.html.twig', [
             'scene' => $sceneData,
             'linkedScene' => $linkedSceneData,
-            // 'sceneId' => $scene,
-            // 'plan' => $plan,
         ]);
     }
 

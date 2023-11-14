@@ -15,6 +15,7 @@ class SceneManager extends AbstractManager
             'dialogues' => "Il n’y a plus de lumière, je ne vois plus rien! 
             Comment faire ? Il doit bien y avoir une solution pour rallumer la lumière.",
             'image' => ' /assets/images/1_Scene1_light-off.png ',
+            'image_light' => '/assets/images/Scene1_light-on.png',
             'href' => "/scene?scene=scene1",
             'alt' => "pièce sombre et non éclairée",
             'linkedPlans' => [
@@ -26,7 +27,7 @@ class SceneManager extends AbstractManager
                     'dialogues' => "Oh un tableau électrique ! 
                     Je vais pouvoir rallumer la lumière ! Des instructions ont été laissé pour me guider.",
                     'dialoguesSuccess' => "Bien joué, la lumière s'est rallumée !",
-                    'image' => '/assets/images/electricite_416x224_Pastille.jpg',
+                    'image' => '/assets/images/tableauElectrique.jpg',
                     'linkRetour' => '/scene?scene=scene1',
                 ],
                 'plan2' => [
@@ -36,7 +37,7 @@ class SceneManager extends AbstractManager
                     'alt' => "Porte de sortie",
                     'dialogues' =>  "La porte est verouillée.. je ne peux pas sortir.",
                     'dialoguesSuccess' => "Je peux utiliser la clé pour sortir ! Ca y est je peux m'en aller d'ici ! ",
-                    'image' => '/assets/images/Porte.jpg',
+                    'image' => '/assets/images/doorclosed.png',
                     'linkRetour' => '/scene?scene=scene1',
                     'link1' => '', //lien Winner
                     'link2' => '', //lien null quand pas d'objet

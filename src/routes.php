@@ -11,6 +11,6 @@ return [
     'login' => ['UserController', 'login',],
     'inscription' => ['InscriptionController', 'validateInscription',],
     'scenario' => ['ScenarioController','scenario',],
-    'scene' => ['SceneController', 'sceneEnigme', ['scene', 'plan']], // Pour gérer les scènes et les plans
+    'scene' => ['SceneController', 'sceneEnigme', ['scene']], // Pour gérer les scènes et les plans
     'plan' => ['SceneController', 'planEnigme', ['scene', 'plan']],
 ];
