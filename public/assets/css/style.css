@@ -1,9 +1,9 @@
 @font-face {
     font-family: "Jockey One";
-    src: url("/font/JockeyOne-Regular.ttf");
+    src: url("/assets/font/JockeyOne-Regular.ttf");
 
     font-family: "Digital Numbers";
-    src: url("/font/DigitalNumbers-Regular.ttf");
+    src: url("/assets/font/DigitalNumbers-Regular.ttf");
 }
 
 :root{
