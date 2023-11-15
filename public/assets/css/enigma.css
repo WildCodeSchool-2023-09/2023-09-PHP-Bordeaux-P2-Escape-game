@@ -16,6 +16,7 @@
 .question {
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
   background-color:rgba(41, 21, 3, 0.5);
   margin: auto;

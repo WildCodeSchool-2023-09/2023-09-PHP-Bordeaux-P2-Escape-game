@@ -5,6 +5,7 @@
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/scene.css">
+    <link rel="stylesheet" href="/assets/css/enigma.css">
 {% endblock %}
 
 {% block content %}
@@ -23,6 +24,25 @@
 			</map>
 
 		</div>
+
+        {% if plan.enigma is defined %}
+        <div >
+             {% if result is not null %}
+                {% if result.success %}
+                    BRAVO !!!!
+                {% else %}
+                    TU ES TROP NUUUUUUUUUUUUUUUUUUUUUUUUUUUUlllllllllllllllllllllllllll !  
+                {% endif %}
+            {% endif %}
+            <p>{{plan.enigma.description}}</p>
+            <form method="post" class="answer">
+                {% for question in plan.enigma.answers %}
+                    <label for="{{ question }}">{{ question }} </label>
+                    <input name="{{ question }}" type="submit" value="✔️" id="{{ question }}" />
+                {% endfor %}
+            </form>
+        </div>
+        {% endif %}
 		<div class="Dialogues">
 			<div id="typedtext">
 				{{ plan['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}

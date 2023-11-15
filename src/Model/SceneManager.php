@@ -29,6 +29,16 @@ class SceneManager extends AbstractManager
                     'dialoguesSuccess' => "Bien joué, la lumière s'est rallumée !",
                     'image' => '/assets/images/tableauElectrique.jpg',
                     'linkRetour' => '/scene?scene=scene1',
+                    'enigma' => [
+                        'description' => "Trouve la bonne réponse !",
+                        'anwsers' => [
+                            'reponse 1',
+                            'reponse 2',
+                            'reponse 3',
+                            'reponse 4'
+                        ],
+                        'goodIndex' => 1
+                    ]
                 ],
                 'plan2' => [
                     'name' => 'PorteSortie',
@@ -72,6 +82,16 @@ class SceneManager extends AbstractManager
                     'dialoguesSuccess' => "Bravo ! Ce mot va peut être m'être utile pour la suite ...",
                     'image' => '/assets/images/armoireDroite.png ',
                     'linkRetour' => '/scene?scene=scene2',
+                    'enigma' => [
+                        'description' => "Trouve la bonne réponse !",
+                        'answers' => [
+                            'reponse 1',
+                            'reponse 2',
+                            'reponse 3',
+                            'reponse 4'
+                        ],
+                        'goodIndex' => 1
+                    ]
                 ],
                 'plan3' => [
                     'name' => 'Ordinateur',

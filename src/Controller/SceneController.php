@@ -32,6 +32,7 @@ class SceneController extends AbstractController
 
     public function planEnigme(string $scene, string $plan): string
     {
+        $result = null;
         $sceneManager = new SceneManager();
         // echo "coucou";
 
@@ -43,9 +44,29 @@ class SceneController extends AbstractController
             return $this->twig->render('error/500.html.twig');
         }
 
+        if (isset($planData['enigma'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $goodIndex = $planData['enigma']['goodIndex'];
+                $answer = $planData['enigma']['answers'][$goodIndex];
+                $answer = str_replace(' ', '_', $answer);
+                //TODO COMPTER LES POINTS
+                if (isset($_POST[$answer])) {
+                    $result = [
+                        'success' => true,
+                        'goodIndex' => $goodIndex
+                    ];
+                } else {
+                    $result = [
+                        'success' => false,
+                        'goodIndex' => $goodIndex
+                    ];
+                }
+            }
+        }
         return $this->twig->render('Plan/plan.html.twig', [
             'scene' => $scene,
             'plan' => $planData,
+            'result' => $result
         ]);
     }
 }
