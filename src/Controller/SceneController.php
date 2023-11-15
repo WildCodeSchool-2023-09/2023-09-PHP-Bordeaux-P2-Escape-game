@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\SceneManager;
 
+
 class SceneController extends AbstractController
 {
     public function sceneEnigme(?string $scene = 'scene1'): string
@@ -48,10 +49,4 @@ class SceneController extends AbstractController
             'plan' => $planData,
         ]);
     }
-
-    //     public function show(int $id)
-    //     {
-    //         $statement = $this->connection->prepare("SELECT hint FROM enigma");
-    //         $statement->execute();
-    //     }
 }

@@ -11,7 +11,7 @@ return [
     '' => ['HomeController', 'index',],
     'login' => ['UserController', 'login',],
     'inscription' => ['InscriptionController', 'validateInscription',],
-    'scenario' => ['ScenarioController','scenario',],
+    'scenario' => ['ScenarioController', 'scenario',],
     'scene' => ['SceneController', 'sceneEnigme', ['scene']], // Pour gérer les scènes et les plans
     'plan' => ['SceneController', 'planEnigme', ['scene', 'plan']],
 ];
