@@ -6,22 +6,46 @@ use App\Model\SceneManager;
 
 class SceneController extends AbstractController
 {
-    /**
-     * Display home page
-     */
-    public function sceneEnigme(?int $id = null): string
+    public function sceneEnigme(?string $scene = 'scene1'): string
     {
         $sceneManager = new SceneManager();
-        $scene = $sceneManager->selectOneById($id);
+        // echo "coucou1";
 
-        return $this->twig->render('scene/scene.html.twig', ['scene' => $scene]);
+        // Chargez d'abord la scène
+        $sceneData = $sceneManager->getScene($scene);
+
+        if (empty($sceneData)) {
+            return $this->twig->render('error/500.html.twig');
+        }
+
+        $linkedSceneData = null;
+        if (isset($sceneData['linkedScene'])) {
+            $linkedSceneData = $sceneManager->getScene($sceneData['linkedScene']);
+        }
+
+        // var_dump( $sceneData);
+        return $this->twig->render('scene/scene.html.twig', [
+            'scene' => $sceneData,
+            'linkedScene' => $linkedSceneData,
+        ]);
     }
 
-    public function planEnigme(?int $id = null): string
+    public function planEnigme(string $scene, string $plan): string
     {
-        $planManager = new SceneManager();
-        $plan = $planManager->selectOneById($id);
+        $sceneManager = new SceneManager();
+        // echo "coucou";
 
-        return $this->twig->render('Plan/plan.html.twig', ['plan' => $plan]);
+        // Chargez d'abord la scène
+        $planData = $sceneManager->getPlan($scene, $plan);
+        // var_dump( $planData);
+
+        if (empty($planData)) {
+            return $this->twig->render('error/500.html.twig');
+        }
+
+        return $this->twig->render('Plan/plan.html.twig', [
+            'scene' => $scene,
+            'plan' => $planData,
+        ]);
     }
 }
