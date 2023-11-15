@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\SceneManager;
 
-
 class SceneController extends AbstractController
 {
     public function sceneEnigme(?string $scene = 'scene1'): string
