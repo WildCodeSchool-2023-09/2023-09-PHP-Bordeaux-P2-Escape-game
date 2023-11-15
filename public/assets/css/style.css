@@ -1,7 +1,6 @@
 @font-face {
     font-family: "Jockey One";
     src: url("/assets/font/JockeyOne-Regular.ttf");
-
     font-family: "Digital Numbers";
     src: url("/assets/font/DigitalNumbers-Regular.ttf");
 }
@@ -14,7 +13,14 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+html{
+    height: 100%;
+    width: 100%;
+}
+
 body{
+    height: 100%;
+    width: 100%;
     margin: 0px;
     background-color: var(--secondary-background-color);
     display: flex;
@@ -22,3 +28,7 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+
+
+
+	
