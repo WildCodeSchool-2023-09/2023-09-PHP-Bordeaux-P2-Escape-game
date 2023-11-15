@@ -14,4 +14,6 @@ class ScoreController extends AbstractController
 
         return $this->twig->render('scores.html.twig', ['scores' => $scores]);
     }
+
+    
 }
