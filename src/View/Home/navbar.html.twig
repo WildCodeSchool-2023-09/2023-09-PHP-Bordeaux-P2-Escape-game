@@ -16,8 +16,9 @@
             <ul class="txtMenuBurger">
                 <li class="accueil"><a href="/">Accueil</a></li>
                 <li class="score"><a href="score.php">Score</a></li>
-                <li class="connect"><a href="login">Se connecter</a></li>
-                
+                {% if not user.pseudo is defined %}
+    <li class="connect"><a href="login">Se connecter</a></li>
+{% endif %}
             </ul> 
         </div>
         <div class="burger">
@@ -29,5 +30,4 @@
                 </span>
             </a>
         </div>
-        
     </nav>
