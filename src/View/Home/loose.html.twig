@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}You Loose{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/loose.css">{% endblock %}
+
+{% block content %}
+<body>
+ <main>
+
+    <div class="pseudo">
+        <span class="joueur">PLAYER</span>
+        <span class="chrono">60:00</span>
+    </div>
+
+    <div class="gif">
+     <img class="clothildeloose-gif" src="https://i.ibb.co/dbf8dyM/LOOSE-Clothilde.gif" alt="gif">
+    </div>
+    <div class="titre">
+     <h1>YOU LOOSE</h1>
+    </div>
+    <div class="loose">  
+        <p>score : <span id="score">18</span></p>
+        <h2>Undex used</h2> 
+        <button id="replayButton">TRY AGAIN</button>
+    </div>
+
+ </main>  
+</body>
+{% endblock %}
+{% block javascript %}<script src="assets/js/loose.js" defer></script>{% endblock %}
