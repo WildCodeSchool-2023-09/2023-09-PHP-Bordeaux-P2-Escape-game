@@ -34,12 +34,35 @@ class ScenarioManager extends AbstractManager
 
     public function getScores(): array
     {
-        $statement = $this->pdo->query(
+        $userScores = $this->getUserScores();
+        $globalScores = $this->getGlobalScores();
+    
+        return ['userScores' => $userScores, 'globalScores' => $globalScores];
+    }
+    
+    private function getUserScores(): array
+    {
+        $userScoresStatement = $this->pdo->prepare(
+            "SELECT user.pseudo, progress.score
+            FROM user
+            JOIN progress ON user.id = progress.user_id
+            WHERE user.id = :userId"
+        );
+    
+        $userScoresStatement->bindValue('userId', $_SESSION['user_id'], PDO::PARAM_INT);
+        $userScoresStatement->execute();
+    
+        return $userScoresStatement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    private function getGlobalScores(): array
+    {
+        $globalScoresStatement = $this->pdo->query(
             "SELECT user.pseudo, progress.score
             FROM user
             JOIN progress ON user.id = progress.user_id"
         );
-
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $globalScoresStatement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
