@@ -15,22 +15,22 @@
 		<link rel="stylesheet" href="/assets/css/style.css">
 		<link rel="stylesheet" href="/assets/css/navbar.css">
 		<link rel="stylesheet" href="/assets/css/footer.css"> 
+		
     
     {% block stylesheet %}{% endblock %}
 		</head>
 
-		<body>
+	<body>
+		{% block navbar %}
+			{% include 'Home/navbar.html.twig' %}
+		{% endblock %}
 
-			{% block navbar %}
-				{% include 'Home/navbar.html.twig' %}
-			{% endblock %}
 
-
-			{% block content %}{% endblock %}
-			{% block footer %}
-				{% include 'footer.html.twig' %}
-			{% endblock %}
-			{% block javascript %}{% endblock %}
-		
-    </body>
-	</html>
+		{% block content %}{% endblock %}
+		{% block footer %}
+			{% include 'footer.html.twig' %}
+		{% endblock %}
+		{% block javascript %}<script src="assets/js/navbar.js" defer></script>{% endblock %}
+	
+	</body>
+</html>

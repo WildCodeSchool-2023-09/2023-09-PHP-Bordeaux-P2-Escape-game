@@ -1,0 +1,132 @@
+body {
+    
+    background-color:#d9dcdd ;
+    margin-bottom: 1em;
+}
+
+ main{
+    height: 100%;
+    margin: auto 0;
+    flex-direction: column;
+    
+    display:flex;
+    margin-block-end: 10px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}    
+
+.pseudo {
+    padding: 15%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.joueur {
+    padding: 5px;
+    box-shadow: 30%;
+    border-radius: 30% / 30%;
+    background-color: aliceblue;
+}
+
+.chrono {
+    padding: 5px;
+    box-shadow: 15%;
+    border-radius: 30%;
+    background-color: aliceblue;
+    }
+
+.loose {
+    height: 40%;
+}    
+
+.gif {
+    align-items: center; 
+}  
+
+.clothildeloose-gif{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+
+.titre {
+    background-color:aliceblue; 
+    color:red;
+    border: 1px;
+    padding: 20px;
+    box-shadow: 30%;
+    border-radius: 40%;
+} 
+
+#replayButton {
+    background-color: red;
+    color:aliceblue;
+    border-radius: 20%;
+    
+}
+ 
+
+   @media all and ( min-width: 700px)  
+
+ {    
+ .pseudo {
+        padding: 5%;
+        height: 5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+.joueur {
+        padding: 5px;
+        box-shadow: 30%;
+        border-radius: 30% / 30%;
+        background-color: aliceblue;
+        width: 250px;
+    }
+    
+.chrono {
+        padding: 5px;
+        box-shadow: 15%;
+        border-radius: 30%;
+        background-color: aliceblue;
+        width: 250px;
+        }
+    
+.loose {
+        height: 40%;
+    }    
+    
+.gif {
+        align-items: center; 
+    }  
+    
+.clothildeloose-gif{
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+    }
+    
+    
+.ti {
+        background-color:aliceblue; 
+        color:red;
+        border: 1px;
+        padding: 10px;
+        box-shadow: 30%;
+        border-radius: 40%;
+    }
+    
+#replayButton {
+        background-color: red;
+        color:aliceblue;
+        border-radius: 20%;
+        
+    }
+} 
+
+
