@@ -7,30 +7,33 @@
 	<link rel="stylesheet" href="/assets/css/scene.css">
 {% endblock %}
 
-
 {% block content %}
-	<div class="scene1">
-		<div class="ImgDialogues">
-			<div class="ImageScene">
+{# <div class="user-score">
+    <p>Votre score actuel : {{ userScore }}</p>
+</div> #}
+<div class="layout">
+	<div class="ImgDialogues">
+		<div class="ImageLightOff">
 
-				<img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage">
+			<img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage">
 
-				<map name={{scene['name']}}>
-					{% if (scene['linkedPlans']['plan1']) %}
-						<area shape="circle" coords={{scene['linkedPlans']['plan1']['coords']}} alt={{scene['linkedPlans']['plan1']['alt']}} href={{scene['linkedPlans']['plan1']['href']}} id="pastille"/>
-					{% endif %}
-					{% if (scene['linkedPlans']['plan2']) %}
-						<area shape="circle" coords={{scene['linkedPlans']['plan2']['coords']}} alt={{scene['linkedPlans']['plan2']['alt']}} href={{scene['linkedPlans']['plan2']['href']}} id="pastille"/>
-					{% endif %}
-					{% if (scene['linkedPlans']['plan3']) %}
-						<area shape="circle" coords={{scene['linkedPlans']['plan3']['coords']}} alt={{scene['linkedPlans']['plan3']['alt']}} href={{scene['linkedPlans']['plan3']['href']}} id="pastille"/>
-					{% endif %}
-					{% if (scene['linkedPlans']['plan4']) %}
-						<area shape="circle" coords={{scene['linkedPlans']['plan4']['coords']}} alt={{scene['linkedPlans']['plan4']['alt']}} href={{scene['linkedPlans']['plan4']['href']}} id="pastille"/>
-					{% endif %}
-					{% if (linkedScene) %}
-						<area shape="circle" coords="379,190,20" alt={{linkedScene['alt']}} href={{linkedScene['href']}} id="pastille"/>
-					{% endif %}
+			<map name={{scene['name']}}>
+
+				{% if (scene['linkedPlans']['plan1']) %}
+					<area shape="circle" coords={{scene['linkedPlans']['plan1']['coords']}} alt={{scene['linkedPlans']['plan1']['alt']}} href={{scene['linkedPlans']['plan1']['href']}} id="pastille"/>
+				{% endif %}
+				{% if (scene['linkedPlans']['plan2']) %}
+					<area shape="circle" coords={{scene['linkedPlans']['plan2']['coords']}} alt={{scene['linkedPlans']['plan2']['alt']}} href={{scene['linkedPlans']['plan2']['href']}} id="pastille"/>
+				{% endif %}
+				{% if (scene['linkedPlans']['plan3']) %}
+					<area shape="circle" coords={{scene['linkedPlans']['plan3']['coords']}} alt={{scene['linkedPlans']['plan3']['alt']}} href={{scene['linkedPlans']['plan3']['href']}} id="pastille"/>
+				{% endif %}
+				{% if (scene['linkedPlans']['plan4']) %}
+					<area shape="circle" coords={{scene['linkedPlans']['plan4']['coords']}} alt={{scene['linkedPlans']['plan4']['alt']}} href={{scene['linkedPlans']['plan4']['href']}} id="pastille"/>
+				{% endif %}
+				{% if (linkedScene) %}
+					<area shape="circle" coords="379,190,20" alt={{linkedScene['alt']}} href={{linkedScene['href']}} id="pastille"/>
+				{% endif %}
 				</map>
 
 				<div class="Dialogues">
