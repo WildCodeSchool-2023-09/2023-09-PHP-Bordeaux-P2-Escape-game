@@ -1,7 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Scene
-{% endblock %}
+{% block title %}Scene{% endblock %}
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/scene.css">
@@ -9,7 +8,10 @@
 
 {% block content %}
 
-{# <div class="layout"> #}
+
+	<div class="scene1">
+		<div class="ImgDialogues">
+			<div class="ImageScene">
 
 <div class="ImgDialogues">
 	<div class="ImageLightOff">
@@ -68,12 +70,6 @@
 			</div> 
 		{% endif %} 
 
-		<div class="tools"> 
-			<div class="pseudo"> 
-				JojoPok 
-				<!-- fonction qui récupère le pseudo du joueur lorsque celui-ci est connecté à sa session--> 
-			</div> 
-
 			<div class="timer"> 
 				60:00 
 				<!-- fonction timer --> 
@@ -93,7 +89,11 @@
 		</div> 
 	</div> 
 {% endblock %} 
-			
+
+        <div class="tools">
+            <div class="pseudo">
+            {{ user.pseudo }}
+            </div>
 
   {# {% block javascript %}  #}
 
@@ -113,35 +113,43 @@
  		var sContents = ""; 
  		var iSpeed = 50; 
 
- 	 La fonction typewriter() est responsable de faire défiler et afficher le texte sur la page. 
-	
- 		function typewriter() { 
- 			sContents = ' '; 
- 			iRow = Math.max(0, iIndex - iScrollAt); 
- 			var destination = document.getElementById("typedtext"); 
-			
- 			while (iRow < iIndex) 
- 			{ 
- 				sContents += aText[iRow++] + '<br />'; 
- 			} 
- 			destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_"; 
- 			if (iTextPos++ == iArrLength) 
- 			{ 
- 				iTextPos = 0; 
- 				iIndex++; 
- 				if (iIndex != aText.length) 
- 				{ 
- 					iArrLength = aText[iIndex].length; 
- 					setTimeout(typewriter, 500); 
- 				} 
- 			} else { 
- 				setTimeout(typewriter, iSpeed); 
- 			}
- 		} 
-		
- 	typewriter(); 
-		
- </script> 
+
+     <div class="indice">
+               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick=togglePopup()> 
+               <span class="text-bubble">Indice</span>
+
+    {% block javascript %}
+        <script> 
+        function togglePopup() {
+        let popup = document.querySelector("#popup");
+        popup.classList.toggle("open");
+            }
+        </script>
+    {% endblock %}
+        </div> 
+           </div>
+            
+            <div id="popup">
+                <div class="popup-content">
+                    <h2>INDICE 💡</h2>
+                    <p>{{ plan['hint'] ?? 'Indice par défaut ou message d\'erreur si nécessaire' }}</p>
+                    <a href="javascript:void(0)" onclick=togglePopup() class="popup-exit">❌</a>
+                </div>
+            </div>
+    </div>
+                {% if (scene['scene1']['plan1']['hint']) %}
+					<p{{scene['hint']}} id="indice" /p>
+					{% endif %}
+				{% if (scene['linkedPlans']['plan2']['hint']) %}
+					<p{{ scene['hint']}} id="indice"/p>
+				{% endif %}
+				{% if (scene['linkedPlans']['plan3']['hint']) %}
+					<p{{ scene['hint']}} id="indice"/p>
+				{% endif %}
+				{% if (scene['linkedPlans']['plan4']['hint']) %}
+                    <p{{ scene['plan4']['hint']}} id="indice"/p>
+				{% endif %}
+
 
  <script type="text/javascript" src="/assets/js/dialogs.js">  #}
 
