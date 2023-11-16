@@ -17,7 +17,8 @@ class SceneManager extends AbstractManager
             'image' => ' /assets/images/1_Scene1_light-off.png ',
             'image_light' => '/assets/images/Scene1_light-on.png',
             'href' => "/scene?scene=scene1",
-            'alt' => "pièce sombre et non éclairée",
+            'alt' => "Pièce sombre et non éclairée",
+            'hint' => "Clique sur la pastille du tableau électrique.",
             'linkedPlans' => [
                 'plan1' => [
                     'name' => 'Eleccompteur',
@@ -29,6 +30,7 @@ class SceneManager extends AbstractManager
                     'dialoguesSuccess' => "Bien joué, la lumière s'est rallumée !",
                     'image' => '/assets/images/tableauElectrique.jpg',
                     'linkRetour' => '/scene?scene=scene1',
+                    'hint' => "Regarde sur le volet du tableau électrique.",
                 ],
                 'plan2' => [
                     'name' => 'PorteSortie',
@@ -41,6 +43,7 @@ class SceneManager extends AbstractManager
                     'linkRetour' => '/scene?scene=scene1',
                     'link1' => '', //lien Winner
                     'link2' => '', //lien null quand pas d'objet
+                    'hint' => "Il va te falloir un objet pour ouvrir cette porte...",
                 ],
             ],
             'linkedScene' => 'scene2',
@@ -53,6 +56,7 @@ class SceneManager extends AbstractManager
             'image' => '/assets/images/Scene2_bureau.png',
             'alt' => "Bureau de Clothilde",
             'href' => "/scene?scene=scene2",
+            'hint' => "Clique sur les pastilles et des énigmes apparaîtront.",
             'linkedPlans' => [
                 'plan1' => [
                     'name' => 'Post-it',
@@ -62,16 +66,18 @@ class SceneManager extends AbstractManager
                     'dialogues' => "On dirait des instructions à suivre ...",
                     'image' => '/assets/images/postIt.png',
                     'linkRetour' => '/scene?scene=scene2',
+                    'hint' => "Retourne à la scène 2 et clique sur les autres pastilles.",
                 ],
                 'plan2' => [
                     'name' => 'ArmoireDeDroite',
                     'coords' => "349,75,10",
                     'href' => "/plan?scene=scene2&plan=plan2",
-                    'alt' => "une armoire fermé",
+                    'alt' => "une armoire fermée",
                     'dialogues' => "", //L'enigme est affichée pas de dialogue à ajouter
                     'dialoguesSuccess' => "Bravo ! Ce mot va peut être m'être utile pour la suite ...",
                     'image' => '/assets/images/armoireDroite.png ',
                     'linkRetour' => '/scene?scene=scene2',
+                    'hint' => "Il y en a pleins à la Wild.",
                 ],
                 'plan3' => [
                     'name' => 'Ordinateur',
@@ -83,6 +89,7 @@ class SceneManager extends AbstractManager
                     'image' => '/assets/images/ordinateur.png ', // Ordinateur demandant le code (formulaire)
                     'image2' => ' ', // Ordinateur affiche code (formulaire)
                     'linkRetour' => '/scene?scene=scene2',
+                    'hint' => "Le mot de passe est celui obtenu dans l'énigme de l'armoire de droite.",
                 ],
                 'plan4' => [
                     'name' => 'armoirDeGauche',
@@ -96,6 +103,7 @@ class SceneManager extends AbstractManager
                     'image2' => ' /assets/images/armoireGauche-openedKey.png', // Armoire ouverte avec la clé à cliquer
                     'image3' => ' /assets/images/armoire_gauche_open.jpg', // Armoire de gauche ouverte sans clé
                     'linkRetour' => '/scene?scene=scene2',
+                    'hint' => "Tu obtiens le code avec l'énigme de l'ordinateur.",
                 ],
             ],
             'linkedScene' => 'scene1',
