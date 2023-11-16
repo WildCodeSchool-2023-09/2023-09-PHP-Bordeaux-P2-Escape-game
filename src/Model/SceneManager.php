@@ -30,12 +30,12 @@ class SceneManager extends AbstractManager
                     'image' => '/assets/images/tableauElectrique.jpg',
                     'linkRetour' => '/scene?scene=scene1',
                     'enigma' => [
-                        'description' => "Trouve la bonne réponse !",
-                        'anwsers' => [
-                            'reponse 1',
-                            'reponse 2',
-                            'reponse 3',
-                            'reponse 4'
+                        'description' => "🎃 Quel fil faut-il reconnecter pour allumer la lumière de sécurité ?",
+                        'answers' => [
+                            'Les fils bleus',
+                            'Les fils rouges',
+                            'Les fils jaunes',
+                            'Les fils roses'
                         ],
                         'goodIndex' => 1
                     ]
@@ -83,14 +83,14 @@ class SceneManager extends AbstractManager
                     'image' => '/assets/images/armoireDroite.png ',
                     'linkRetour' => '/scene?scene=scene2',
                     'enigma' => [
-                        'description' => "Trouve la bonne réponse !",
+                        'description' => "🎃 Cette armoire est fermée avec un cadenas !",
                         'answers' => [
                             'reponse 1',
                             'reponse 2',
-                            'reponse 3',
+                            'Ordinateur',
                             'reponse 4'
                         ],
-                        'goodIndex' => 1
+                        'goodIndex' => 2
                     ]
                 ],
                 'plan3' => [

@@ -26,19 +26,22 @@
 		</div>
 
         {% if plan.enigma is defined %}
-        <div >
-             {% if result is not null %}
+        <div class="quizz">
+             
+            <p class="question">{{plan.enigma.description}}</p>
+            {% if result is not null %}
                 {% if result.success %}
-                    BRAVO !!!!
+                    Bravo ! 🎉
                 {% else %}
-                    TU ES TROP NUUUUUUUUUUUUUUUUUUUUUUUUUUUUlllllllllllllllllllllllllll !  
+                    Raté ! 👿
                 {% endif %}
             {% endif %}
-            <p>{{plan.enigma.description}}</p>
             <form method="post" class="answer">
                 {% for question in plan.enigma.answers %}
-                    <label for="{{ question }}">{{ question }} </label>
+                <div>
+                    <label  for="{{ question }}">{{ question }} </label>
                     <input name="{{ question }}" type="submit" value="✔️" id="{{ question }}" />
+                    </div>
                 {% endfor %}
             </form>
         </div>
