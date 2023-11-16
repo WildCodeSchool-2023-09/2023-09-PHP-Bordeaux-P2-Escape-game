@@ -10,11 +10,11 @@ CREATE TABLE enigma (
     title VARCHAR(100),
     description VARCHAR (255),
     hint VARCHAR (255),
-    answer VARCHAR (255),
+    correctAnswer VARCHAR (255),
     PRIMARY KEY (id)
 );
 
-INSERT INTO enigma (title, description, hint, answer)
+INSERT INTO enigma (title, description, hint, correctAnswer)
 VALUES ('Tableau électrique', 'Quel fil faut-il reconnecter pour allumer la lumière de sécurité ?', 'Regarde sur le volet du tableau électrique', 'Les fils rouges'),
 ('Post-it du tableau en liège', 'Tiens, qu\'y a-t-il sur ce post-it ?', 'Clique sur le post-it du tableau en liège.', ''),
 ('Armoire de droite', 'Cette armoire est fermée avec un cadenas !', 'Il y en a plein à la Wild', 'Ordinateur'),

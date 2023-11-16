@@ -8,12 +8,12 @@ footer {
     align-items: center;
   }
 
-  footer>p{
-    margin-left: 20px;
-  }
+.copyright {
+  margin-left :20px;
+}
 
-  .citrouille{
-    width: 70px;
-    margin-right: 20px;
-  }
+.citrouille{
+  width: 70px;
+  margin-right: 20px;
+}
 
