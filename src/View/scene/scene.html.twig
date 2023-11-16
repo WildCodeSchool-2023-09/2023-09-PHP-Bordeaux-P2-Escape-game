@@ -8,7 +8,9 @@
 {% endblock %}
 
 {% block content %}
-
+{# <div class="user-score">
+    <p>Votre score actuel : {{ userScore }}</p>
+</div> #}
 <div class="layout">
 	<div class="ImgDialogues">
 		<div class="ImageLightOff">
@@ -32,31 +34,21 @@
 				{% if (linkedScene) %}
 					<area shape="circle" coords="379,190,20" alt={{linkedScene['alt']}} href={{linkedScene['href']}} id="pastille"/>
 				{% endif %}
+				</map>
 
-				{# {% if (plan)%}
-				                <area shape="circle" 
-				                coords= "31,199,20"
-				                alt= {{scene['alt']}} 
-				                href={{scene['href']}} 
-				                id="pastille"/>
-				            {% endif %} #}
-			</map>
-
-		</div>
-
-		<div class="Dialogues">
-			<div id="typedtext">
-				{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
+				<div class="Dialogues">
+					<div id="typedtext">
+						{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
+                    </div>
+                </div>
             </div>
-        </div>
-<div>
-    <a href="/scene">Retour à la scène précédente</a>
-</div>
+		</div>
+        
+    {# </div> #}
 
         <div class="tools">
             <div class="pseudo">
-                JojoPok
-                <!-- fonction qui récupère le pseudo du joueur lorsque celui-ci est connecté à sa session-->
+               {{ user.pseudo }}
             </div>
 
             <div class="timer">
@@ -66,61 +58,79 @@
 
             <div class="inventory">
             </div>
-
-           <div class="indice">
-                <img src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'"/>    
-            </div>
-        </div>
-    </div>
-
-{% endblock %}
-
-{# {% block javascript %}
-    <script>
-            // Animation en JS pour que les dialogues s'écrivent comme uen "machine à écrire" : le code simule la frappe du texte lettre par lettre.
-    // à voir si on utilise plutôt la librairie Sheperdjs pour faire cette animation
-   
-        // on initialise les différentes variables pour suivre la frappe progressive du texte :
-    var iIndex = 0; 
-    var iTextPos = 0;
-    var aText = [
-                    href="{{ scene.plan1.dialogues }}"
-                ]; 
-    var iArrLength = aText[0].length; 
-    var iScrollAt = 20;
-    var iRow = 0; 
-    var sContents = ""; 
-    var iSpeed = 50;
-   
-    // La fonction typewriter() est responsable de faire défiler et afficher le texte sur la page. 
-    
-    function typewriter() 
-    {
-            sContents = ' ';
-            iRow = Math.max(0, iIndex - iScrollAt);
-            var destination = document.getElementById("typedtext");
             
-            while (iRow < iIndex) 
-            {
-                sContents += aText[iRow++] + '<br />';
-            }
-            destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
-            if (iTextPos++ == iArrLength) 
-            {
-                iTextPos = 0;
-                iIndex++;
-                if (iIndex != aText.length) 
-                {
-                    iArrLength = aText[iIndex].length;
-                    setTimeout(typewriter, 500);
-                }
-            } else {
-                setTimeout(typewriter, iSpeed);
-            }
-        }
+            <div class="indice">
+               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick=togglePopup()> 
+            <span class="text-bubble">Indice</span>
+        
+            </div>
 
-    typewriter();
+        <div id="popup">
+            <div class="popup-content">
+                <h2>INDICE 💡</h2>
+                <p>{{ scene['hint'] ?? 'Indice par défaut ou message d\'erreur si nécessaire' }}</p>
+				<a href="javascript:void(0)" onclick="togglePopup()" class="popup-exit">❌</a>
+			</div>
 
-    </script> 
-   <script type="text/javascript" src="/assets/js/dialogs.js">
-{% endblock %} #}
+				{% if (scene['scene1']['hint']) %}
+					<p{{scene['hint']}} id="indice" /p>
+					{% endif %}
+				{% if (scene['scene2']['hint']) %}
+					<p{{scene['hint']}} id="indice" /p>
+					{% endif %}
+		</div>
+
+	</div>
+
+			{% block javascript %}
+				<script>
+					function togglePopup() {
+                        let popup = document.querySelector("#popup");
+popup.classList.toggle("open");
+}
+				</script>
+			{% endblock %}
+			{# 
+			    var iIndex = 0; 
+			    var iTextPos = 0;
+			    var aText = {{ scene['dialogues'] ?? "Dialogue par défaut ou message d\'erreur si nécessaire"}}
+			    
+			    var iArrLength = aText[0].length; 
+			    var iScrollAt = 20;
+			    var iRow = 0; 
+			    var sContents = ""; 
+			    var iSpeed = 50;
+			   
+			    // La fonction typewriter() est responsable de faire défiler et afficher le texte sur la page. 
+			    
+			    function typewriter() 
+			    {
+			            sContents = ' ';
+			            iRow = Math.max(0, iIndex - iScrollAt);
+			            var destination = document.getElementById("typedtext");
+			            
+			            while (iRow < iIndex) 
+			            {
+			                sContents += aText[iRow++] + '<br />';
+			            }
+			            destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+			            if (iTextPos++ == iArrLength) 
+			            {
+			                iTextPos = 0;
+			                iIndex++;
+			                if (iIndex != aText.length) 
+			                {
+			                    iArrLength = aText[iIndex].length;
+			                    setTimeout(typewriter, 500);
+			                }
+			            } else {
+			                setTimeout(typewriter, iSpeed);
+			            }
+			        }
+			
+			    typewriter();
+			
+			    </script>
+			    {% endblock %} #}
+
+			{% endblock %}
