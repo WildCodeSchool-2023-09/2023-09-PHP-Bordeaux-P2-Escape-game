@@ -1,0 +1,32 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin: 6rem;
+}
+
+.buttons > button {
+    margin: 1.5rem;
+    color: var(--background-color);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow: 0.5rem 0.5rem 1rem grey;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+    font-size: 2rem;
+}
+
+
+.buttons > button > a {
+    text-decoration: none;
+    color: white;
+    text-shadow: var(--secondary-color) 1px 0 5px;
+}
+button >a:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.bienvenue {
+    margin-top: 2rem;
+    font-size: 2rem;
+}

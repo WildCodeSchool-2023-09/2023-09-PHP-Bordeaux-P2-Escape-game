@@ -1,7 +1,35 @@
 {% extends 'layout.html.twig' %}
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/index.css">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/indexConnected.css">
+{% endblock %}
 
 {% block content %}
-    <button type="submit" class="meConnecter">Me connecter</button> <br>
-    <button type="" class="creatAccount">Créer un compte</button>
+	<div class="bienvenue">
+		<p>
+			
+			{{"Bienvenue " ~ user.pseudo }}
+		</p>
+	</div>
+	<div class="buttons">
+		{% if not user.pseudo is defined %}
+			<button type="button" class="meConnecter">
+				<a href="login">Se connecter</a>
+			</button>
+			<button type="button" class="creatAccount">
+				<a href="inscription">Créer un compte</a>
+			</button>
+		{% endif %}
+		{% if user.pseudo is defined %}
+		<button type="button" class="play">
+			<a href="scenario">Jouer</a>
+		</button>
+		<button type="button" class="ranking">
+			<a href="scores">Classement</a>
+		</button>
+		{% endif %}
+		{% if user.pseudo is defined %}
+		<button type="button" class="ranking">
+			<a href="/logout">Se déconnecter</a>
+		</button>
+		{% endif %}
+	</div>
 {% endblock %}

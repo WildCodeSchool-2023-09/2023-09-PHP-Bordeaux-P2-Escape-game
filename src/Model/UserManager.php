@@ -2,9 +2,21 @@
 
 namespace App\Model;
 
+use PDO;
+
 class UserManager extends AbstractManager
 {
     public const TABLE = 'user';
+
+    public function getUserScore(int $userId): ?int
+    {
+        $statement = $this->pdo->prepare("SELECT score FROM progress WHERE user_id = :userId");
+        $statement->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchColumn();
+    }
+
     public function selectOneByEmail(string $email): array
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE email=:email");
