@@ -40,9 +40,11 @@ CREATE TABLE user (
 
 CREATE TABLE progress (
     id INT NOT NULL AUTO_INCREMENT,
+    user_id INT,
     success TINYINT,
     score INT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE session (

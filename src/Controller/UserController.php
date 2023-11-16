@@ -45,7 +45,8 @@ class UserController extends AbstractController
         if (isset($_SESSION['user_id'])) {
             unset($_SESSION['user_id']);
         }
-        header('Location: /');
+        return $this->twig->render('Home/login.html.twig');
+        // header('Location: /');
     }
 
     public function register()
