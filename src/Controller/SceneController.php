@@ -28,7 +28,7 @@ class SceneController extends AbstractController
         }
 
         // Réinitialisez la réponse après avoir changé de scène
-        unset($_SESSION['answer']);
+        // unset($_SESSION['answer']);
 
         if (isset($_SESSION['answer'])) {
             $userAnswer = $_SESSION['answer'];

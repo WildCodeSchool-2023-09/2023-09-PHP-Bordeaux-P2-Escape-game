@@ -53,6 +53,7 @@ class SceneManager extends AbstractManager
                     'linkRetour' => '/scene?scene=scene1',
                     'link1' => '', //lien Winner
                     'link2' => '', //lien null quand pas d'objet
+                    'validated' => "Déjà fait!",
                 ],
             ],
             'linkedScene' => 'scene2',
@@ -74,6 +75,7 @@ class SceneManager extends AbstractManager
                     'dialogues' => "On dirait des instructions à suivre ...",
                     'image' => '/assets/images/postIt.png',
                     'linkRetour' => '/scene?scene=scene2',
+                    'validated' => "Juste une note",
                 ],
                 'plan2' => [
                     'name' => 'ArmoireDeDroite',
