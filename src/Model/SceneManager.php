@@ -43,6 +43,16 @@ class SceneManager extends AbstractManager
                         'goodIndex' => 1
                     ],
                     'hint' => "Regarde sur le volet du tableau électrique.",
+                    'enigma' => [
+                        'description' => "🎃 Quel fil faut-il reconnecter pour allumer la lumière de sécurité ?",
+                        'answers' => [
+                            'Les fils bleus',
+                            'Les fils rouges',
+                            'Les fils jaunes',
+                            'Les fils roses'
+                        ],
+                        'goodIndex' => 1
+                    ]
                 ],
                 'plan2' => [
                     'name' => 'PorteSortie',

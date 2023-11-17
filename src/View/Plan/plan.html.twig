@@ -4,6 +4,7 @@
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/scene.css">
+    <link rel="stylesheet" href="/assets/css/enigma.css">
 {% endblock %}
 
 {% block content %}
@@ -26,6 +27,7 @@
 		{% else %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% endif %}
+
 
 		<map name={{plan['name']}}>
 			
@@ -60,8 +62,17 @@
 			</div> 
 		</div> 
 		{% if plan.enigma is defined %} 
+    
+    
 			<div > 
-				<p>{{plan.enigma.question}}</p> 
+      <p class="question">{{plan.enigma.description}}</p>
+            {% if result is not null %}
+                {% if result.success %}
+                    Bravo ! 🎉
+                {% else %}
+                    Raté ! 👿
+                {% endif %}
+			//	<p>{{plan.enigma.question}}</p> 
 				<form method="post" class="answer"> 
 				{% for question in plan.enigma.answers %} 
 					<label for="{{ question }}">{{ question }} </label> 
@@ -70,6 +81,7 @@
 				</form> 
 			</div> 
 		{% endif %} 
+
 
 			<div class="timer"> 
 				60:00 
