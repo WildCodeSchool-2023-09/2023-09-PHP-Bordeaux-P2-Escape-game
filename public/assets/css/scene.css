@@ -1,28 +1,28 @@
-* {
-    background-color: lightgrey;
-}
-
-.NavBar {
-    background-color: black;
-    height: 2rem;
-    border-radius: 2rem;
-    margin-bottom: 0.2rem;
-    color: #FBFBFB;
-    text-align: center;
-    font-family: "Jockey One";
-    letter-spacing: 1rem;
-    font-weight: bold;
-    line-height: 2;
-}
-
-.scene1 {
+.ImgDialogues {
     display: flex;
-    justify-content: space-around;
     margin-top: 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: center;
 }
 
+.Dialogues {
+    display: flex;
+    width: 25rem;
+    height: 2.5rem;  
+    margin-top: 0.5rem;
+    background-color: #FBFBFB;  
+    border-radius: 15px;
+    font-size: 14px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
 
-.ImageLightOff>img {
+.ImageScene>img {
     border-radius: 2rem;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 0;
@@ -76,29 +76,64 @@ align-items: center;
     gap: 1rem;
 }
 
+#popup {
+    top:0;
+    left:0;
+    right: 0;
+    bottom:0;
+    z-index:98;
+    position: fixed;
+    display: none;
+}
 
-.Dialogues>#typedtext {
+#popup.open{
+    display: block !important;
+}
+
+.popup-content {
+    max-width: 25rem;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #FBFBFB;
+    position: absolute;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    box-shadow: 0.3rem 0.3rem 0.7rem black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.popup-exit {
+    position: absolute;
+    text-decoration: none;
+    color: white;
+    background-color: white;
+    border-radius: 40%;
+    top: -5px;
+    right: 0;
+    box-shadow: 0.2rem 0.2rem 0.1rem black;
+}
+
+/* .Dialogues>#typedtext {
     display: flex;
     width: 25rem;
     height: 2.5rem;  
-    margin-top: 0.5rem;
-    background-color: #FBFBFB;  
+    /* margin-top: 0.5rem; */
+    /* background-color: #FBFBFB;  
     border-radius: 15px;
     font-size: 14px;
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
-}
-
-.footer {
-    display: flex;
-    position: fixed;
-    background-color: black;
-    height: 1rem;
-    border-radius: 2rem;
-    margin-top: 0.2rem;
-}
+} */ 
 
 .pastille {
     transition: filter 0.3s ease-in-out;
@@ -108,4 +143,19 @@ align-items: center;
     filter: brightness(1.5); /* ou tout autre effet de couleur que vous souhaitez appliquer */
 }
 
+.indice .text-bubble {
+visibility: hidden;
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+z-index: 1;
+}
+
+.indice:hover .text-bubble {
+    visibility: visible;
+  }
 
