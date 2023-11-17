@@ -41,9 +41,8 @@ class SceneManager extends AbstractManager
                             'les fils bleu'
                         ],
                         'goodIndex' => 1
-                    ]
+                    ],
                     'hint' => "Regarde sur le volet du tableau électrique.",
-
                 ],
                 'plan2' => [
                     'name' => 'PorteSortie',
@@ -58,7 +57,6 @@ class SceneManager extends AbstractManager
                     'link2' => '', //lien null quand pas d'objet
                     'validated' => "Déjà fait!",
                     'hint' => "Il va te falloir un objet pour ouvrir cette porte...",
-
                 ],
             ],
             'linkedScene' => 'scene2',
@@ -107,7 +105,7 @@ class SceneManager extends AbstractManager
                             'Voiture '
                         ],
                         'goodIndex' => 2
-                    ]
+                    ],
                     'hint' => "Il y en a pleins à la Wild.",
                 ],
                 'plan3' => [
@@ -130,7 +128,7 @@ class SceneManager extends AbstractManager
                             'Harry_potter'
                         ],
                         'goodIndex' => 0
-                    ]
+                    ],
                     'hint' => "Le mot de passe est celui obtenu dans l'énigme de l'armoire de droite.",
                 ],
                 'plan4' => [
@@ -156,7 +154,7 @@ class SceneManager extends AbstractManager
                             '5426'
                         ],
                         'goodIndex' => 3
-                    ]
+                    ],
                     'hint' => "Tu obtiens le code avec l'énigme de l'ordinateur.",
                 ],
             ],
