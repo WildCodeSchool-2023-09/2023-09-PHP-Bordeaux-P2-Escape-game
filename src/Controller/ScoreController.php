@@ -17,3 +17,7 @@ class ScoreController extends AbstractController
         ]);
     }
 }
+
+// 'switchPicture' => $switchPicture,
+//             'message' => $message
+//             'userScore' => $userScore,
