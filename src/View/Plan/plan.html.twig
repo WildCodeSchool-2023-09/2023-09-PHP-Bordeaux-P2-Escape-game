@@ -1,7 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Scene
-{% endblock %}
+{% block title %}Scene{% endblock %}
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/scene.css">
@@ -10,9 +9,9 @@
 
 {% block content %}
 
-<div class="layout">
-	<div class="ImgDialogues">
-		<div class="ImageLightOff">
+	<div class="scene1">
+		<div class="ImgDialogues">
+			<div class="ImageScene">
 
 			<img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage">
 
@@ -57,8 +56,7 @@
 
         <div class="tools">
             <div class="pseudo">
-                JojoPok
-                <!-- fonction qui récupère le pseudo du joueur lorsque celui-ci est connecté à sa session-->
+            {{ user.pseudo }}
             </div>
 
             <div class="timer">
@@ -69,11 +67,41 @@
             <div class="inventory">
             </div>
 
-           <div class="indice">
-                <img src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'"/>    
+     <div class="indice">
+               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick=togglePopup()> 
+               <span class="text-bubble">Indice</span>
+
+    {% block javascript %}
+        <script> 
+        function togglePopup() {
+        let popup = document.querySelector("#popup");
+        popup.classList.toggle("open");
+            }
+        </script>
+    {% endblock %}
+        </div> 
+           </div>
+            
+            <div id="popup">
+                <div class="popup-content">
+                    <h2>INDICE 💡</h2>
+                    <p>{{ plan['hint'] ?? 'Indice par défaut ou message d\'erreur si nécessaire' }}</p>
+                    <a href="javascript:void(0)" onclick=togglePopup() class="popup-exit">❌</a>
+                </div>
             </div>
-        </div>
     </div>
+                {% if (scene['scene1']['plan1']['hint']) %}
+					<p{{scene['hint']}} id="indice" /p>
+					{% endif %}
+				{% if (scene['linkedPlans']['plan2']['hint']) %}
+					<p{{ scene['hint']}} id="indice"/p>
+				{% endif %}
+				{% if (scene['linkedPlans']['plan3']['hint']) %}
+					<p{{ scene['hint']}} id="indice"/p>
+				{% endif %}
+				{% if (scene['linkedPlans']['plan4']['hint']) %}
+                    <p{{ scene['plan4']['hint']}} id="indice"/p>
+				{% endif %}
 
 {% endblock %}
 

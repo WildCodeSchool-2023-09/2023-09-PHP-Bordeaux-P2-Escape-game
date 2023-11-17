@@ -41,7 +41,7 @@ class SceneController extends AbstractController
     {
         $result = null;
         $sceneManager = new SceneManager();
-        $userManager = new UserManager();
+      //  $userManager = new UserManager();
         // echo "coucou";
 
         // Chargez d'abord la scène
@@ -74,6 +74,7 @@ class SceneController extends AbstractController
         return $this->twig->render('Plan/plan.html.twig', [
             'scene' => $scene,
             'plan' => $planData,
+            'result' => $result,
         ]);
     }
 }
