@@ -43,7 +43,7 @@ class SceneController extends AbstractController
             $userScore = $userManager->getUserScore($_SESSION['user_id']);
             $userScore += 10;
             $userManager->updateUserScore($_SESSION['user_id'], $userScore);
-            $progressManager->recordCorrectAnswer($_SESSION['user_id'], $scene);
+            $progressManager->recordCorrectAnswer($_SESSION['user_id']);
             unset($_SESSION['answer'][$scene]);
         }
 
@@ -60,8 +60,7 @@ class SceneController extends AbstractController
     {
         $sceneManager = new SceneManager();
         $userManager = new UserManager();
-        $progressManager = new ProgressManager(); 
-
+        $progressManager = new ProgressManager();
         $planData = $sceneManager->getPlan($scene, $plan);
         // var_dump( $planData);
 
@@ -105,9 +104,9 @@ class SceneController extends AbstractController
 
         if (isset($_SESSION['answer']["$scene-$plan"]) && $_SESSION['answer']["$scene-$plan"]) {
             $userScore = $userManager->getUserScore($_SESSION['user_id']);
-            $userScore += 5; // Supposons que vous attribuez 5 points pour chaque réponse correcte à un plan
+            $userScore += 5;
             $userManager->updateUserScore($_SESSION['user_id'], $userScore);
-            $progressManager->recordCorrectAnswer($_SESSION['user_id'], $scene); // Vous pouvez ajuster en fonction de votre logique
+            $progressManager->recordCorrectAnswer($_SESSION['user_id']);
             unset($_SESSION['answer']["$scene-$plan"]);
         }
 

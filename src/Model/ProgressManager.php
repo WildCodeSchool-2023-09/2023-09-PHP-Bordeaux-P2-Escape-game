@@ -19,25 +19,25 @@ class ProgressManager extends AbstractManager
         $statement->execute();
     }
 
-    public function recordCorrectAnswer(int $userId, string $scene)
+    public function recordCorrectAnswer(int $userId): void
     {
         $pdo = $this->pdo;
 
         // Vérifier si l'utilisateur est déjà dans la BDD
-        $existingEntryQuery = "SELECT id FROM " . static::TABLE . " WHERE user_id = :userId";
-        $existingEntryStatement = $pdo->prepare($existingEntryQuery);
-        $existingEntryStatement->bindParam(':userId', $userId, PDO::PARAM_INT);
-        $existingEntryStatement->execute();
+        $query = "SELECT id FROM " . static::TABLE . " WHERE user_id = :userId";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $statement->execute();
 
         // Si il il y a un user, augmente les points.
-        if ($existingEntryStatement->rowCount() > 0) {
-            $updateQuery = "UPDATE " . static::TABLE . " SET success = 1, score = score + 10 WHERE user_id = :userId";
-            $updateStatement = $pdo->prepare($updateQuery);
-            $updateStatement->bindParam(':userId', $userId, PDO::PARAM_INT);
-            $updateStatement->execute();
-        } 
+        if ($statement->rowCount() > 0) {
+            $query = "UPDATE " . static::TABLE . " SET success = 1, score = score + 10 WHERE user_id = :userId";
+            $statement = $pdo->prepare($query);
+            $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $statement->execute();
+        }
     }
-    
+
     public function recordIncorrectAnswer(int $userId, string $scene): void
     {
         $query = "UPDATE progress SET score = score - 5 WHERE user_id = :userId AND scene = :scene";
@@ -46,5 +46,4 @@ class ProgressManager extends AbstractManager
         $statement->bindParam(':scene', $scene, PDO::PARAM_STR);
         $statement->execute();
     }
-    
 }

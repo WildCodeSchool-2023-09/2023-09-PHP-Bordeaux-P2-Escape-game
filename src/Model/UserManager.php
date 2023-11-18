@@ -39,9 +39,7 @@ class UserManager extends AbstractManager
 
     public function updateUserScore($userId, $newScore)
     {
-        $pdo = $this->pdo; // Assurez-vous que $this->pdo est correctement initialisé dans votre classe parente ou ailleurs
-
-        // Mettez à jour le score de l'utilisateur dans la table "progress"
+        $pdo = $this->pdo;
         $query = "UPDATE progress SET score = :newScore WHERE user_id = :userId";
         $statement = $pdo->prepare($query);
         $statement->bindParam(':newScore', $newScore, \PDO::PARAM_INT);
