@@ -111,7 +111,7 @@ class SceneController extends AbstractController
                 $result = ['success' => true, 'goodIndex' => $goodIndex];
             } else {
                 $result = ['success' => false, 'goodIndex' => $goodIndex];
-                $this->processIncorrectAnswer($userScore, $scene, $userManager, $progressManager);
+                $this->processIncorrectAnswer($userScore, $userManager, $progressManager);
             }
         }
 
@@ -120,7 +120,6 @@ class SceneController extends AbstractController
 
     private function processIncorrectAnswer(
         ?int $userScore,
-        string $scene,
         UserManager $userManager,
         ProgressManager $progressManager
     ): void {
@@ -128,7 +127,7 @@ class SceneController extends AbstractController
         if ($userScore !== null) {
             $userScore -= 5;
             $userManager->updateUserScore($_SESSION['user_id'], $userScore);
-            $progressManager->recordIncorrectAnswer($_SESSION['user_id'], $scene);
+            $progressManager->recordIncorrectAnswer($_SESSION['user_id']);
         }
     }
 
