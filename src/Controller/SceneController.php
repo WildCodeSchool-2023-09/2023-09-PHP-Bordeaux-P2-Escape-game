@@ -29,12 +29,8 @@ class SceneController extends AbstractController
             $userScore = $userManager->getUserScore($_SESSION['user_id']);
         }
 
-        // Réinitialisez la réponse après avoir changé de scène
-        // unset($_SESSION['answer']);
-
         if (isset($_SESSION['answer'])) {
             $userAnswer = $_SESSION['answer'];
-            // var_dump($_SESSION);
             if ($userAnswer !== null) {
                 $switchPicture = $sceneData['image'];
             }
@@ -62,7 +58,6 @@ class SceneController extends AbstractController
         $userManager = new UserManager();
         $progressManager = new ProgressManager();
         $planData = $sceneManager->getPlan($scene, $plan);
-        // var_dump( $planData);
 
         $result = null;
 
@@ -71,7 +66,6 @@ class SceneController extends AbstractController
             exit();
         }
 
-        // enigme
         if (isset($planData['enigma'])) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $goodIndex = $planData['enigma']['goodIndex'];
@@ -79,7 +73,6 @@ class SceneController extends AbstractController
                 $answer = str_replace(' ', '_', $answer);
 
                 $userScore = isset($_SESSION['user_id']) ? $userManager->getUserScore($_SESSION['user_id']) : null;
-                //TODO COMPTER LES POINTS
                 if (isset($_POST[$answer])) {
                     $_SESSION['answer']["$scene-$plan"] = true;
                     $_SESSION['key'] = true;
