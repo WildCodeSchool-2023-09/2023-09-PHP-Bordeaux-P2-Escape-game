@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\SceneManager;
 use App\Model\UserManager;
+use App\Model\ProgressManager;
 
 class SceneController extends AbstractController
 {
@@ -11,6 +12,7 @@ class SceneController extends AbstractController
     {
         $sceneManager = new SceneManager();
         $userManager = new UserManager();
+        $progressManager = new ProgressManager();
         $sceneData = $sceneManager->getScene($scene);
         $switchPicture = null;
 
@@ -37,6 +39,13 @@ class SceneController extends AbstractController
                 $switchPicture = $sceneData['image'];
             }
         }
+        if (isset($_SESSION['answer']) && isset($_SESSION['answer'][$scene]) && $_SESSION['answer'][$scene]) {
+            $userScore = $userManager->getUserScore($_SESSION['user_id']);
+            $userScore += 10;
+            $userManager->updateUserScore($_SESSION['user_id'], $userScore);
+            $progressManager->recordCorrectAnswer($_SESSION['user_id'], $scene);
+            unset($_SESSION['answer'][$scene]);
+        }
 
         return $this->twig->render('scene/scene.html.twig', [
             'scene' => $sceneData,
@@ -51,6 +60,7 @@ class SceneController extends AbstractController
     {
         $sceneManager = new SceneManager();
         $userManager = new UserManager();
+        $progressManager = new ProgressManager(); 
 
         $planData = $sceneManager->getPlan($scene, $plan);
         // var_dump( $planData);
@@ -91,6 +101,14 @@ class SceneController extends AbstractController
         $userScore = null;
         if (isset($_SESSION['user_id'])) {
             $userScore = $userManager->getUserScore($_SESSION['user_id']);
+        }
+
+        if (isset($_SESSION['answer']["$scene-$plan"]) && $_SESSION['answer']["$scene-$plan"]) {
+            $userScore = $userManager->getUserScore($_SESSION['user_id']);
+            $userScore += 5; // Supposons que vous attribuez 5 points pour chaque réponse correcte à un plan
+            $userManager->updateUserScore($_SESSION['user_id'], $userScore);
+            $progressManager->recordCorrectAnswer($_SESSION['user_id'], $scene); // Vous pouvez ajuster en fonction de votre logique
+            unset($_SESSION['answer']["$scene-$plan"]);
         }
 
         return $this->twig->render('Plan/plan.html.twig', [
