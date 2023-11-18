@@ -77,6 +77,8 @@ class SceneController extends AbstractController
                 $goodIndex = $planData['enigma']['goodIndex'];
                 $answer = $planData['enigma']['answers'][$goodIndex];
                 $answer = str_replace(' ', '_', $answer);
+
+                $userScore = isset($_SESSION['user_id']) ? $userManager->getUserScore($_SESSION['user_id']) : null;
                 //TODO COMPTER LES POINTS
                 if (isset($_POST[$answer])) {
                     $_SESSION['answer']["$scene-$plan"] = true;
@@ -90,6 +92,12 @@ class SceneController extends AbstractController
                         'success' => false,
                         'goodIndex' => $goodIndex
                     ];
+
+                    if ($userScore !== null) {
+                        $userScore -= 5;
+                        $userManager->updateUserScore($_SESSION['user_id'], $userScore);
+                        $progressManager->recordIncorrectAnswer($_SESSION['user_id'], $scene);
+                    }
                 }
             }
         }

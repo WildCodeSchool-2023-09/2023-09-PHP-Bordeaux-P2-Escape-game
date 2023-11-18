@@ -40,10 +40,9 @@ class ProgressManager extends AbstractManager
 
     public function recordIncorrectAnswer(int $userId, string $scene): void
     {
-        $query = "UPDATE progress SET score = score - 5 WHERE user_id = :userId AND scene = :scene";
+        $query = "UPDATE progress SET score = score - 5 WHERE user_id = :userId";
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
-        $statement->bindParam(':scene', $scene, PDO::PARAM_STR);
         $statement->execute();
     }
 }
