@@ -59,28 +59,24 @@ class SceneController extends AbstractController
             exit();
         }
 
-        // enigme
-        if (isset($planData['enigma'])) {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $goodIndex = $planData['enigma']['goodIndex'];
-                $answer = $planData['enigma']['answers'][$goodIndex];
-                $answer = str_replace(' ', '_', $answer);
-                //TODO COMPTER LES POINTS
-                if (isset($_POST[$answer])) {
-                    $_SESSION['answer']["$scene-$plan"] = true;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['inventory_item'])) {
+                $inventoryItem = $_POST['inventory_item'];
 
-                    $result = [
-                        'success' => true,
-                        'goodIndex' => $goodIndex
-                    ];
-                } else {
-                    $result = [
-                        'success' => false,
-                        'goodIndex' => $goodIndex
-                    ];
+                if (!isset($_SESSION['inventory'])) {
+                    $_SESSION['inventory'] = [];
+                }
+                $_SESSION['inventory'][] = $inventoryItem;
+
+                if ($scene === 'scene1' && $plan === 'plan2') {
+                    header("Location: /win");
+                    exit();
                 }
             }
         }
+
+        // enigme
+        $result = $this->enigmaResolution($scene, $plan, $planData);
 
         if (empty($planData)) {
             return $this->twig->render('error/500.html.twig');
@@ -96,5 +92,33 @@ class SceneController extends AbstractController
             'userScore' => $userScore,
             'result' => $result,
         ]);
+    }
+
+    private function enigmaResolution(string $scene, string $plan, array $planData): ?array
+    {
+        $result = null;
+
+        if (isset($planData['enigma'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $goodIndex = $planData['enigma']['goodIndex'];
+                $answer = $planData['enigma']['answers'][$goodIndex];
+                $answer = str_replace(' ', '_', $answer);
+
+                if (isset($_POST[$answer])) {
+                    $_SESSION['answer']["$scene-$plan"] = true;
+
+                    $result = [
+                        'success' => true,
+                        'goodIndex' => $goodIndex
+                    ];
+                } else {
+                    $result = [
+                        'success' => false,
+                        'goodIndex' => $goodIndex
+                    ];
+                }
+            }
+        }
+        return $result;
     }
 }
