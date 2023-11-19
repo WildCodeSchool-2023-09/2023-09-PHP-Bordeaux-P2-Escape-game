@@ -8,21 +8,10 @@
 
 {% block content %}
 
-
-	<div class="scene1">
-		<div class="ImgDialogues">
-			<div class="ImageScene">
-
-
-<div class="ImgDialogues">
-	<div class="ImageLightOff">
-
-		{# <img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage"> #}
 		{% if (plan['name'] == 'Ordinateur') and result.success %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% elseif (plan['name'] == 'ArmoireDeGauche') and result.success %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
-			{# <area shape="circle" coords={{plan['coordsKey']}} alt={{plan['alt']}} href={{plan['linkRetour']}}    #}
 		{% else %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% endif %}
@@ -33,18 +22,11 @@
 				<area shape="circle" coords="31,199,20" alt={{plan['alt']}} href={{plan['linkRetour']}} {# id="pastille" #}/>
 			{% endif %}
 			{% if (plan['image2']) %}
-			{# a finir #}
-				<form action="/set-key-object" method="post">
-					<input type="hidden" name="keyObject" value="clé">
-					<area shape="circle" coords={{plan['coordsKey']}} alt={{plan['alt']}} href={{plan['linkRetour']}} >
-
-					{% if form_submitted_successfully %}
-						<img src="/assets/images/cle.png" alt="clé" />
-					{% endif %}
-				</form>
+				<area id="keyArea" class="key" data-key-id="unique_key_id" shape="circle" coords="{{plan['coordsKey']}}" alt="{{plan['alt']}}" href="{{plan['linkRetour']}}">
 			{% endif %}
-			</map> 
-		</div> 
+
+		</map> 
+		 
 		<div class="Dialogues"> 
 			<div id="typedtext"> 
 				{% if plan['name'] == 'Eleccompteur' and result.success %} 
@@ -59,6 +41,7 @@
 				{% endif %} 
 			</div> 
 		</div> 
+		
 		{% if plan.enigma is defined %} 
 			<div > 
 				<p>{{plan.enigma.question}}</p> 
@@ -77,9 +60,9 @@
 			</div> 
 			
 			<div class="inventory"> 
-				{% if plan['name'] == 'ArmoireDeGauche' and result.success %}
-                <img src="/assets/images/cle.png" alt="clé" />
-            {% endif %}
+				{% if keyImage is defined and scene1 and plan2 %}
+					<a href="/win">Retourner à la page de victoire</a>
+				{% endif %}
 			</div> 
 			
 			<div class="indice"> 
@@ -90,69 +73,13 @@
 		</div> 
 	</div> 
 
-			
         <div class="tools">
             <div class="pseudo">
             {{ user.pseudo }}
             </div>
 
-{% endblock %} 
-  {# {% block javascript %}  #}
+{% endblock %}
 
- 	{# <script> #}
- 			 {# Animation en JS pour que les dialogues s'écrivent comme uen "machine à écrire" : le code simule la frappe du texte lettre par lettre. 
- 	 à voir si on utilise plutôt la librairie Sheperdjs pour faire cette animation 
-	
- 		on initialise les différentes variables pour suivre la frappe progressive du texte : 
- 		var iIndex = 0; 
- 		var iTextPos = 0; 
- 		var aText = [ 
- 			href="{{ scene.plan1.dialogues }}" 
- 		]; 
- 		var iArrLength = aText[0].length; 
- 		var iScrollAt = 20; 
- 		var iRow = 0; 
- 		var sContents = ""; 
- 		var iSpeed = 50; 
-
-
-     <div class="indice">
-               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick=togglePopup()> 
-               <span class="text-bubble">Indice</span>
-
-    {% block javascript %}
-        <script> 
-        function togglePopup() {
-        let popup = document.querySelector("#popup");
-        popup.classList.toggle("open");
-            }
-        </script>
-    {% endblock %}
-        </div> 
-           </div>
-            
-            <div id="popup">
-                <div class="popup-content">
-                    <h2>INDICE 💡</h2>
-                    <p>{{ plan['hint'] ?? 'Indice par défaut ou message d\'erreur si nécessaire' }}</p>
-                    <a href="javascript:void(0)" onclick=togglePopup() class="popup-exit">❌</a>
-                </div>
-            </div>
-    </div>
-                {% if (scene['scene1']['plan1']['hint']) %}
-					<p{{scene['hint']}} id="indice" /p>
-					{% endif %}
-				{% if (scene['linkedPlans']['plan2']['hint']) %}
-					<p{{ scene['hint']}} id="indice"/p>
-				{% endif %}
-				{% if (scene['linkedPlans']['plan3']['hint']) %}
-					<p{{ scene['hint']}} id="indice"/p>
-				{% endif %}
-				{% if (scene['linkedPlans']['plan4']['hint']) %}
-                    <p{{ scene['plan4']['hint']}} id="indice"/p>
-				{% endif %}
-
-
- <script type="text/javascript" src="/assets/js/dialogs.js">  #}
-
- {# {% endblock %}  #}
+{% block javascript %}
+	<script src="assets/js/objects.js" defer></script>
+{% endblock %}

@@ -17,7 +17,6 @@ class SceneController extends AbstractController
         if (empty($sceneData)) {
             return $this->twig->render('error/500.html.twig');
         }
-
         $linkedSceneData = null;
         if (isset($sceneData['linkedScene'])) {
             $linkedSceneData = $sceneManager->getScene($sceneData['linkedScene']);
@@ -53,8 +52,6 @@ class SceneController extends AbstractController
         $userManager = new UserManager();
 
         $planData = $sceneManager->getPlan($scene, $plan);
-        // var_dump( $planData);
-
         $result = null;
 
         if (isset($_SESSION['answer']["$scene-$plan"])) {
@@ -71,7 +68,7 @@ class SceneController extends AbstractController
                 //TODO COMPTER LES POINTS
                 if (isset($_POST[$answer])) {
                     $_SESSION['answer']["$scene-$plan"] = true;
-                    $_SESSION['key'] = true;
+
                     $result = [
                         'success' => true,
                         'goodIndex' => $goodIndex
@@ -97,7 +94,7 @@ class SceneController extends AbstractController
             'scene' => $scene,
             'plan' => $planData,
             'userScore' => $userScore,
-            'result' => $result
+            'result' => $result,
         ]);
     }
 }

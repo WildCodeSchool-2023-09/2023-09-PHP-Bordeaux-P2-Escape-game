@@ -13,8 +13,6 @@
     <p>Votre score actuel : {{ userScore }}</p>
 </div> #}
 
-
-
 {% if message is not null %}
 	<div>
 		{{ message }}
@@ -71,11 +69,9 @@
 			{% else %}
 				{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
                 {% endif %}
-			
-
             </div>
 		</div>
-        
+
     {# </div> #}
 
         <div class="tools">
@@ -90,11 +86,10 @@
 
             <div class="inventory">
             </div>
-            
+
             <div class="indice">
                <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick=togglePopup()> 
             <span class="text-bubble">Indice</span>
-        
             </div>
 
         <div id="popup">
@@ -111,58 +106,15 @@
 					<p{{scene['hint']}} id="indice" /p>
 					{% endif %}
 		</div>
-
 	</div>
+{% endblock %}
 
-			{% block javascript %}
-				<script>
-					function togglePopup() {
-                        let popup = document.querySelector("#popup");
-popup.classList.toggle("open");
-}
-				</script>
-			{% endblock %}
-			{# 
-			    var iIndex = 0; 
-			    var iTextPos = 0;
-			    var aText = {{ scene['dialogues'] ?? "Dialogue par défaut ou message d\'erreur si nécessaire"}}
-			    
-			    var iArrLength = aText[0].length; 
-			    var iScrollAt = 20;
-			    var iRow = 0; 
-			    var sContents = ""; 
-			    var iSpeed = 50;
-			   
-			    // La fonction typewriter() est responsable de faire défiler et afficher le texte sur la page. 
-			    
-			    function typewriter() 
-			    {
-			            sContents = ' ';
-			            iRow = Math.max(0, iIndex - iScrollAt);
-			            var destination = document.getElementById("typedtext");
-			            
-			            while (iRow < iIndex) 
-			            {
-			                sContents += aText[iRow++] + '<br />';
-			            }
-			            destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
-			            if (iTextPos++ == iArrLength) 
-			            {
-			                iTextPos = 0;
-			                iIndex++;
-			                if (iIndex != aText.length) 
-			                {
-			                    iArrLength = aText[iIndex].length;
-			                    setTimeout(typewriter, 500);
-			                }
-			            } else {
-			                setTimeout(typewriter, iSpeed);
-			            }
-			        }
-			
-			    typewriter();
-			
-			    </script>
-			    {% endblock %} #}
+{% block javascript %}
+	<script src="assets/js/objects.js" defer>
+		function togglePopup() {
+			let popup = document.querySelector("#popup");
+		popup.classList.toggle("open");
+		}
+	</script>
 
-			{% endblock %}
+{% endblock %}

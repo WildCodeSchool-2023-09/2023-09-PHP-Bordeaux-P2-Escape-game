@@ -135,6 +135,7 @@ class SceneManager extends AbstractManager
                     'name' => 'ArmoireDeGauche',
                     'coords' => "122,75,10",
                     'coordsKey' => "268,148,20",
+                    'imagekey' => '/assets/images/cle.png',
                     'href' => "/plan?scene=scene2&plan=plan4",
                     'alt' => "une armoire fermée par un cadenas",
                     'dialogues' => "On dirait que je peux entrer un code...",
