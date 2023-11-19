@@ -11,4 +11,5 @@ return [
     'scene' => ['SceneController', 'sceneEnigme', ['scene', 'message']], // Pour gérer les scènes et les plans
     'plan' => ['SceneController', 'planEnigme', ['scene', 'plan']],
     'scores' => ['ScoreController', 'showScores'],
+    'tutorial' => ['HomeController', 'tutorial',],       
 ];
