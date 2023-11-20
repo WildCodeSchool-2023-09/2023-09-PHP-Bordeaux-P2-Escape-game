@@ -1,17 +1,17 @@
 // gameover.js
 
 // Récupérer le score depuis le stockage local
-const score = localStorage.getItem('score');
+/* const score = localStorage.getItem('score');
 
 // Mettre à jour le score sur la page
 const scoreElement = document.getElementById('score');
-scoreElement.textContent = score;
+scoreElement.textContent = score; */
 
 // Gérer le bouton "Rejouer"
 const replayButton = document.getElementById('replayButton');
 replayButton.addEventListener('click', () => {
     // Rediriger vers la page du jeu ou réinitialiser le jeu
-    window.location.href = 'scene.html.twig'; // Remplacez 'game.html' par le nom de votre page de jeu
+    window.location.href = 'scenario'; // Remplacez 'game.html' par le nom de votre page de jeu
 });
 
 

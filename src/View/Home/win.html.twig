@@ -2,15 +2,16 @@
 
 {% block title %}You Loose{% endblock %}
 
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/loose.css">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/win.css">{% endblock %}
 
 {% block content %}
 
  <main>
 
     <div class="pseudo">
-        <span class="joueur">PLAYER</span>
-        <span class="chrono">60:00</span>
+        {# <span class="joueur">PLAYER</span>
+        <span class="chrono">60:00</span> #}
+        {{ user.pseudo }} - {{ userScore }}
     </div>
 
     <div class="gif">
@@ -19,8 +20,9 @@
     <div class="titre">
      <h1>YOU WIN</h1>
     </div>
-    <div class="loose">
-        <p>score : <span id="score">18</span></p>
+    <div class="win">
+        
+        {# <p>score : <span id="score">18</span></p> #}
         <h2>Undex used</h2> 
         {# <button id="replayButton">TRY AGAIN</button> #}
     </div>
@@ -28,4 +30,4 @@
  </main>  
 
 {% endblock %}
-{% block javascript %}<script src="assets/Javascript/loose.js" defer></script>{% endblock %}
+

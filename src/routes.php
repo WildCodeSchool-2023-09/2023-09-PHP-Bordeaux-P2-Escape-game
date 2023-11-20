@@ -13,5 +13,5 @@ return [
     'scores' => ['ScoreController', 'showScores'],
     'tutorial' => ['HomeController', 'tutorial',],
     'win' => ['HomeController', 'win',],
-    'loose' => ['HomeController', 'loose',],
+    'lose' => ['HomeController', 'lose',],
 ];
