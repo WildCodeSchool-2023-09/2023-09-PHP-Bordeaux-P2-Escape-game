@@ -7,47 +7,74 @@
 	<link rel="stylesheet" href="/assets/css/scene.css">
 {% endblock %}
 
-
 {% block content %}
 
 	{# <div class="ImgDialogues"> #}
 			<div class="Image">
 
-				<img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage">
+{% if message is not null %}
+	<div>
+		{{ message }}
+	</div>
+{% endif %}
 
-				<map name={{scene['name']}}>
-					{% if (scene['linkedPlans']['plan1']) %}
-						<area shape="circle" coords={{scene['linkedPlans']['plan1']['coords']}} alt={{scene['linkedPlans']['plan1']['alt']}} href={{scene['linkedPlans']['plan1']['href']}} id="pastille"/>
-					{% endif %}
-					{% if (scene['linkedPlans']['plan2']) %}
-						<area shape="circle" coords={{scene['linkedPlans']['plan2']['coords']}} alt={{scene['linkedPlans']['plan2']['alt']}} href={{scene['linkedPlans']['plan2']['href']}} id="pastille"/>
-					{% endif %}
-					{% if (scene['linkedPlans']['plan3']) %}
-						<area shape="circle" coords={{scene['linkedPlans']['plan3']['coords']}} alt={{scene['linkedPlans']['plan3']['alt']}} href={{scene['linkedPlans']['plan3']['href']}} id="pastille"/>
-					{% endif %}
-					{% if (scene['linkedPlans']['plan4']) %}
-						<area shape="circle" coords={{scene['linkedPlans']['plan4']['coords']}} alt={{scene['linkedPlans']['plan4']['alt']}} href={{scene['linkedPlans']['plan4']['href']}} id="pastille"/>
-					{% endif %}
-					{% if scene['linkexit'] %}
-        			<area shape="circle" coords={{scene['linkexit']['coords']}} alt={{scene['linkexit']['alt']}} href={{scene['linkexit']['href']}} id="exitZone" class="exit-zone"/>
-    				{% endif %}
-					{% if (linkedScene) %}
-						<area shape="circle" coords="379,190,20" alt={{linkedScene['alt']}} href={{linkedScene['href']}} id="pastille"/>
-					{% endif %}
-				</map>
+
+<div class="ImgDialogues">
+	<div class="ImageLightOff">
+
+
+		{% if (switchPicture is not null) or (scene['name'] == 'bureau') %}
+			<img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage">
+		{% else %}
+			<img usemap="#{{scene['name']}}" src="{{scene['image_dark']}}" alt="{{scene['alt']}}" id="sceneImage">
+		{% endif %}
+		{# <img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage"> #}
+
+		<map name={{scene['name']}}>
+
+
+			{% if (scene['linkedPlans']['plan1']) %}
+				<area shape="circle" coords={{scene['linkedPlans']['plan1']['coords']}} alt={{scene['linkedPlans']['plan1']['alt']}} href={{scene['linkedPlans']['plan1']['href']}} id="pastille"/>
+			{% endif %}
+
+			{% if (scene['linkedPlans']['plan2']) %}
+				<area shape="circle" coords={{scene['linkedPlans']['plan2']['coords']}} alt={{scene['linkedPlans']['plan2']['alt']}} href={{scene['linkedPlans']['plan2']['href']}} id="pastille"/>
+			{% endif %}
+
+			{% if (scene['linkedPlans']['plan3']) %}
+				<area shape="circle" coords={{scene['linkedPlans']['plan3']['coords']}} alt={{scene['linkedPlans']['plan3']['alt']}} href={{scene['linkedPlans']['plan3']['href']}} id="pastille"/>
+			{% endif %}
+
+			{% if (scene['linkedPlans']['plan4']) %}
+				<area shape="circle" coords={{scene['linkedPlans']['plan4']['coords']}} alt={{scene['linkedPlans']['plan4']['alt']}} href={{scene['linkedPlans']['plan4']['href']}} id="pastille"/>
+			{% endif %}
+
+			{% if (switchPicture is not null) or (scene['name']== 'bureau') %}
+				<area shape="circle" coords="379,190,20" alt={{linkedScene['alt']}} href={{linkedScene['href']}} id="pastille"/>
+			{% endif %}
+			{% if scene['linkexit'] %}
+        	<area shape="circle" coords={{scene['linkexit']['coords']}} alt={{scene['linkexit']['alt']}} href={{scene['linkexit']['href']}} title="Quitter le jeu" id="exitZone" class="exit-zone"/>
+   			 {% endif %}
+
+		</map>
+	</div>
+	
+	
+	<div class="Dialogues">
+		<div id="typedtext">
+
+			{% if switchPicture is not null and (scene['name'] == 'couloir') %}
+				{{ scene['dialoguesSuccess'] }}
+			{% else %}
+				{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
+                {% endif %}
             </div>
-
-				<p class="Dialogues">
-					{# <div id="typedtext"> #}
-						{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
-                    {# </div> #}
-                </p>
 	</div>
 
 
         <div class="tools">
             <p class="pseudo">
-               {{ user.pseudo }}
+               {{ user.pseudo }} - {{ userScore }}
             </p>
             
             <p id="timer">
@@ -69,7 +96,6 @@
                 <p>{{ scene['hint'] ?? 'Indice par défaut ou message d\'erreur si nécessaire' }}</p>
 				<a href="javascript:void(0)" onclick="togglePopup()" class="popup-exit">❌</a>
 			</div>
-
 		</div>
 
 	</div>

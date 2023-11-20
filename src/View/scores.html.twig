@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Scores{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/scores.css">{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Votre score</h1>
+    <p class="pseudoScore">Pseudo : {{ user.pseudo }}</p>
+    <p class="pseudoScore">Score : {{ userScore }}</p>
+</div>
+    <h2>Classement général</h2>
+    <table class="scoring">
+        <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for score in globalScores %}
+                <tr>
+                    <td>{{ score.pseudo }}</td>
+                    <td>{{ score.score }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

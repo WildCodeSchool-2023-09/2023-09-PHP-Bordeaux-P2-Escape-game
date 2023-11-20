@@ -15,7 +15,9 @@
             <a id="closeBtn" href="#" class="close">x</a>
             <ul class="txtMenuBurger">
                 <li class="accueil"><a href="/">Accueil</a></li>
-                <li class="score"><a href="score.php">Score</a></li>
+                {% if user.pseudo is defined %}
+                <li class="score"><a href="scores">Score</a></li>
+                {% endif %}
                 {% if not user.pseudo is defined %}
     <li class="connect"><a href="login">Se connecter</a></li>
 {% endif %}

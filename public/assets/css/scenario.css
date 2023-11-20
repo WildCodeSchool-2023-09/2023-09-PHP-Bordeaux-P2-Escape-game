@@ -1,4 +1,4 @@
-.pseudo {
+.pseudo-scenario {
     margin-top: 1.5rem;
     width: 20rem;
     height: 3rem;
@@ -33,7 +33,7 @@
     margin-top: 1rem;
 }
 
- .game1, .startTuto>img {
+ .game1>img {
      width: 10rem;
      height: 6rem;
      border-radius: 15%;
