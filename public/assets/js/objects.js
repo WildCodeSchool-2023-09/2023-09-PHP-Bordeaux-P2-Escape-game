@@ -21,10 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // const keyImage = '<img src="/assets/images/cle.png" alt="clé" width="50px"/>';
             // inventory.innerHTML = keyImage;
 
+            // <input type="submit" value="🔑"></input>
+
             const inventoryForm = `
                 <form method="post" class="inventory">
                     <input type="hidden" name="inventory_item" value="key">
-                    <input type="submit" value="🔑">
+                    <input type="image" src="/assets/images/cle.png" alt="clé" width="50px"></input>
                 </form>
             `;
             inventory.innerHTML = inventoryForm;

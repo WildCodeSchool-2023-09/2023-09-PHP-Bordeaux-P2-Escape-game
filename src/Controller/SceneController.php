@@ -13,6 +13,7 @@ class SceneController extends AbstractController
         $userManager = new UserManager();
         $sceneData = $sceneManager->getScene($scene);
         $switchPicture = null;
+        $switchDialogues = null;
 
         if (empty($sceneData)) {
             return $this->twig->render('error/500.html.twig');
@@ -37,12 +38,22 @@ class SceneController extends AbstractController
             }
         }
 
+        //dialogue Scene2
+        if (isset($_POST['inventory_item'])) {
+            $keyInventory = $_POST['inventory_item'];
+            // var_dump($_SESSION);
+            if ($keyInventory !== null) {
+                $switchDialogues = $sceneData['dialoguesSuccess'];
+            }
+        }
+
         return $this->twig->render('scene/scene.html.twig', [
             'scene' => $sceneData,
             'linkedScene' => $linkedSceneData,
             'switchPicture' => $switchPicture,
             'message' => $message,
             'userScore' => $userScore,
+            'switchDialogues' => $switchDialogues,
         ]);
     }
 
@@ -67,6 +78,7 @@ class SceneController extends AbstractController
                     $_SESSION['inventory'] = [];
                 }
                 $_SESSION['inventory'][] = $inventoryItem;
+
 
                 if ($scene === 'scene1' && $plan === 'plan2') {
                     header("Location: /win");

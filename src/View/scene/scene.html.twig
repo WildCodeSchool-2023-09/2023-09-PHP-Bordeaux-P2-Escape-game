@@ -66,9 +66,11 @@
 
 			{% if switchPicture is not null and (scene['name'] == 'couloir') %}
 				{{ scene['dialoguesSuccess'] }}
+			{% elseif switchDialogues is not null and (scene['name'] == 'bureau') %}
+    			{{ scene['dialoguesSuccess'] }}
 			{% else %}
 				{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
-                {% endif %}
+            {% endif %}
             </div>
 		</div>
 
