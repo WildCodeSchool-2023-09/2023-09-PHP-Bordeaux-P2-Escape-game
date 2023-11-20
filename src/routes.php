@@ -17,5 +17,5 @@ return [
     'scenario' => ['ScenarioController', 'scenario',],
     'scene' => ['SceneController', 'sceneEnigme', ['scene']], // Pour gérer les scènes et les plans
     'plan' => ['SceneController', 'planEnigme', ['scene', 'plan']],
-    'loose' => ['SceneController', 'loose', ],
+    'loose' => ['SceneController', 'loose',],
 ];
