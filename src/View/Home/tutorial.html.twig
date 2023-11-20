@@ -1,0 +1,231 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}tuto
+{% endblock %} 
+
+ {% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/tutorial.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/css/shepherd.css"/> 
+ {% endblock %}
+
+ {% block javascript %}
+    <script src="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js"></script>
+    
+  <script defer>
+          
+   const tour = new Shepherd.Tour ({  
+  defaultStepOptions: {
+    cancelIcon: {
+      enabled: true
+    },
+    scrollTo: false,
+    showCancelLink: true,
+    
+  },
+  useModalOverlay: true
+});
+
+tour.addStep({
+    id: 'step1',
+    attachTo: {
+    element: '.scene1',
+    on: 'bottom'    
+  },
+  title: 'Vous êtes sur la scene 1',
+  text: `Regarder bien partout des indices peuvent s'y cachés`,
+  
+  buttons: [
+    {
+      text: 'Next',
+      action: tour.next
+    }
+  ],
+});
+
+tour.addStep({
+    id: 'step2',
+    attachTo: {
+    element: '.pseudo',
+    on: 'bottom'    
+  },
+  title: 'Pseudo',
+  text: `Ici s'affichera votre pseudo`,
+  
+  buttons: [
+    {
+      action() {
+        return this.back();
+      },
+            text: 'Back'
+    },
+    {
+      action() {
+        return this.next();
+      },
+      text: 'Next'
+    }
+  ],
+});
+
+tour.addStep({
+    id: 'step3',
+    attachTo: {
+    element: '.timer',
+    on: 'bottom'    
+  },
+  title: 'Timer',
+  text: `Vous avez 60 minutes pour vous echapper des locaux de la Wild`,
+  
+  buttons: [
+    {
+      action() {
+        return this.back();
+      },
+            text: 'Back'
+    },
+    {
+      action() {
+        return this.next();
+      },
+      text: 'Next'
+    }
+  ],
+});
+
+tour.addStep({
+    id: 'step4',
+    attachTo: {
+    element: '.inventory',
+    on: 'bottom'    
+  },
+  title: 'Inventaire',
+  text: `Listes des objets à récuperer.`,
+  
+  buttons: [
+    {
+      action() {
+        return this.back();
+      },
+            text: 'Back'
+    },
+
+    {
+      action() {
+        return this.next();
+      },
+      text: 'Next'
+    }
+  ],
+});
+
+tour.addStep({
+    id: 'step3',
+    attachTo: {
+    element: '.indice',
+    on: 'bottom'    
+  },
+  title: 'Indices',
+  text: `Clickez si vous êtes blocker`,
+  
+  buttons: [
+    {
+      action() {
+        return this.back();
+      },
+            text: 'Back'
+    },
+    
+  ],
+});
+
+tour.start();
+
+  </script>
+{% endblock %} 
+
+ {% block content %} 
+
+
+ {# <div class="scene1">
+    <div class="ImgDialogues">
+
+        <div class="ImageScene">
+
+            <img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage">
+
+                <map name={{scene['name']}}>
+                    {% if (scene['linkedPlans']['plan1']) %}
+                        <area shape="circle" coords={{scene['linkedPlans']['plan1']['coords']}} alt={{scene['linkedPlans']['plan1']['alt']}} href={{scene['linkedPlans']['plan1']['href']}} id="pastille"/>
+                    {% endif %}
+                    {% if (scene['linkedPlans']['plan2']) %}
+                        <area shape="circle" coords={{scene['linkedPlans']['plan2']['coords']}} alt={{scene['linkedPlans']['plan2']['alt']}} href={{scene['linkedPlans']['plan2']['href']}} id="pastille"/>
+                    {% endif %}
+                    {% if (scene['linkedPlans']['plan3']) %}
+                        <area shape="circle" coords={{scene['linkedPlans']['plan3']['coords']}} alt={{scene['linkedPlans']['plan3']['alt']}} href={{scene['linkedPlans']['plan3']['href']}} id="pastille"/>
+                    {% endif %}
+                    {% if (scene['linkedPlans']['plan4']) %}
+                        <area shape="circle" coords={{scene['linkedPlans']['plan4']['coords']}} alt={{scene['linkedPlans']['plan4']['alt']}} href={{scene['linkedPlans']['plan4']['href']}} id="pastille"/>
+                    {% endif %}
+                    {% if (linkedScene) %}
+                        <area shape="circle" coords="379,190,20" alt={{linkedScene['alt']}} href={{linkedScene['href']}} id="pastille"/>
+                    {% endif %}
+                </map>
+
+         <div class="Dialogues">
+            <div id="typedtext">
+                {{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
+            </div>
+        </div>
+         
+    </div> #} 
+
+    <div class="image">
+        <img href="tuto" src="/assets/images/image_tuto.png" alt="tuto" 
+    </div>
+
+        <div class="box">
+            <div class="pseudo">
+               JOJOPOK
+            </div>
+
+            <div class="timer">
+                60:00
+                <!-- fonction timer -->
+            </div>
+
+            <div class="inventory">
+            </div>
+            
+            <div class="indice">
+               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick=togglePopup()> 
+            
+
+                {# {% block javascript %}
+                <script> 
+                    function togglePopup() {
+                        let popup = document.querySelector("#popup");
+                    popup.classList.toggle("open");
+                    }
+                </script>
+                {% endblock %} #}
+            </div>
+
+        <div id="popup">
+            <div class="popup-content">
+                <h2>INDICE :bulb:</h2>
+                {# <p>{{ scene['hint'] ?? 'Indice par défaut ou message d\'erreur si nécessaire' }}</p>
+                <a href="javascript:void(0)" onclick=togglePopup() class="popup-exit">:x:</a> #}
+            </div>
+
+               {#  {% if (scene['linkedPlans']['plan1']['hint']) %}
+                    <p{{ scene['hint']}} id="indice"/p>
+                {% endif %}
+                {% if (linkedScene['hint']) %}
+                    <p{{ scene['hint']}} id="indice"/p>
+                {% endif %} #}
+        </div>
+ </div>
+
+
+
+ {% endblock %} 
