@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+
+
+
 // list of accessible routes of your application, add every new route here
 // key: route to match
 // values: 1. controller name
@@ -14,4 +17,5 @@ return [
     'scenario' => ['ScenarioController', 'scenario',],
     'scene' => ['SceneController', 'sceneEnigme', ['scene']], // Pour gérer les scènes et les plans
     'plan' => ['SceneController', 'planEnigme', ['scene', 'plan']],
+    'loose' => ['SceneController', 'loose', ],
 ];

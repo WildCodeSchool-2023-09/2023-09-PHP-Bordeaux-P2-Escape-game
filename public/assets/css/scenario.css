@@ -33,7 +33,7 @@
     margin-top: 1rem;
 }
 
- .game1, .startTuto {
+ .game1, .startTuto>img {
      width: 10rem;
      height: 6rem;
      border-radius: 15%;
@@ -50,9 +50,9 @@ img{
 }
 
 img:hover {
-        -ms-transform: scale(1.1);
-        --webkit-animation: scale(1.1);
-        transform: scale(1.1);  
-        opacity:0.5;
+    -ms-transform: scale(1.1);
+    --webkit-animation: scale(1.1);
+    transform: scale(1.1);  
+    opacity:0.5;
     }
 

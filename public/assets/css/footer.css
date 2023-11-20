@@ -1,4 +1,4 @@
-footer {
+footer{
     display: flex;
     justify-content: space-between;
     background-color: var(--background-color);
@@ -6,13 +6,15 @@ footer {
     /* border-radius:15px 15px 0% 0% ; */
     width: 100%;
     align-items: center;
+    /* position: absolute; */
+    bottom: 0;
   }
 
-  footer>p{
+footer>p{
     margin-left: 20px;
   }
 
-  .citrouille{
+.citrouille{
     width: 70px;
     margin-right: 20px;
   }

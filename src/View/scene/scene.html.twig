@@ -9,9 +9,9 @@
 
 
 {% block content %}
-	<div class="scene1">
-		<div class="ImgDialogues">
-			<div class="ImageScene">
+
+	{# <div class="ImgDialogues"> #}
+			<div class="Image">
 
 				<img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage">
 
@@ -28,36 +28,37 @@
 					{% if (scene['linkedPlans']['plan4']) %}
 						<area shape="circle" coords={{scene['linkedPlans']['plan4']['coords']}} alt={{scene['linkedPlans']['plan4']['alt']}} href={{scene['linkedPlans']['plan4']['href']}} id="pastille"/>
 					{% endif %}
+					{% if scene['linkexit'] %}
+        			<area shape="circle" coords={{scene['linkexit']['coords']}} alt={{scene['linkexit']['alt']}} href={{scene['linkexit']['href']}} id="exitZone" class="exit-zone"/>
+    				{% endif %}
 					{% if (linkedScene) %}
 						<area shape="circle" coords="379,190,20" alt={{linkedScene['alt']}} href={{linkedScene['href']}} id="pastille"/>
 					{% endif %}
 				</map>
-
-				<div class="Dialogues">
-					<div id="typedtext">
-						{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
-                    </div>
-                </div>
             </div>
-		</div>
-        
-    {# </div> #}
+
+				<p class="Dialogues">
+					{# <div id="typedtext"> #}
+						{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
+                    {# </div> #}
+                </p>
+	</div>
+
 
         <div class="tools">
-            <div class="pseudo">
+            <p class="pseudo">
                {{ user.pseudo }}
-            </div>
+            </p>
+            
+            <p id="timer">
+            </p>
 
-            <div class="timer">
-                60:00
-                <!-- fonction timer -->
-            </div>
 
             <div class="inventory">
             </div>
             
             <div class="indice">
-               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick=togglePopup()> 
+               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick="togglePopup()"> 
             <span class="text-bubble">Indice</span>
         
             </div>
@@ -69,65 +70,26 @@
 				<a href="javascript:void(0)" onclick="togglePopup()" class="popup-exit">❌</a>
 			</div>
 
+		</div>
+
+	</div>
 				{% if (scene['scene1']['hint']) %}
 					<p{{scene['hint']}} id="indice" /p>
 					{% endif %}
 				{% if (scene['scene2']['hint']) %}
 					<p{{scene['hint']}} id="indice" /p>
 					{% endif %}
-		</div>
 
-	</div>
+	{% block javascript %}
+	<script>
+			function togglePopup() {
+                let popup = document.querySelector("#popup");
+				popup.classList.toggle("open");
+			}
+ 
+</script>
 
-			{% block javascript %}
-				<script>
-					function togglePopup() {
-                        let popup = document.querySelector("#popup");
-popup.classList.toggle("open");
-}
-				</script>
-			{% endblock %}
-			{# 
-			    var iIndex = 0; 
-			    var iTextPos = 0;
-			    var aText = {{ scene['dialogues'] ?? "Dialogue par défaut ou message d\'erreur si nécessaire"}}
-			    
-			    var iArrLength = aText[0].length; 
-			    var iScrollAt = 20;
-			    var iRow = 0; 
-			    var sContents = ""; 
-			    var iSpeed = 50;
-			   
-			    // La fonction typewriter() est responsable de faire défiler et afficher le texte sur la page. 
-			    
-			    function typewriter() 
-			    {
-			            sContents = ' ';
-			            iRow = Math.max(0, iIndex - iScrollAt);
-			            var destination = document.getElementById("typedtext");
-			            
-			            while (iRow < iIndex) 
-			            {
-			                sContents += aText[iRow++] + '<br />';
-			            }
-			            destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
-			            if (iTextPos++ == iArrLength) 
-			            {
-			                iTextPos = 0;
-			                iIndex++;
-			                if (iIndex != aText.length) 
-			                {
-			                    iArrLength = aText[iIndex].length;
-			                    setTimeout(typewriter, 500);
-			                }
-			            } else {
-			                setTimeout(typewriter, iSpeed);
-			            }
-			        }
-			
-			    typewriter();
-			
-			    </script>
-			    {% endblock %} #}
+<script src="assets/js/countdown.js" defer></script>
+{% endblock %}
 
-			{% endblock %}
+	{% endblock %}	

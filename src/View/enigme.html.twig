@@ -20,46 +20,10 @@
 			</div>
 		</div>
 
-		<div class="Dialogues">
-			<div id="typedtext"></div>
-			<script>
-				var iIndex = 0;
-                var iTextPos = 0;
-
-                var aText = [
-                    "Oh un tableau électrique ! Je vais pouvoir rallumer la lumière ! Des instructions ont été laissé pour me guider."
-                    ];
-
-                var iArrLength = aText[0].length;
-                var iScrollAt = 20;
-                var iRow = 0;
-                var sContents = "";
-                var iSpeed = 50;
-
-                function typewriter() {
-                sContents = ' ';
-                iRow = Math.max(0, iIndex - iScrollAt);
-                var destination = document.getElementById("typedtext");
-
-                while (iRow < iIndex) {
-                sContents += aText[iRow++] + '<br />';
-                }
-                destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
-                if (iTextPos++ == iArrLength) {
-                iTextPos = 0;
-                iIndex++;
-                if (iIndex != aText.length) {
-                iArrLength = aText[iIndex].length;
-                setTimeout(typewriter, 500);
-                }
-                } else {
-                setTimeout(typewriter, iSpeed);
-                }
-                }
-
-                typewriter();
-			</script>
-		</div>
+		{# <div class="Dialogues"> #}
+			<p class="Dialogues" id="typedtext" data-text={{ scene['dialogues'] }}>
+			</p>
+		{# </div> #}
 	</div>
 
 	<div class="tools">
@@ -82,5 +46,12 @@
 </div>
 
 </body>
+
+{% block javascript %}
+<script>
+</script>
+
+
+{% endblock %}
 
 {% endblock %}

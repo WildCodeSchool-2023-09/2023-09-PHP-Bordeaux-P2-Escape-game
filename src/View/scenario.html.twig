@@ -1,40 +1,40 @@
 {% extends 'layout.html.twig' %} 
 
-{% block title %}Home Page quand on est connecté{% endblock %}
+{% block title %}Page de connexion{% endblock %}
 
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/scenario.css">{% endblock %}
 
 {% block content %}
 
 <div class="pseudo">
-{# Afficher "Hello $pseudo !"#} Hello Jojopok !
+{{ user.pseudo }}
 </div>
 
 <div class="startTuto">
 <img src="/assets/images/Scenario_tuto_mobile.2.png" alt="illustration pour le tuto" href="#" onclick="this.src='/assets/images/Scenario_tuto_mobile.2.png'">
 </div>
 
-<div class="scenarioTitle">
+<p class="scenarioTitle">
 Scénarios
-</div>
+</p>
 
 <span id="game">
 
-<div class="game1">
+<p class="game1">
 <a href="scene"</a><img src="/assets/images/openspace.jpg" alt="illustration du jeu 'échappez vous de la wild'" onmouseover="this.src='/assets/images/escape_wild.png'" onmouseout="this.src='/assets/images/openspace.jpg'">
-</div>
+</p>
 
-<div class="game1"><a href="#"</a>
+<p class="game1"><a href="#"</a>
 <img src="/assets/images/pokemon1.png" alt="illustration du jeu 'Le manoir hanté d'Ectoplasma'"  onmouseover="this.src='/assets/images/pokemon2.png'" onmouseout="this.src='/assets/images/pokemon1.png'">
-</div>
+</p>
 
-<div class="game1"><a href="#"</a>
+<p class="game1"><a href="#"</a>
 <img src="/assets/images/hospital_psychiatric.1.png" alt="illustration du jeu 'Hopital Psyhiatric'" onmouseover="this.src='/assets/images/hospital_psychiatric.2.png'" onmouseout="this.src='/assets/images/hospital_psychiatric.1.png'">
-</div>
+</p>
 
-<div class="game1"><a href="#"</a>
+<p class="game1"><a href="#"</a>
 <img src="/assets/images/haunted_house.1.png" alt="illustration du jeu 'La Maison Hantée'" onmouseover="this.src='/assets/images/haunted_house.2.png'" onmouseout="this.src='/assets/images/haunted_house.1.png'">
-</div>
+</p>
 
 </span>
 

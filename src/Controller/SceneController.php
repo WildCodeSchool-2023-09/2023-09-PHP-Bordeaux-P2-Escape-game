@@ -8,28 +8,26 @@ class SceneController extends AbstractController
 {
     public function sceneEnigme(?string $scene = 'scene1'): string
     {
-        $sceneManager = new SceneManager();
-        // echo "coucou1";
 
-        // Chargez d'abord la scène
-        $sceneData = $sceneManager->getScene($scene);
+    $sceneManager = new SceneManager();
 
-        if (empty($sceneData)) {
-            return $this->twig->render('error/500.html.twig');
-        }
+    // Chargez d'abord la scène
+    $sceneData = $sceneManager->getScene($scene);
 
-        $linkedSceneData = null;
-        if (isset($sceneData['linkedScene'])) {
-            $linkedSceneData = $sceneManager->getScene($sceneData['linkedScene']);
-        }
-
-        // var_dump( $sceneData);
-        return $this->twig->render('scene/scene.html.twig', [
-            'scene' => $sceneData,
-            'linkedScene' => $linkedSceneData,
-        ]);
+    if (empty($sceneData)) {
+        return $this->twig->render('error/500.html.twig');
     }
 
+    $linkedSceneData = null;
+    if (isset($sceneData['linkedScene'])) {
+        $linkedSceneData = $sceneManager->getScene($sceneData['linkedScene']);
+    }
+
+    return $this->twig->render('scene/scene.html.twig', [
+        'scene' => $sceneData,
+        'linkedScene' => $linkedSceneData,
+    ]);
+}
     public function planEnigme(string $scene, string $plan): string
     {
         $sceneManager = new SceneManager();
@@ -47,5 +45,7 @@ class SceneController extends AbstractController
             'scene' => $scene,
             'plan' => $planData,
         ]);
+    
     }
+    
 }
