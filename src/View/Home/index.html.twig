@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/indexConnected.css">
 {% endblock %}
-
+{% block audio %}{% endblock %}
 {% block content %}
 	<div class="bienvenue">
 		<p>
@@ -9,6 +9,7 @@
 			{{"Bienvenue " ~ user.pseudo }}
 		</p>
 	</div>
+
 	<div class="buttons">
 		{% if not user.pseudo is defined %}
 			<button type="button" class="meConnecter">
@@ -32,4 +33,6 @@
 		</button>
 		{% endif %}
 	</div>
+{% block javascript %}
+		{% endblock %}
 {% endblock %}
