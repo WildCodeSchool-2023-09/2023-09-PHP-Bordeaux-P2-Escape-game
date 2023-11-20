@@ -163,10 +163,40 @@ z-index: 1;
     width: 20px;
 } */
 
-.enigma{
+.answers{
     padding: 8px;
     margin-right:8px;
     border-radius: 10px;
+    background-color: #FBFBFB;
 }
 
+.question {
+    text-align: center;
+    width: 100%;
+    border-radius: 15px;
+    padding: 8px;
+    border: solid;
+    background-color:white;
+    width: 400px;
+}
 
+.enigma{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 8px;
+}
+
+.success-message {
+    color: #00ff00; 
+}
+
+.failure-message {
+    color: #ff0000; 
+}
+
+.answers:focus  {
+    background-color: #333; 
+    color: #fff; 
+    outline: none;
+}
