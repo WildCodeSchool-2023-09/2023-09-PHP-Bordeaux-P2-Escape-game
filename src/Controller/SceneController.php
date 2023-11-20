@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\SceneManager;
 use App\Model\UserManager;
+use App\Model\ProgressManager;
 
 class SceneController extends AbstractController
 {
@@ -11,6 +12,7 @@ class SceneController extends AbstractController
     {
         $sceneManager = new SceneManager();
         $userManager = new UserManager();
+        $progressManager = new ProgressManager();
         $sceneData = $sceneManager->getScene($scene);
         $switchPicture = null;
         $switchDialogues = null;
@@ -27,12 +29,8 @@ class SceneController extends AbstractController
             $userScore = $userManager->getUserScore($_SESSION['user_id']);
         }
 
-        // Réinitialisez la réponse après avoir changé de scène
-        // unset($_SESSION['answer']);
-
         if (isset($_SESSION['answer'])) {
             $userAnswer = $_SESSION['answer'];
-            // var_dump($_SESSION);
             if ($userAnswer !== null) {
                 $switchPicture = $sceneData['image'];
             }
@@ -45,6 +43,13 @@ class SceneController extends AbstractController
             if ($keyInventory !== null) {
                 $switchDialogues = $sceneData['dialoguesSuccess'];
             }
+
+        if (isset($_SESSION['answer']) && isset($_SESSION['answer'][$scene]) && $_SESSION['answer'][$scene]) {
+            $userScore = $userManager->getUserScore($_SESSION['user_id']);
+            $userScore += 10;
+            $userManager->updateUserScore($_SESSION['user_id'], $userScore);
+            $progressManager->recordCorrectAnswer($_SESSION['user_id']);
+            unset($_SESSION['answer'][$scene]);
         }
 
         return $this->twig->render('scene/scene.html.twig', [
@@ -61,14 +66,8 @@ class SceneController extends AbstractController
     {
         $sceneManager = new SceneManager();
         $userManager = new UserManager();
-
+        $progressManager = new ProgressManager();
         $planData = $sceneManager->getPlan($scene, $plan);
-        $result = null;
-
-        if (isset($_SESSION['answer']["$scene-$plan"])) {
-            header("Location: /scene?scene=$scene&message=" . $planData['validated']);
-            exit();
-        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['inventory_item'])) {
@@ -79,7 +78,6 @@ class SceneController extends AbstractController
                 }
                 $_SESSION['inventory'][] = $inventoryItem;
 
-
                 if ($scene === 'scene1' && $plan === 'plan2') {
                     header("Location: /win");
                     exit();
@@ -87,50 +85,91 @@ class SceneController extends AbstractController
             }
         }
 
-        // enigme
-        $result = $this->enigmaResolution($scene, $plan, $planData);
+        $result = $this->processEnigmaAnswer($scene, $plan, $planData, $userManager, $progressManager);
 
         if (empty($planData)) {
             return $this->twig->render('error/500.html.twig');
         }
+
         $userScore = null;
         if (isset($_SESSION['user_id'])) {
             $userScore = $userManager->getUserScore($_SESSION['user_id']);
         }
 
+        $this->processCorrectAnswer($scene, $plan, $userScore, $userManager, $progressManager);
+
         return $this->twig->render('Plan/plan.html.twig', [
             'scene' => $scene,
             'plan' => $planData,
             'userScore' => $userScore,
-            'result' => $result,
+            'result' => $result
         ]);
     }
 
-    private function enigmaResolution(string $scene, string $plan, array $planData): ?array
-    {
-        $result = null;
+    private function processEnigmaAnswer(
+        string $scene,
+        string $plan,
+        array $planData,
+        UserManager $userManager,
+        ProgressManager $progressManager
+    ): array {
+        $result = [];
 
-        if (isset($planData['enigma'])) {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $goodIndex = $planData['enigma']['goodIndex'];
-                $answer = $planData['enigma']['answers'][$goodIndex];
-                $answer = str_replace(' ', '_', $answer);
+        if (isset($_SESSION['answer']["$scene-$plan"])) {
+            $location = "/scene?scene=$scene&message=" . $planData['validated'];
+            header("Location: $location");
+            exit();
+        }
 
-                if (isset($_POST[$answer])) {
-                    $_SESSION['answer']["$scene-$plan"] = true;
+        $progressManager = new ProgressManager();
 
-                    $result = [
-                        'success' => true,
-                        'goodIndex' => $goodIndex
-                    ];
-                } else {
-                    $result = [
-                        'success' => false,
-                        'goodIndex' => $goodIndex
-                    ];
-                }
+        if (isset($planData['enigma']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+            $goodIndex = $planData['enigma']['goodIndex'];
+            $answer = $planData['enigma']['answers'][$goodIndex];
+            $answer = str_replace(' ', '_', $answer);
+
+            $userScore = isset($_SESSION['user_id']) ? $userManager->getUserScore($_SESSION['user_id']) : null;
+
+            if (isset($_POST[$answer])) {
+                $_SESSION['answer']["$scene-$plan"] = true;
+                $_SESSION['key'] = true;
+                $result = ['success' => true, 'goodIndex' => $goodIndex];
+            } else {
+                $result = ['success' => false, 'goodIndex' => $goodIndex];
+                $this->processIncorrectAnswer($userScore, $userManager, $progressManager);
             }
         }
+
         return $result;
+    }
+
+    private function processIncorrectAnswer(
+        ?int $userScore,
+        UserManager $userManager,
+        ProgressManager $progressManager
+    ): void {
+
+        if ($userScore !== null) {
+            $userScore -= 5;
+            $userManager->updateUserScore($_SESSION['user_id'], $userScore);
+            $progressManager->recordIncorrectAnswer($_SESSION['user_id']);
+        }
+    }
+
+    private function processCorrectAnswer(
+        string $scene,
+        string $plan,
+        ?int &$userScore,
+        UserManager $userManager,
+        ProgressManager $progressManager
+    ): void {
+
+        if (isset($_SESSION['answer']["$scene-$plan"]) && $_SESSION['answer']["$scene-$plan"]) {
+            $userScore = $userManager->getUserScore($_SESSION['user_id']);
+            $userScore += 5;
+            $userManager->updateUserScore($_SESSION['user_id'], $userScore);
+            $progressManager->recordCorrectAnswer($_SESSION['user_id']);
+            unset($_SESSION['answer']["$scene-$plan"]);
+        }
     }
 }
