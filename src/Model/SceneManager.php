@@ -87,7 +87,7 @@ class SceneManager extends AbstractManager
                     'coords' => "349,75,10",
                     'href' => "/plan?scene=scene2&plan=plan2",
                     'alt' => "une armoire fermée",
-                    'dialogues' => "", //L'enigme est affichée pas de dialogue à ajouter
+                    'dialogues' => "Tiens, une énigme !", //L'enigme est affichée pas de dialogue à ajouter
                     'dialoguesSuccess' => "Bravo ! Ce mot va peut être m'être utile pour la suite ..." . " Ordinateur ",
                     'image' => '/assets/images/armoireDroite.png ',
                     'linkRetour' => '/scene?scene=scene2',
@@ -135,6 +135,7 @@ class SceneManager extends AbstractManager
                     'name' => 'ArmoireDeGauche',
                     'coords' => "122,75,10",
                     'coordsKey' => "268,148,20",
+                    'imagekey' => '/assets/images/cle.png',
                     'href' => "/plan?scene=scene2&plan=plan4",
                     'alt' => "une armoire fermée par un cadenas",
                     'dialogues' => "On dirait que je peux entrer un code...",
