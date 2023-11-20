@@ -70,7 +70,9 @@
 				</form> 
 			</div> 
 		{% endif %} 
-
+	<div class="pseudo">
+               {{ user.pseudo }} - {{ userScore }}
+            </div>
 			<div class="timer"> 
 				60:00 
 				<!-- fonction timer --> 
@@ -89,14 +91,14 @@
 			</div> 
 		</div> 
 	</div> 
-{% endblock %} 
+
 			
         <div class="tools">
             <div class="pseudo">
             {{ user.pseudo }}
             </div>
 
-
+{% endblock %} 
   {# {% block javascript %}  #}
 
  	{# <script> #}
