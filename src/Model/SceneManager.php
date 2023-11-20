@@ -14,12 +14,10 @@ class SceneManager extends AbstractManager
             'name' => "couloir",
             'dialogues' => "Il n’y a plus de lumière, je ne vois plus rien! 
             Comment faire ? Il doit bien y avoir une solution pour rallumer la lumière.",
-            'image' => ' /assets/images/1_Scene1_light-off.png ',
-            'image_light' => '/assets/images/Scene1_light-on.png',
+            'image' => ' /assets/images/Scene1_light-on.png ',
             'image_desktop' => '',
             'image_desktop-light' => '',
             'dialoguesSuccess' => "Je vais pouvoir aller dans l'open-space !",
-            'image' => '/assets/images/Scene1_light-on.png',
             'image_dark' => '/assets/images/1_Scene1_light-off.png ',
             'href' => "/scene?scene=scene1",
             'alt' => "Pièce sombre et non éclairée",
@@ -136,10 +134,8 @@ class SceneManager extends AbstractManager
                     'dialogues' => "On dirait que je peux indiquer un mot de passe ...",
                     'dialoguesSuccess' => "Ca y est bien joué ! Que vais-je pouvoir faire des ces chiffres ?",
                     'image' => '/assets/images/ordinateur.png ', // Ordinateur demandant le code
-                    'image2' => ' ', // Ordinateur affiche code
                     'image_desktop' => '',
                     'image2_desktop' => '',
-                    'image' => '/assets/images/ordinateur.png ', // Ordinateur demandant le code (formulaire)
                     'image2' => ' /assets/images/ordinateur-code-affiche.png',
                     'linkRetour' => '/scene?scene=scene2',
                     'validated' => "le code 5426 est apparu à l'écran ",
@@ -156,11 +152,9 @@ class SceneManager extends AbstractManager
                     'hint' => "Le mot de passe est celui obtenu dans l'énigme de l'armoire de droite.",
                 ],
                 'plan4' => [
-                    'name' => 'armoireDeGauche',
                     'coords' => "122,75,10",
-                    'coords_desktop' => '',
                     'name' => 'ArmoireDeGauche',
-                    'coords' => "122,75,10",
+                    'coords_desktop' => '',
                     'coordsKey' => "268,148,20",
                     'href' => "/plan?scene=scene2&plan=plan4",
                     'alt' => "une armoire fermée par un cadenas",
