@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-
+	
 		{% if (plan['name'] == 'Ordinateur') and result.success %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% elseif (plan['name'] == 'ArmoireDeGauche') and result.success %}
@@ -47,14 +47,14 @@
 				<p>{{plan.enigma.question}}</p> 
 				<form method="post" class="answer"> 
 				{% for question in plan.enigma.answers %} 
-					<label for="{{ question }}">{{ question }} </label> 
-					<input name="{{ question }}" type="submit" value="✔️" id="{{ question }}" /> 
+					<label for="{{ question }}"></label> 
+					<input class="enigma" name="{{ question }}" type="submit" value="{{ question }}" id="{{ question }}" /> 
 				{% endfor %} 
 				</form> 
 			</div> 
 		{% endif %} 
 	<div class="pseudo">
-               {{ user.pseudo }} - {{ userScore }}
+               {{ user.pseudo }} : {{ userScore }}
             </div>
 			<div class="timer"> 
 				60:00 
