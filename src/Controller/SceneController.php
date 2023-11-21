@@ -52,7 +52,6 @@ class SceneController extends AbstractController
             'message' => $message,
             'userScore' => $userScore,
         ]);
-    
     }
 
 
@@ -151,6 +150,4 @@ class SceneController extends AbstractController
             unset($_SESSION['answer']["$scene-$plan"]);
         }
     }
-
-
 }
