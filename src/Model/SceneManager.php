@@ -94,7 +94,7 @@ class SceneManager extends AbstractManager
                     'image' => '/assets/images/postIt.png',
                     'image_desktop' => '',
                     'linkRetour' => '/scene?scene=scene2',
-                    'validated' => "Juste une note",
+                    'validated' => "Juste une note !",
                     'hint' => "Retourne à la scène 2 et clique sur les autres pastilles.",
                 ],
                 'plan2' => [
@@ -108,7 +108,7 @@ class SceneManager extends AbstractManager
                     'image' => '/assets/images/armoireDroite.png ',
                     'image_desktop' => '',
                     'linkRetour' => '/scene?scene=scene2',
-                    'validated' => "J'ai trouvé le mot : Ordinateur ",
+                    'validated' => "J'ai trouvé le mot : Ordinateur !",
                     'enigma' => [
                         'question' => "Je ne suis pas humain. 
                         Animal non plus, même si une partie de moi en porte le nom. 
@@ -138,7 +138,7 @@ class SceneManager extends AbstractManager
                     'image2_desktop' => '',
                     'image2' => ' /assets/images/ordinateur-code-affiche.png',
                     'linkRetour' => '/scene?scene=scene2',
-                    'validated' => "le code 5426 est apparu à l'écran ",
+                    'validated' => "le code 5426 est apparu à l'écran ! ",
                     'enigma' => [
                         'question' => "Quel est le mot de passe ?",
                         'answers' => [
@@ -169,7 +169,7 @@ class SceneManager extends AbstractManager
                     'image2' => ' /assets/images/armoireGauche-openedKey.png',
                     'image3' => ' /assets/images/armoire_gauche_open.jpg',
                     'linkRetour' => '/scene?scene=scene2',
-                    'validated' => "j'ai trouvé une clé ici",
+                    'validated' => "j'ai trouvé une clé ici !",
                     'enigma' => [
                         'question' => "Quel est le code ?",
                         'answers' => [

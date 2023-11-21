@@ -34,6 +34,7 @@
     .inscription>h2{
         font-size: 3rem;
         margin-left: 140px;
+        margin-bottom: 20px;
     }
 }
 .error-messages{
@@ -112,11 +113,11 @@ input{
     align-items: center;
 }
 
-@media screen and (min-width:600px){
+/* @media screen and (min-width:600px){
     .buttonInscription{
         margin: 6rem;
     }
-}
+} */
 
 .buttonStyle{
     background-color: var(--secondary-background-color);
