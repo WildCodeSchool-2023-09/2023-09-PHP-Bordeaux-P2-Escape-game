@@ -15,13 +15,13 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }    
 
-.pseudo {
+ .pseudo {
     padding: 15%;
     height: 15%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
+} 
 
 
 .joueur {
@@ -73,13 +73,13 @@ body {
    @media all and ( min-width: 700px)  
 
  {    
- .pseudo {
+  .pseudo {
         padding: 5%;
         height: 5%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    }
+    } 
     
 .joueur {
         padding: 5px;

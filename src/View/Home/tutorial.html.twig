@@ -32,11 +32,11 @@ tour.addStep({
     on: 'bottom'    
   },
   title: 'Vous êtes sur la scene 1',
-  text: `Regarder bien partout des indices peuvent s'y cachés`,
+  text: `Regarde bien partout des indices peuvent s'y cacher`,
   
   buttons: [
     {
-      text: 'Next',
+      text: 'Suivant',
       action: tour.next
     }
   ],
@@ -49,20 +49,20 @@ tour.addStep({
     on: 'bottom'    
   },
   title: 'Pseudo',
-  text: `Ici s'affichera votre pseudo`,
+  text: `Ici s'affiche votre pseudo`,
   
   buttons: [
     {
       action() {
         return this.back();
       },
-            text: 'Back'
+            text: 'Retour'
     },
     {
       action() {
         return this.next();
       },
-      text: 'Next'
+      text: 'Suivant'
     }
   ],
 });
@@ -81,13 +81,13 @@ tour.addStep({
       action() {
         return this.back();
       },
-            text: 'Back'
+            text: 'Retour'
     },
     {
       action() {
         return this.next();
       },
-      text: 'Next'
+      text: 'Suivant'
     }
   ],
 });
@@ -106,14 +106,14 @@ tour.addStep({
       action() {
         return this.back();
       },
-            text: 'Back'
+            text: 'Retour'
     },
 
     {
       action() {
         return this.next();
       },
-      text: 'Next'
+      text: 'Suivant'
     }
   ],
 });
@@ -125,16 +125,23 @@ tour.addStep({
     on: 'bottom'    
   },
   title: 'Indices',
-  text: `Clickez si vous êtes blocker`,
+  text: `Clickez si vous êtes bloqué`,
   
   buttons: [
     {
       action() {
         return this.back();
       },
-            text: 'Back'
+            text: 'Retour'
     },
     
+    {
+      action() {
+        return this.next();
+      },
+      text: 'Femer'
+    },
+
   ],
 });
 
