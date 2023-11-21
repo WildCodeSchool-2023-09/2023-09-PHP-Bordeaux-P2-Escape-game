@@ -44,7 +44,8 @@
         {% endif %}
         <div class="formInscription">
         <label for="password">Mot de passe :</label>
-        <input type="password" name="password" id="password" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}">
+        <input type="password" name="password" id="password" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-]).{8,}"
+        title="Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial, avec une longueur minimale de 8 caractères.">
         </div>
         <span class="textPattern" id="afficher" > Minimum 8 caractères, une lettre en Maj, une lettre en min, un chiffre et un caractère spécial.</span>
         <div class="buttonInscription">

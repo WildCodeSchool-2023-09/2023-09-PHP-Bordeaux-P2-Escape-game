@@ -166,7 +166,8 @@ class SceneController extends AbstractController
         $failureMessage = null;
 
         if (isset($result['success']) && $result['success']) {
-            $successMessage = "Bonne réponse !";
+            $decodedMessage = "ET BOUM ! <br> Bonne réponse !";
+            $successMessage = html_entity_decode($decodedMessage);
         } elseif (isset($result['success']) && $result['success'] === false) {
             $failureMessage = "Raté !";
         }
