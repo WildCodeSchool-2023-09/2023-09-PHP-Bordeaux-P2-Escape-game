@@ -3,8 +3,9 @@
 {% block title %}Page de connexion{% endblock %}
 
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/scenario.css">{% endblock %}
-
+{% block audio %}{% endblock %}
 {% block content %}
+
 
 <p class="pseudo-scenario">
 {{ user.pseudo }} </p>
@@ -33,5 +34,9 @@
 </p>
 
 </span>
+
+{% block javascript %}<script src="assets/js/navbar.js" defer></script>
+		{% endblock %}
+
 
 {% endblock %}
