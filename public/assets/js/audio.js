@@ -1,3 +1,5 @@
+/*
+
 // audio.js
 
 // Variable globale pour stocker la position de lecture
@@ -32,3 +34,5 @@ function initAudio() {
 
 // Appeler la fonction d'initialisation lorsque la page est chargée
 window.addEventListener("load", initAudio);
+
+*/
