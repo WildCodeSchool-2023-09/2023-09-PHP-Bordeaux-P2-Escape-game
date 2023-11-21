@@ -49,7 +49,7 @@ class InscriptionController extends AbstractController
 
     public function verifyUnicity(string $email, string $pseudo): bool
     {
-        $pdo = new PDO('mysql:host=' . APP_DB_HOST . ';dbname=' . APP_DB_NAME, APP_DB_USER, APP_DB_PASSWORD);
+        $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
 
         $query = $pdo->prepare("SELECT * FROM user WHERE email = :email OR pseudo = :pseudo");
         $query->execute(['email' => $email, 'pseudo' => $pseudo]);
