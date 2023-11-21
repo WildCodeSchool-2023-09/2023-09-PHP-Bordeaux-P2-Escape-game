@@ -59,8 +59,8 @@ class SceneController extends AbstractController
             'switchDialogues' => $switchDialogues,
         ]);
     }
-  
- public function planEnigme(string $scene, string $plan): string
+
+    public function planEnigme(string $scene, string $plan): string
     {
 
         $sceneManager = new SceneManager();
@@ -174,4 +174,3 @@ class SceneController extends AbstractController
         return ['successMessage' => $successMessage, 'failureMessage' => $failureMessage];
     }
 }
-

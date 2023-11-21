@@ -44,12 +44,8 @@ class UserController extends AbstractController
     {
         unset($_SESSION['user_id']);
         unset($_SESSION['answer']);
-        return $this->twig->render('Home/login.html.twig');
-      
-            unset($_SESSION['user_id']);
-            unset($_SESSION['answer']);
-            unset($_SESSION['key']);
-            header('Location: /');
+        unset($_SESSION['key']);
+        header('Location: /');
 
         // header('Location: /');
     }
