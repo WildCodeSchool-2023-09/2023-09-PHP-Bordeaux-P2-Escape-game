@@ -3,8 +3,9 @@
 {% block title %}Home Page quand on est connecté{% endblock %}
 
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/scenario.css">{% endblock %}
-
+{% block audio %}{% endblock %}
 {% block content %}
+
 
 <div class="pseudo">
 {# Afficher "Hello $pseudo !"#} Hello Jojopok !
@@ -38,5 +39,9 @@ Scénarios
 </div>
 
 </span>
+
+{% block javascript %}<script src="assets/js/navbar.js" defer></script>
+		{% endblock %}
+
 
 {% endblock %}
