@@ -12,11 +12,6 @@
     font-weight: bold;
 }    
 
-.startTuto {
-    margin-top: 2rem;
-}
-
-
 .scenarioTitle {
     font-family: "Jockey One";
     font-size: 40px;
@@ -25,12 +20,24 @@
     margin-top: 1.5rem;
 }
 
+.startTuto {
+    margin-top: 2rem;
+}
+
+
 #game {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 1rem;
+}
+img, .startTuto>img, .game1 {
+    width: 10rem;
+    height: 6rem;
+    border-radius: 15%;
+    position: relative;
+    overflow: hidden;
 }
 
  .game1>img {
@@ -41,7 +48,7 @@
      overflow: hidden;
  }
  
-img{
+  img, .game1>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -49,7 +56,7 @@ img{
     border-radius: 15%;
 }
 
-img:hover {
+img:hover{
     -ms-transform: scale(1.1);
     --webkit-animation: scale(1.1);
     transform: scale(1.1);  

@@ -52,9 +52,13 @@ class SceneController extends AbstractController
             'message' => $message,
             'userScore' => $userScore,
         ]);
+    
     }
+
+
     public function planEnigme(string $scene, string $plan): string
     {
+
         $sceneManager = new SceneManager();
         $userManager = new UserManager();
         $progressManager = new ProgressManager();
@@ -77,7 +81,7 @@ class SceneController extends AbstractController
             'scene' => $scene,
             'plan' => $planData,
             'userScore' => $userScore,
-            'result' => $result
+            'result' => $result,
         ]);
     }
 
@@ -147,4 +151,6 @@ class SceneController extends AbstractController
             unset($_SESSION['answer']["$scene-$plan"]);
         }
     }
+
+
 }
