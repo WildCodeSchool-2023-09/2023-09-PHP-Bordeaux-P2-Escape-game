@@ -24,7 +24,9 @@
 		{% block navbar %}
 			{% include 'Home/navbar.html.twig' %}
 		{% endblock %}
-
+<audio controls id="myAudio">
+        <source src="/assets/song/musique.mp3" type="audio/mp3">
+    </audio>
 		{% block content %} {% endblock %}
 {# 	
 		{% block footer %}
@@ -33,6 +35,6 @@
 		
 
 		{% block javascript %}<script src="assets/js/navbar.js" defer></script>{% endblock %}
-	
+		<script src="assets/js/audio.js" defer></script>
 	</body>
 </html>

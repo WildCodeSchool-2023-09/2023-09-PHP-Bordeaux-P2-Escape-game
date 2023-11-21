@@ -46,20 +46,29 @@
 				{% endif %} 
 			</div> 
 		</div> 
-		
+	
 		{% if plan.enigma is defined %} 
-			<div > 
-				<p>{{plan.enigma.question}}</p> 
+			{% if successMessage is defined %}
+				<div class="success-message">{{ successMessage }}</div>
+			{% endif %}
+
+			{% if failureMessage is defined %}
+				<div class="failure-message">{{ failureMessage }}</div>
+			{% endif %}
+
+			<div class="enigma"> 
+				<p class="question">{{plan.enigma.question}}</p> 
 				<form method="post" class="answer"> 
 				{% for question in plan.enigma.answers %} 
 					<label for="{{ question }}"></label> 
-					<input class="enigma" name="{{ question }}" type="submit" value="{{ question }}" id="{{ question }}" /> 
+					<input class="answers" name="{{ question }}" type="submit" value="{{ question }}" id="{{ question }}" /> 
 				{% endfor %} 
 				</form> 
 			</div> 
 		{% endif %} 
 
-	<div class="tools">	
+
+<div class="tools">	
 	<div class="pseudo">
                {{ user.pseudo }} : {{ userScore }}
             </div>

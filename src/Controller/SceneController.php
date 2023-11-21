@@ -70,6 +70,7 @@ class SceneController extends AbstractController
         $planData = $sceneManager->getPlan($scene, $plan);
 
         $result = $this->processEnigmaAnswer($scene, $plan, $planData, $userManager, $progressManager);
+        $messages = $this->getEnigmaResultMessages($result);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['inventory_item'])) {
@@ -79,7 +80,6 @@ class SceneController extends AbstractController
                     $_SESSION['inventory'] = [];
                 }
                 $_SESSION['inventory'][] = $inventoryItem;
-
 
                 if ($scene === 'scene1' && $plan === 'plan2') {
                     header("Location: /win");
@@ -101,6 +101,8 @@ class SceneController extends AbstractController
             'plan' => $planData,
             'userScore' => $userScore,
             'result' => $result,
+            'successMessage' => $messages['successMessage'],
+            'failureMessage' => $messages['failureMessage'],
         ]);
     }
     private function processEnigmaAnswer(
@@ -123,7 +125,7 @@ class SceneController extends AbstractController
             $userScore = isset($_SESSION['user_id']) ? $userManager->getUserScore($_SESSION['user_id']) : null;
             if (isset($_POST[$answer])) {
                 $_SESSION['answer']["$scene-$plan"] = true;
-                $_SESSION['key'] = true;
+                // $_SESSION['key'] = true;
                 $result = ['success' => true, 'goodIndex' => $goodIndex];
             } else {
                 $result = ['success' => false, 'goodIndex' => $goodIndex];
@@ -158,5 +160,18 @@ class SceneController extends AbstractController
         }
     }
 
+}
+    private function getEnigmaResultMessages(array $result): array
+    {
+        $successMessage = null;
+        $failureMessage = null;
 
+        if (isset($result['success']) && $result['success']) {
+            $successMessage = "Bonne réponse !";
+        } elseif (isset($result['success']) && $result['success'] === false) {
+            $failureMessage = "Raté !";
+        }
+
+        return ['successMessage' => $successMessage, 'failureMessage' => $failureMessage];
+    }
 }
