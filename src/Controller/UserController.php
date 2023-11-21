@@ -37,14 +37,16 @@ class UserController extends AbstractController
             $errors = [];
         }
 
-        return $this->twig->render('Home/login.html.twig');
+        return $this->twig->render('Home/login.html.twig', ['errors' => $errors]);
     }
 
     public function logout()
     {
-            unset($_SESSION['user_id']);
-            unset($_SESSION['answer']);
-        return $this->twig->render('Home/login.html.twig');
+        unset($_SESSION['user_id']);
+        unset($_SESSION['answer']);
+        unset($_SESSION['key']);
+        header('Location: /');
+
         // header('Location: /');
     }
 

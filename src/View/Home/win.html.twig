@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}You Loose{% endblock %}
+{% block title %}You Win{% endblock %}
 
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/win.css">{% endblock %}
 
@@ -9,9 +9,8 @@
  <main>
 
     <div class="pseudo">
-        {# <span class="joueur">PLAYER</span>
-        <span class="chrono">60:00</span> #}
-        {{ user.pseudo }} - {{ userScore }}
+        {{ user.pseudo }} - {{ userScore }}</span>
+        <span class="chrono">60:00</span>
     </div>
 
     <div class="gif">
@@ -25,6 +24,8 @@
         {# <p>score : <span id="score">18</span></p> #}
         <h2>Undex used</h2> 
         {# <button id="replayButton">TRY AGAIN</button> #}
+    <div class="loose">
+        <p>score : <span id="score">{{ userScore }}</span></p>
     </div>
 
  </main>  

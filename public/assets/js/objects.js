@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
     const keyArea = document.querySelector('#keyArea');
     const inventory = document.querySelector('.inventory');
 
@@ -8,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Si des données d'inventaire sont stockées, les mettre à jour dans la classe "inventory"
     if (storedInventory) {
         inventory.innerHTML = storedInventory;
-        // Requête fetch pour envoyer les données au serveur
         updateInventoryOnServer(storedInventory);
     }
 
