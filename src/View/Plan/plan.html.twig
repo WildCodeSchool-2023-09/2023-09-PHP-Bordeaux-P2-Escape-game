@@ -8,19 +8,15 @@
 
 {% block content %}
 
-<div class="container">
-		<div class="ImgD">	
-            <div class="Image">
-
 <div class="ImgDialogues">
 	<div class="ImageLightOff">
 
 		{# <img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage"> #}
+
 		{% if (plan['name'] == 'Ordinateur') and result.success %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% elseif (plan['name'] == 'ArmoireDeGauche') and result.success %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
-			{# <area shape="circle" coords={{plan['coordsKey']}} alt={{plan['alt']}} href={{plan['linkRetour']}}    #}
 		{% else %}
                     <img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% endif %}
@@ -31,18 +27,11 @@
 				<area shape="circle" coords="31,199,20" alt={{plan['alt']}} href={{plan['linkRetour']}} {# id="pastille" #}/>
 			{% endif %}
 			{% if (plan['image2']) %}
-			{# a finir #}
-				<form action="/set-key-object" method="post">
-					<input type="hidden" name="keyObject" value="clé">
-					<area shape="circle" coords={{plan['coordsKey']}} alt={{plan['alt']}} href={{plan['linkRetour']}} >
-
-					{% if form_submitted_successfully %}
-						<img src="/assets/images/cle.png" alt="clé" />
-					{% endif %}
-				</form>
+				<area id="keyArea" class="key" data-key-id="unique_key_id" shape="circle" coords="{{plan['coordsKey']}}" alt="{{plan['alt']}}" href="{{plan['linkRetour']}}">
 			{% endif %}
-			</map> 
-		</div> 
+
+		</map> 
+		 
 		<div class="Dialogues"> 
 			<div id="typedtext"> 
 				{% if plan['name'] == 'Eleccompteur' and result.success %} 
@@ -57,13 +46,14 @@
 				{% endif %} 
 			</div> 
 		</div> 
+		
 		{% if plan.enigma is defined %} 
 			<div > 
 				<p>{{plan.enigma.question}}</p> 
 				<form method="post" class="answer"> 
 				{% for question in plan.enigma.answers %} 
-					<label for="{{ question }}">{{ question }} </label> 
-					<input name="{{ question }}" type="submit" value="✔️" id="{{ question }}" /> 
+					<label for="{{ question }}"></label> 
+					<input class="enigma" name="{{ question }}" type="submit" value="{{ question }}" id="{{ question }}" /> 
 				{% endfor %} 
 				</form> 
 			</div> 
@@ -71,16 +61,14 @@
 
 	<div class="tools">	
 	<div class="pseudo">
-               {{ user.pseudo }} - {{ userScore }}
+               {{ user.pseudo }} : {{ userScore }}
             </div>
 
 			<p id="timer">
             </p>
 			
 			<div class="inventory"> 
-				{% if plan['name'] == 'ArmoireDeGauche' and result.success %}
-                <img src="/assets/images/cle.png" alt="clé" />
-            {% endif %}
+
 			</div> 
 			
 			 <div class="indice">
@@ -111,3 +99,8 @@
         {% endblock %}
 
 {% endblock %}
+
+{% block javascript %}
+	<script src="assets/js/objects.js" defer></script>
+{% endblock %}
+

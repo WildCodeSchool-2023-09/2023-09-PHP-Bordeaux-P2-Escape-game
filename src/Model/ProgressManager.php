@@ -31,7 +31,7 @@ class ProgressManager extends AbstractManager
 
         // Si il il y a un user, augmente les points.
         if ($statement->rowCount() > 0) {
-            $query = "UPDATE " . static::TABLE . " SET success = 1, score = score + 10 WHERE user_id = :userId";
+            $query = "UPDATE " . static::TABLE . " SET success = 1, score = score + 0 WHERE user_id = :userId";
             $statement = $pdo->prepare($query);
             $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
             $statement->execute();

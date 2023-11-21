@@ -230,3 +230,14 @@ z-index: 1;
     visibility: visible;
     opacity: 1;
     }
+
+/* .key {
+    width: 20px;
+} */
+
+.enigma{
+    padding: 8px;
+    margin-right:8px;
+    border-radius: 10px;
+}
+
