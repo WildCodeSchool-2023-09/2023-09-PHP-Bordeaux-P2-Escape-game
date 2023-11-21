@@ -9,8 +9,8 @@
  <main>
 
     <div class="pseudo">
-        {{ user.pseudo }} - {{ userScore }}</span>
-        <span class="chrono">60:00</span>
+        </span>
+        <span class="chrono">{{ user.pseudo }} : {{ userScore }} points</span>
     </div>
 
     <div class="gif">
@@ -22,12 +22,8 @@
     <div class="win">
         
         {# <p>score : <span id="score">18</span></p> #}
-        <h2>Undex used</h2> 
         {# <button id="replayButton">TRY AGAIN</button> #}
     <div class="loose">
-        <p>score : <span id="score">{{ userScore }}</span></p>
-    </div>
-
  </main>  
 
 {% endblock %}
