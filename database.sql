@@ -1,9 +1,9 @@
 -- SQLBook: Code
-DROP DATABASE IF EXISTS 2023_09_PHP_Bordeaux_P2_Escape_game;
+DROP DATABASE IF EXISTS escapegame;
 
-CREATE DATABASE 2023_09_PHP_Bordeaux_P2_Escape_game;
+CREATE DATABASE escapegame;
 
-USE 2023_09_PHP_Bordeaux_P2_Escape_game;
+USE escapegame;
 
 
 CREATE TABLE enigma (
