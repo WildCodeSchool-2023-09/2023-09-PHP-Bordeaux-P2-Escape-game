@@ -11,7 +11,7 @@
 
 
 {% if message is not null %}
-	<div>
+	<div class="topMessage">
 		{{ message }}
 	</div>
 {% endif %}
@@ -19,7 +19,6 @@
 
 <div class="ImgDialogues">
 	<div class="ImageLightOff">
-
 
 		{% if (switchPicture is not null) or (scene['name'] == 'bureau') %}
 			<img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage">

@@ -49,7 +49,7 @@
 	
 		{% if plan.enigma is defined %} 
 			{% if successMessage is defined %}
-				<div class="success-message">{{ successMessage }}</div>
+				<div class="success-message"> {{ successMessage|raw }} </div>
 			{% endif %}
 
 			{% if failureMessage is defined %}
