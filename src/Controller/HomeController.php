@@ -17,9 +17,9 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/win.html.twig');
     }
 
-    public function loose(): string
+    public function lose(): string
     {
-        return $this->twig->render('Home/loose.html.twig');
+        return $this->twig->render('Home/lose.html.twig');
     }
 
     public function tutorial(): string
