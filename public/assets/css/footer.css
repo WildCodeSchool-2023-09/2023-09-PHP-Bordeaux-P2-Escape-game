@@ -1,4 +1,4 @@
-footer {
+.footer{
     display: flex;
     justify-content: space-between;
     background-color: var(--background-color);
@@ -6,6 +6,8 @@ footer {
     /* border-radius:15px 15px 0% 0% ; */
     width: 100%;
     align-items: center;
+    /* position: absolute; */
+    bottom: 0;
   }
 
 .copyright {

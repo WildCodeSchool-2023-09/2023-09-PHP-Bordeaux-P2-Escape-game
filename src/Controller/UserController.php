@@ -42,10 +42,11 @@ class UserController extends AbstractController
 
     public function logout()
     {
-            unset($_SESSION['user_id']);
-            unset($_SESSION['answer']);
-            unset($_SESSION['key']);
-            header('Location: /');
+        unset($_SESSION['user_id']);
+        unset($_SESSION['answer']);
+        unset($_SESSION['key']);
+        header('Location: /');
+
         // header('Location: /');
     }
 

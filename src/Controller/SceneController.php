@@ -10,6 +10,7 @@ class SceneController extends AbstractController
 {
     public function sceneEnigme(?string $scene = 'scene1', ?string $message = null): string
     {
+
         $sceneManager = new SceneManager();
         $userManager = new UserManager();
         // $progressManager = new ProgressManager();
@@ -58,8 +59,10 @@ class SceneController extends AbstractController
             'switchDialogues' => $switchDialogues,
         ]);
     }
+
     public function planEnigme(string $scene, string $plan): string
     {
+
         $sceneManager = new SceneManager();
         $userManager = new UserManager();
         $progressManager = new ProgressManager();
@@ -155,6 +158,8 @@ class SceneController extends AbstractController
             $progressManager->recordCorrectAnswer($_SESSION['user_id']);
         }
     }
+
+
     private function getEnigmaResultMessages(array $result): array
     {
         $successMessage = null;

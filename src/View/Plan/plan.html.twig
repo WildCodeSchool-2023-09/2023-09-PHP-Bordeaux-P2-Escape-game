@@ -7,13 +7,18 @@
 {% endblock %}
 
 {% block content %}
-	
+
+<div class="ImgDialogues">
+	<div class="ImageLightOff">
+
+		{# <img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage"> #}
+
 		{% if (plan['name'] == 'Ordinateur') and result.success %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% elseif (plan['name'] == 'ArmoireDeGauche') and result.success %}
 			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% else %}
-			<img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage">
+                    <img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage">
 		{% endif %}
 
 		<map name={{plan['name']}}>
@@ -62,33 +67,46 @@
 			</div> 
 		{% endif %} 
 
+
+<div class="tools">	
 	<div class="pseudo">
                {{ user.pseudo }} : {{ userScore }}
             </div>
-			<div class="timer"> 
-				60:00 
-				<!-- fonction timer --> 
-			</div> 
+
+			<p id="timer">
+            </p>
 			
 			<div class="inventory"> 
 
 			</div> 
 			
-			<div class="indice"> 
-				<img src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" 
-					onmouseover="this.src='/assets/images/ampoule_color.png'" 
-					onmouseout="this.src='/assets/images/ampoule_bw.png'"/> 
-			</div> 
-		</div> 
-	</div> 
-
-        <div class="tools">
-            <div class="pseudo">
-            {{ user.pseudo }}
+			 <div class="indice">
+               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick="togglePopup()"> 
+            <span class="text-bubble">Indice</span>
+        
             </div>
 
+        <div id="popup">
+            <div class="popup-content">
+            	<h2>INDICE 💡</h2>
+				{% if plan['hint'] %}
+            		<p>{{ plan['hint'] }}</p>
+        		{% endif %}				
+				<a href="javascript:void(0)" onclick="togglePopup()" class="popup-exit">❌</a>
+			</div>
+		</div>
+
+		{% block javascript %}
+                <script> 
+                    function togglePopup() {
+                    let popup = document.querySelector("#popup");
+                    popup.classList.toggle("open");
+                    }
+                </script>
+				
+				<script src="assets/js/countdown.js" defer></script>
+				<script src="assets/js/objects.js" defer></script>
+        {% endblock %}
+
 {% endblock %}
 
-{% block javascript %}
-	<script src="assets/js/objects.js" defer></script>
-{% endblock %}

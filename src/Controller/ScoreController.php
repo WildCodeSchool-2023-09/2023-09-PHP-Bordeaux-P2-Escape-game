@@ -12,8 +12,8 @@ class ScoreController extends AbstractController
         $scores = $scenarioManager->getScores();
 
         return $this->twig->render('scores.html.twig', [
-        'userScore' => $scores['userScores'][0]['score'],
-        'globalScores' => $scores['globalScores']
+            'userScore' => $scores['userScores'][0]['score'],
+            'globalScores' => $scores['globalScores']
         ]);
     }
 }

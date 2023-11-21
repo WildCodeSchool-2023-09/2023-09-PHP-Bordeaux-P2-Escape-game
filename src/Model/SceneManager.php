@@ -14,22 +14,32 @@ class SceneManager extends AbstractManager
             'name' => "couloir",
             'dialogues' => "Il n’y a plus de lumière, je ne vois plus rien! 
             Comment faire ? Il doit bien y avoir une solution pour rallumer la lumière.",
+            'image' => ' /assets/images/Scene1_light-on.png ',
+            'image_desktop' => '',
+            'image_desktop-light' => '',
             'dialoguesSuccess' => "Je vais pouvoir aller dans l'open-space !",
-            'image' => '/assets/images/Scene1_light-on.png',
             'image_dark' => '/assets/images/1_Scene1_light-off.png ',
             'href' => "/scene?scene=scene1",
             'alt' => "Pièce sombre et non éclairée",
             'hint' => "Clique sur la pastille du tableau électrique.",
+            'linkexit' => [
+                'name' => "Exit",
+                'coords' => "34,192,16",
+                'href' => "/scenario",
+                'alt' => "Sortie du jeu",
+            ],
             'linkedPlans' => [
                 'plan1' => [
                     'name' => 'Eleccompteur',
                     'coords' => "340,90,10",
+                    'coords-desktop' => '',
                     'href' => "/plan?scene=scene1&plan=plan1",
                     'alt' => "Tableau électrique",
                     'dialogues' => "Oh un tableau électrique ! 
                     Je vais pouvoir rallumer la lumière ! Des instructions ont été laissé pour me guider.",
                     'dialoguesSuccess' => "Bien joué, la lumière s'est rallumée !",
                     'image' => '/assets/images/tableauElectrique.jpg',
+                    'image_desktop' => '',
                     'linkRetour' => '/scene?scene=scene1',
                     'validated' => "Déjà fait!",
                     'enigma' => [
@@ -47,11 +57,13 @@ class SceneManager extends AbstractManager
                 'plan2' => [
                     'name' => 'PorteSortie',
                     'coords' => "205,125,10",
+                    'coords-desktop' => '',
                     'href' => "/plan?scene=scene1&plan=plan2",
                     'alt' => "Porte de sortie",
                     'dialogues' =>  "La porte est verouillée.. je ne peux pas sortir.",
                     'dialoguesSuccess' => "Je peux utiliser la clé pour sortir ! Ca y est je peux m'en aller d'ici ! ",
                     'image' => '/assets/images/doorclosed.png',
+                    'image_desktop' => '',
                     'linkRetour' => '/scene?scene=scene1',
                     'link1' => '', //lien Winner
                     'link2' => '', //lien null quand pas d'objet
@@ -67,6 +79,7 @@ class SceneManager extends AbstractManager
             Clothilde ne m'en voudra pas trop si je fouille un peu autour de son bureau",
             'dialoguesSuccess' => "Super ! Cette clé devrait m'être très utile !",
             'image' => '/assets/images/Scene2_bureau.png',
+            'image_desktop' => '',
             'alt' => "Bureau de Clothilde",
             'href' => "/scene?scene=scene2",
             'hint' => "Clique sur les pastilles et des énigmes apparaîtront.",
@@ -74,10 +87,12 @@ class SceneManager extends AbstractManager
                 'plan1' => [
                     'name' => 'Post-it',
                     'coords' => "217,46,10",
+                    'coords_desktop' => '',
                     'href' => "/plan?scene=scene2&plan=plan1",
                     'alt' => "un Post-it avec des trucs écrits dessus",
                     'dialogues' => "On dirait des instructions à suivre ...",
                     'image' => '/assets/images/postIt.png',
+                    'image_desktop' => '',
                     'linkRetour' => '/scene?scene=scene2',
                     'validated' => "Juste une note",
                     'hint' => "Retourne à la scène 2 et clique sur les autres pastilles.",
@@ -85,11 +100,13 @@ class SceneManager extends AbstractManager
                 'plan2' => [
                     'name' => 'ArmoireDeDroite',
                     'coords' => "349,75,10",
+                    'coords_desktop' => '',
                     'href' => "/plan?scene=scene2&plan=plan2",
                     'alt' => "une armoire fermée",
                     'dialogues' => "Tiens, une énigme !", //L'enigme est affichée pas de dialogue à ajouter
                     'dialoguesSuccess' => "Bravo ! Ce mot va peut être m'être utile pour la suite ..." . " Ordinateur ",
                     'image' => '/assets/images/armoireDroite.png ',
+                    'image_desktop' => '',
                     'linkRetour' => '/scene?scene=scene2',
                     'validated' => "J'ai trouvé le mot : Ordinateur ",
                     'enigma' => [
@@ -111,11 +128,14 @@ class SceneManager extends AbstractManager
                 'plan3' => [
                     'name' => 'Ordinateur',
                     'coords' => "220,134,10",
+                    'coords_desktop' => '',
                     'href' => "/plan?scene=scene2&plan=plan3",
                     'alt' => "un Ordinateur portable",
                     'dialogues' => "On dirait que je peux indiquer un mot de passe ...",
                     'dialoguesSuccess' => "Ca y est bien joué ! Que vais-je pouvoir faire des ces chiffres ?",
-                    'image' => '/assets/images/ordinateur.png ', // Ordinateur demandant le code (formulaire)
+                    'image' => '/assets/images/ordinateur.png ', // Ordinateur demandant le code
+                    'image_desktop' => '',
+                    'image2_desktop' => '',
                     'image2' => ' /assets/images/ordinateur-code-affiche.png',
                     'linkRetour' => '/scene?scene=scene2',
                     'validated' => "le code 5426 est apparu à l'écran ",
@@ -132,8 +152,9 @@ class SceneManager extends AbstractManager
                     'hint' => "Le mot de passe est celui obtenu dans l'énigme de l'armoire de droite.",
                 ],
                 'plan4' => [
-                    'name' => 'ArmoireDeGauche',
                     'coords' => "122,75,10",
+                    'name' => 'ArmoireDeGauche',
+                    'coords_desktop' => '',
                     'coordsKey' => "268,148,20",
                     'imagekey' => '/assets/images/cle.png',
                     'href' => "/plan?scene=scene2&plan=plan4",
@@ -141,6 +162,9 @@ class SceneManager extends AbstractManager
                     'dialogues' => "On dirait que je peux entrer un code...",
                     'dialoguesSuccess' => "Super ! Maintenant l'amoire est ouverte et..oh on dirait une clé !",
                     'dialoguesObject' =>  "Cette clé devrait m'être grandement utile !",
+                    'image1_desktop' => '',
+                    'image2_desktop' => '',
+                    'image3_desktop' => '',
                     'image' => ' /assets/images/armoireGauche- closed.png',
                     'image2' => ' /assets/images/armoireGauche-openedKey.png',
                     'image3' => ' /assets/images/armoire_gauche_open.jpg',

@@ -9,9 +9,6 @@
 
 {% block content %}
 
-{# <div class="user-score">
-    <p>Votre score actuel : {{ userScore }}</p>
-</div> #}
 
 {% if message is not null %}
 	<div>
@@ -29,6 +26,7 @@
 		{% else %}
 			<img usemap="#{{scene['name']}}" src="{{scene['image_dark']}}" alt="{{scene['alt']}}" id="sceneImage">
 		{% endif %}
+		
 		{# <img usemap="#{{scene['name']}}" src="{{scene['image']}}" alt="{{scene['alt']}}" id="sceneImage"> #}
 
 		<map name={{scene['name']}}>
@@ -54,13 +52,14 @@
 				<area shape="circle" coords="379,190,20" alt={{linkedScene['alt']}} href={{linkedScene['href']}} id="pastille"/>
 			{% endif %}
 
+			{% if scene['linkexit'] %}
+        	<area shape="circle" coords={{scene['linkexit']['coords']}} alt={{scene['linkexit']['alt']}} href={{scene['linkexit']['href']}} value="Quitter le jeu" id="exitZone" class="exit-zone"/>
+   			 {% endif %}
+
 		</map>
 	</div>
-	{# <div class="Dialogues">
-				<div id="typedtext">
-					{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
-	            </div>
-	        </div> #}
+	
+	
 	<div class="Dialogues">
 		<div id="typedtext">
 
@@ -70,27 +69,26 @@
     			{{ scene['dialoguesSuccess'] }}
 			{% else %}
 				{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
-            {% endif %}
-            </div>
-		</div>
 
-    {# </div> #}
+                {% endif %}
+            </div>
+	</div>
+
 
         <div class="tools">
-            <div class="pseudo">
-               {{ user.pseudo }} : {{ userScore }}
-            </div>
+            <p class="pseudo">
+               {{ user.pseudo }} - {{ userScore }}
+            </p>
+            
+            <p id="timer">
+            </p>	
 
-            <div class="timer">
-                60:00
-                <!-- fonction timer -->
-            </div>
 
             <div class="inventory">
             </div>
 
             <div class="indice">
-               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick=togglePopup()> 
+               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick="togglePopup()"> 
             <span class="text-bubble">Indice</span>
             </div>
 
@@ -107,16 +105,22 @@
 				{% if (scene['scene2']['hint']) %}
 					<p{{scene['hint']}} id="indice" /p>
 					{% endif %}
-		</div>
-	</div>
-{% endblock %}
 
-{% block javascript %}
-	<script src="assets/js/objects.js" defer>
+
+	{% block javascript %}
+	<script>
+		
 		function togglePopup() {
-			let popup = document.querySelector("#popup");
-		popup.classList.toggle("open");
-		}
+        	let popup = document.querySelector("#popup");
+			popup.classList.toggle("open");
+			}
+ 
 	</script>
+
+<script src="assets/js/countdown.js" defer></script>
+<script src="assets/js/navbar.js" defer></script>
+<script src="assets/js/exitGame.js" defer></script>
+
+	{% endblock %}
 
 {% endblock %}

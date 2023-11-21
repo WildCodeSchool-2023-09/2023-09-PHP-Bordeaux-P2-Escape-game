@@ -1,18 +1,33 @@
+/* media queries */
+
+.ImgDialogues, .tools {
+display: flex;
+flex-wrap: wrap;
+}
+
 .ImgDialogues {
     display: flex;
-    margin-top: 0;
     flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: flex-end;
-    align-items: center;
+}
+
+.Image>img {
+    border-radius: 2rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.scene, .Dialogues {
+    border-radius: 2rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
 }
 
 .Dialogues {
-    display: flex;
     width: 25rem;
     height: 2.5rem;  
     margin-top: 0.5rem;
+    margin-bottom: 3rem;
     background-color: #FBFBFB;  
     border-radius: 15px;
     font-size: 14px;
@@ -22,18 +37,14 @@
     padding-bottom: 0.3rem;
 }
 
-.ImageScene>img {
-    border-radius: 2rem;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom: 0;
+.tools {
+text-align: center;
+display: flex;
+/* flex-direction: column; */
+gap: 1rem;
+/* align-items: center; */
 }
 
-.tools {
-display: flex;
-flex-direction: column;
-gap: 1rem;
-align-items: center;
-}
 
 .pseudo {
     width: 10rem;
@@ -46,21 +57,22 @@ align-items: center;
     font-size: 24px;
     line-height: 2;
     font-weight: bold;
-}    
- 
+}  
 
-.timer {
+#timer {
     width: 10rem;
-    height: 4rem;
+    height: 3rem;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 2rem;
     background-color: #FBFBFB;
-    font-family: "Digital Numbers";
+    font-family: "Jockey One";
     text-align: center;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 2;
     font-weight: bold;
-}
+    font-family: "Digital Numbers"; 
+}  
+
 
 .inventory {
     width: 4rem;
@@ -73,9 +85,9 @@ align-items: center;
 .indice>img {
     width: 3rem;
     height: 3rem;
-    gap: 1rem;
 }
 
+/* Partie pour le pop-up */
 #popup {
     top:0;
     left:0;
@@ -121,20 +133,6 @@ align-items: center;
     box-shadow: 0.2rem 0.2rem 0.1rem black;
 }
 
-/* .Dialogues>#typedtext {
-    display: flex;
-    width: 25rem;
-    height: 2.5rem;  
-    /* margin-top: 0.5rem; */
-    /* background-color: #FBFBFB;  
-    border-radius: 15px;
-    font-size: 14px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-} */ 
-
 .pastille {
     transition: filter 0.3s ease-in-out;
 }
@@ -143,6 +141,7 @@ align-items: center;
     filter: brightness(1.5); /* ou tout autre effet de couleur que vous souhaitez appliquer */
 }
 
+/* Info-bulle d'indice */
 .indice .text-bubble {
 visibility: hidden;
 width: 120px;
@@ -158,6 +157,79 @@ z-index: 1;
 .indice:hover .text-bubble {
     visibility: visible;
   }
+
+#popup {
+    display: none;
+    top:0;
+    left:0;
+    right: 0;
+    bottom:0;
+    z-index:98;
+    position: fixed;
+}
+
+#popup.open{
+    display: block !important;
+}
+
+.popup-content {
+    max-width: 25rem;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #FBFBFB;
+    position: absolute;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    box-shadow: 0.3rem 0.3rem 0.7rem black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.popup-exit {
+    position: absolute;
+    text-decoration: none;
+    color: white;
+    background-color: white;
+    border-radius: 40%;
+    top: -5px;
+    right: 0;
+    box-shadow: 0.2rem 0.2rem 0.1rem black;
+}
+
+/* Info-bulle pour Quitter le jeu sur la Scene1 */
+.exit-zone {
+    position: relative;
+    }
+    
+.exit-zone::before {
+    content: "Quitter le jeu";
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: -540px;
+    margin-right: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    }
+    
+.exit-zone:hover::before {
+    visibility: visible;
+    opacity: 1;
+    }
 
 /* .key {
     width: 20px;
