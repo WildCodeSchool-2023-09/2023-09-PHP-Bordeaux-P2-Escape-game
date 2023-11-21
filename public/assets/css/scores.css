@@ -1,0 +1,25 @@
+.pseudoScore {
+    background-color: #FBFBFB;
+    padding: 1rem;
+    border-radius: 2rem;
+
+}
+
+.scoring {
+    width: 60%;
+    border-collapse: collapse;
+  }
+  
+  .scoring th, .scoring td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  .scoring th {
+    background-color: #f2f2f2;
+  }
+  
+  .scoring tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }

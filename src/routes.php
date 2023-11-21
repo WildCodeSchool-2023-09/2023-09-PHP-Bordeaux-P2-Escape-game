@@ -1,16 +1,17 @@
 <?php
 
-// list of accessible routes of your application, add every new route here
-// key : route to match
-// values : 1. controller name
-//          2. method name
-//          3. (optional) array of query string keys to send as parameter to the method
-// e.g route '/item/edit?id=1' will execute $itemController->edit(1)
+session_start();
+
 return [
     '' => ['HomeController', 'index',],
-    'items' => ['ItemController', 'index',],
-    'items/edit' => ['ItemController', 'edit', ['id']],
-    'items/show' => ['ItemController', 'show', ['id']],
-    'items/add' => ['ItemController', 'add',],
-    'items/delete' => ['ItemController', 'delete',],
+    'login' => ['UserController', 'login',],
+    'logout' => ['UserController', 'logout',],
+    'inscription' => ['InscriptionController', 'validateInscription',],
+    'scenario' => ['ScenarioController', 'scenario',],
+    'scene' => ['SceneController', 'sceneEnigme', ['scene', 'message']], // Pour gérer les scènes et les plans
+    'plan' => ['SceneController', 'planEnigme', ['scene', 'plan']],
+    'scores' => ['ScoreController', 'showScores'],
+    'tutorial' => ['HomeController', 'tutorial',],
+    'win' => ['HomeController', 'win',],
+    'lose' => ['HomeController', 'lose',],
 ];

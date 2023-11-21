@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}You Lose{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/lose.css">{% endblock %}
+
+{% block content %}
+
+ <main>
+
+    <div class="pseudo">
+         {{ user.pseudo }} - {{ userScore }}
+        {# <span class="joueur">PLAYER</span>
+        <span class="chrono">60:00</span> #}
+    </div>
+
+    <div class="gif">
+     <img class="clothildeloose-gif" src="https://i.ibb.co/RYkrtLs/LOOSE-Clothilde.gif" alt="gif">
+    </div>
+    <div class="titre">
+     <h1>YOU LOSE</h1>
+    </div>
+    <div class="lose">  
+          <p>Sorry!! 🥺</p> 
+        <h2>Undex used</h2> 
+        <button id="replayButton">TRY AGAIN</button>
+    </div>
+
+ </main>  
+
+{% endblock %}
+
+{% block javascript %}<script src="assets/js/lose.js" defer></script>{% endblock %}
+

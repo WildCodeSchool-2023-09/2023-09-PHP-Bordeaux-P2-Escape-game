@@ -1,0 +1,112 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Scene{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/scene.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="ImgDialogues">
+	<div class="ImageLightOff">
+
+		{# <img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage"> #}
+
+		{% if (plan['name'] == 'Ordinateur') and result.success %}
+			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
+		{% elseif (plan['name'] == 'ArmoireDeGauche') and result.success %}
+			<img usemap="#{{plan['name']}}" src="{{plan['image2']}}" alt="{{plan['alt']}}" id="sceneImage">
+		{% else %}
+                    <img usemap="#{{plan['name']}}" src="{{plan['image']}}" alt="{{plan['alt']}}" id="sceneImage">
+		{% endif %}
+
+		<map name={{plan['name']}}>
+			
+			{% if (plan)%}
+				<area shape="circle" coords="31,199,20" alt={{plan['alt']}} href={{plan['linkRetour']}} {# id="pastille" #}/>
+			{% endif %}
+			{% if (plan['image2']) %}
+				<area id="keyArea" class="key" data-key-id="unique_key_id" shape="circle" coords="{{plan['coordsKey']}}" alt="{{plan['alt']}}" href="{{plan['linkRetour']}}">
+			{% endif %}
+
+		</map> 
+		 
+		<div class="Dialogues"> 
+			<div id="typedtext"> 
+				{% if plan['name'] == 'Eleccompteur' and result.success %} 
+					{{ plan['dialoguesSuccess']}} 
+				{% elseif plan['name'] == 'ArmoireDeDroite' and result.success %} 
+					{{ plan['dialoguesSuccess'] }} 
+				{% elseif plan['name'] == 'Ordinateur' and result.success %} 
+					{{ plan['dialoguesSuccess'] }} 
+				{% elseif plan['name'] == 'ArmoireDeGauche' and result.success %} 
+					{{ plan['dialoguesSuccess'] }} 
+				{% else %} {{ plan['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }} 
+				{% endif %} 
+			</div> 
+		</div> 
+	
+		{% if plan.enigma is defined %} 
+			{% if successMessage is defined %}
+				<div class="success-message">{{ successMessage }}</div>
+			{% endif %}
+
+			{% if failureMessage is defined %}
+				<div class="failure-message">{{ failureMessage }}</div>
+			{% endif %}
+
+			<div class="enigma"> 
+				<p class="question">{{plan.enigma.question}}</p> 
+				<form method="post" class="answer"> 
+				{% for question in plan.enigma.answers %} 
+					<label for="{{ question }}"></label> 
+					<input class="answers" name="{{ question }}" type="submit" value="{{ question }}" id="{{ question }}" /> 
+				{% endfor %} 
+				</form> 
+			</div> 
+		{% endif %} 
+
+
+<div class="tools">	
+	<div class="pseudo">
+               {{ user.pseudo }} : {{ userScore }}
+            </div>
+
+			<p id="timer">
+            </p>
+			
+			<div class="inventory"> 
+
+			</div> 
+			
+			 <div class="indice">
+               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick="togglePopup()"> 
+            <span class="text-bubble">Indice</span>
+        
+            </div>
+
+        <div id="popup">
+            <div class="popup-content">
+            	<h2>INDICE 💡</h2>
+				{% if plan['hint'] %}
+            		<p>{{ plan['hint'] }}</p>
+        		{% endif %}				
+				<a href="javascript:void(0)" onclick="togglePopup()" class="popup-exit">❌</a>
+			</div>
+		</div>
+
+		{% block javascript %}
+                <script> 
+                    function togglePopup() {
+                    let popup = document.querySelector("#popup");
+                    popup.classList.toggle("open");
+                    }
+                </script>
+				
+				<script src="assets/js/countdown.js" defer></script>
+				<script src="assets/js/objects.js" defer></script>
+        {% endblock %}
+
+{% endblock %}
+

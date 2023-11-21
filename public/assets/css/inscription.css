@@ -1,0 +1,168 @@
+:root{
+    --error : rgb(255, 157, 0);
+}
+
+.inscription{
+    display: grid;
+    margin: 8px;
+    padding: 8px;
+    background-image: url("../images/inscription_fond.png");
+    background-size: cover;
+    border-radius: 15px;
+    align-content: center;
+    align-items: end;
+    justify-items: center;
+    width: 90%;
+    height: auto;
+    color: var(--primary-color);
+}
+
+@media screen and (min-width:600px){
+    .inscription{
+        width: 90%;
+        height: 65%; 
+        background-position: center;
+    }
+}
+
+.inscription>h2{
+    margin: 3rem;
+    text-shadow: var(--secondary-color) 1px 0 5px;
+}
+
+@media screen and (min-width:600px){
+    .inscription>h2{
+        font-size: 3rem;
+        margin-left: 140px;
+    }
+}
+.error-messages{
+    margin-bottom: 3rem;
+    font-size: x-large;
+    color: var(--error);
+    list-style-type: none;
+    text-align: center;
+}
+
+.error, .errorPseudo{
+    font-size: large;
+    color: var(--error);
+    list-style-type: none;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.error {
+    margin-left: 50px;
+}
+
+.errorPseudo{
+    margin-left: 0px;
+}
+
+.error-messages>ul>li{
+    padding: 8px;
+}
+
+form{
+    margin-right: 20px;
+}
+
+@media screen and (min-width:600px){
+    form{
+        margin-right: 0px;
+        width: 500px;
+    }
+}
+
+.formInscription{
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px;
+    /* margin-right: 35px; */
+    text-shadow: var(--secondary-color) 1px 0 5px;
+    margin-left: 5px;
+}
+
+@media screen and (min-width:600px){
+    .formInscription{
+        margin-bottom: 22PX;
+        font-size: larger;
+        margin-right: 35px;
+    }
+}
+
+input{
+    background-color: var(--secondary-background-color);
+    margin-left: 8px;
+}
+
+@media screen and (min-width:600px){
+    input{
+    width: 70% ; 
+    height: 1.5rem;
+    }
+}
+
+.buttonInscription{
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+    align-items: center;
+}
+
+@media screen and (min-width:600px){
+    .buttonInscription{
+        margin: 6rem;
+    }
+}
+
+.buttonStyle{
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
+    padding: 8px;
+    font-size: larger;
+    font-weight: bold;
+    box-shadow: var(--secondary-color) 0px 0 5px;
+    margin-top: 10px;
+}
+
+@media screen and (min-width:600px){
+    .buttonStyle{
+        padding-right: 16px;
+        padding-left: 16px;
+        margin-left: 70px;
+    }
+}
+
+.buttonStyle:hover{
+    color: var(--secondary-color);
+  }
+
+.textPattern{
+    display: none;
+    color: var(--error);
+    text-shadow: var(--secondary-color) 1px 0 5px;
+    border: solid black;
+    width: 80%;
+    float :right;
+    font-size: small;
+  }
+
+  @media screen and (min-width:600px){
+    .textPattern {
+        font-size: medium;
+        padding: 3px;
+        text-align: center;
+        position: relative;
+        top: -15px;
+    }
+  }
+
+.formStyle{
+    display: flex;
+    justify-content: flex-end;
+}
+
+

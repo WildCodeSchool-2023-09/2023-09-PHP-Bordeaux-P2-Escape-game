@@ -1,63 +1,77 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Jeu 26 Octobre 2017 à 13:53
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
+-- SQLBook: Code
+DROP DATABASE IF EXISTS escapegame;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+CREATE DATABASE escapegame;
+
+USE escapegame;
+
+CREATE TABLE enigma (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100),
+    description VARCHAR (255),
+    hint VARCHAR (255),
+    correctAnswer VARCHAR (255),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO enigma (title, description, hint, correctAnswer)
+VALUES ('Tableau électrique', 'Quel fil faut-il reconnecter pour allumer la lumière de sécurité ?', 'Regarde sur le volet du tableau électrique', 'Les fils rouges'),
+('Post-it du tableau en liège', 'Tiens, qu\'y a-t-il sur ce post-it ?', 'Clique sur le post-it du tableau en liège.', ''),
+('Armoire de droite', 'Cette armoire est fermée avec un cadenas !', 'Il y en a plein à la Wild', 'Ordinateur'),
+('Ordinateur', 'Il est verrouillé par un mot de passe', 'Le mot de passe est la réponse de l\'armoire de droite', 'Ordinateur'),
+('Armoire de gauche', 'Elle est verrouillée par un cadenas !', 'Le code est sur l\'ordinateur', '5426'),
+('La porte de sortie', 'Elle est fermée à clé !', 'Trouve la clé qui se trouve dans une armoire', '');
+
+CREATE TABLE object (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR (50) NOT NULL,
+    description VARCHAR (255),
+    PRIMARY KEY (id)
+);
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE user (
+    id INT NOT NULL AUTO_INCREMENT,
+    pseudo VARCHAR(50),
+    password VARCHAR(255),
+    email VARCHAR(255) NOT NULL, 
+    PRIMARY KEY (id)
+);
 
---
--- Base de données :  `simple-mvc`
---
+CREATE TABLE progress (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    success TINYINT,
+    score INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user(id)
+);
 
--- --------------------------------------------------------
+CREATE TABLE session (
+id INT NOT NULL AUTO_INCREMENT,
+user_id INT,
+name VARCHAR(255),
+PRIMARY KEY (id),
+FOREIGN KEY (user_id) REFERENCES user(id)
+);
 
---
--- Structure de la table `item`
---
+CREATE TABLE inventory (
+    id INT NOT NULL AUTO_INCREMENT,
+    object_id INT,
+    session_id INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (object_id) REFERENCES object(id),
+    FOREIGN KEY (session_id) REFERENCES session(id)
+);
 
-CREATE TABLE `item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `item`
---
-
-INSERT INTO `item` (`id`, `title`) VALUES
-(1, 'Stuff'),
-(2, 'Doodads');
-
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `item`
---
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE scenario (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(255),
+enigma_id INT,
+session_id INT,
+progress_id INT,
+PRIMARY KEY (id),
+FOREIGN KEY (session_id) REFERENCES session(id),
+FOREIGN KEY (enigma_id) REFERENCES enigma(id),
+FOREIGN KEY (progress_id) REFERENCES progress(id)
+);

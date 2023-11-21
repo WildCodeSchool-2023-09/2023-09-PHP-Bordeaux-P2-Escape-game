@@ -1,0 +1,21 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    /* border-radius:15px 15px 0% 0% ; */
+    width: 100%;
+    align-items: center;
+    /* position: absolute; */
+    bottom: 0;
+  }
+
+.copyright {
+  margin-left :20px;
+}
+
+.citrouille{
+  width: 70px;
+  margin-right: 20px;
+}
+
