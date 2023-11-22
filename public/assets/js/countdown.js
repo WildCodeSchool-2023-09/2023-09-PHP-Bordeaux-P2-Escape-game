@@ -25,9 +25,9 @@ function initCountdown() {
       localStorage.setItem("countdownTime", tempsInitial);
 
       if (tempsInitial === 0) {
-        // Redirection vers la page "loose" après le compte à rebours
+        // Redirection vers la page "lose" après le compte à rebours
         setTimeout(() => {
-          window.location.href = "loose";
+          window.location.href = "lose";
         }, 1000);
       }
     }, 1000);
@@ -49,9 +49,9 @@ function initCountdown() {
       localStorage.setItem("countdownTime", tempsStored);
 
       if (tempsStored === 0) {
-        // Redirection vers la page "loose" après le compte à rebours
+        // Redirection vers la page "lose" après le compte à rebours
         setTimeout(() => {
-          window.location.href = "loose";
+          window.location.href = "lose";
         }, 1000);
       }
     }, 1000);
