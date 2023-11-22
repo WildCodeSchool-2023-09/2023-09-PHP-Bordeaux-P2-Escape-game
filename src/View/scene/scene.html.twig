@@ -9,7 +9,6 @@
 
 {% block content %}
 
-
 {% if message is not null %}
 	<div class="topMessage">
 		{{ message }}
@@ -70,26 +69,26 @@
 				{{ scene['dialogues'] ?? 'Dialogue par défaut ou message d\'erreur si nécessaire' }}
 
                 {% endif %}
-            </div>
+        </div>
 	</div>
 
 
-        <div class="tools">
-            <p class="pseudo">
-               {{ user.pseudo }} - {{ userScore }}
-            </p>
-            
-            <p id="timer">
-            </p>	
+	<div class="tools">
+		<p class="pseudo">
+			{{ user.pseudo }} - {{ userScore }}
+		</p>
+		
+		<p id="timer">
+		</p>	
 
 
-            <div class="inventory">
-            </div>
+		<div class="inventory">
+		</div>
 
-            <div class="indice">
-               <img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick="togglePopup()"> 
-            <span class="text-bubble">Indice</span>
-            </div>
+		<div class="indice">
+			<img href="#" src="/assets/images/ampoule_bw.png" alt="ampoule en noir et blanc" onmouseover="this.src='/assets/images/ampoule_color.png'" onmouseout="this.src='/assets/images/ampoule_bw.png'" onclick="togglePopup()"> 
+			<span class="text-bubble">Indice</span>
+		</div>
 
         <div id="popup">
             <div class="popup-content">
@@ -98,12 +97,15 @@
 				<a href="javascript:void(0)" onclick="togglePopup()" class="popup-exit">❌</a>
 			</div>
 
-				{% if (scene['scene1']['hint']) %}
-					<p{{scene['hint']}} id="indice" /p>
-					{% endif %}
-				{% if (scene['scene2']['hint']) %}
-					<p{{scene['hint']}} id="indice" /p>
-					{% endif %}
+			{% if (scene['scene1']['hint']) %}
+				<p{{scene['hint']}} id="indice" /p>
+				{% endif %}
+			{% if (scene['scene2']['hint']) %}
+				<p{{scene['hint']}} id="indice" /p>
+				{% endif %}
+		</div>
+	</div>
+</div>
 
 
 	{% block javascript %}

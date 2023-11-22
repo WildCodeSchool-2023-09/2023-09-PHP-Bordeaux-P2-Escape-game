@@ -1,37 +1,12 @@
-/* .ImgDialogues {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 0;
-}
-
-.Dialogues {
-    display: flex;
-    width: 25rem;
-    height: 2.5rem;
-    margin-top: 0.5rem;
-    background-color: #FBFBFB;
-    border-radius: 15px;
-    font-size: 14px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-}
-
-.ImageScene>img {
-    border-radius: 2rem;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom: 0;
-} */
-
-
 
 .box {
-display: flex;
-flex-direction: column;
-align-items: center;
-
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
 }
+
 
  .pseudo {
     width: 10rem;
@@ -145,12 +120,13 @@ align-items: center;
 @media all and ( min-width: 700px) 
 {
 
-.box {
+    .box {
+        text-align: center;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        gap: 1rem;
         align-items: center;
-        
-        }
+    }
         
 .pseudo {
             width: 10rem;
